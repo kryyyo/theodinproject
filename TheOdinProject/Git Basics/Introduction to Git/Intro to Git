@@ -1,0 +1,76 @@
+Version Control 
+    -system that records changes to a file or set of files over time so you can recall a specific version of that file later
+    -Version Control System (VCS)
+
+RCS
+    -Revision Control System 
+    -an example of LOCAL version control
+    -creating special formats on disk that stores patches and recreate by adding all patches 
+
+
+CVCS
+    -Centralized Version Control System
+    -LOCAL
+    -have single server for different computers that contains all versioned files 
+    -cons: if the server is down, no one can collab. if the server crash permanently, you lose everything
+
+DVCS
+    -Distributed Version Control System
+    -fully mirror the repository
+    -every clone is a full backup of all the data
+
+
+History
+    -Linux(Linus Torvalds) 
+        -created own tool based on the crash of BitKeeper
+        feature goals:
+            -speed
+            -simple design
+            -strong support for non-linear development (thousands of parallel branches)
+            -able to handle large projects
+            -fully distributed
+    -2005 Git
+
+Git
+    1. Snapshots not Differences
+        -takes a picture of what ALL of the files look like 
+        -if there are no changes in the file, it only links to the previous identical file (parang yung ln kanina)
+        -stream of snapshots 
+        -like a mini file system
+
+    2. Every operation is local
+        -up to committing is still local
+            -you can add your patch 1.0, 1.1, 1.2 even locally first and upload it (with the corresponding patches) once you have internet connection
+        -you can check history local (even not online)
+    
+    3. Has Integrity
+        -everything is checksummed
+        -everything you change will be knowned by git (if a system is initialized)
+        -mechanism: SHA-1 hash
+            -40 character composed of hexadecimal character
+    
+    4. Generally Adds Only Data
+        -only adds data, not remove your past versions when you change something
+
+The Three States
+    1. Modified - change but not in the database
+    2. Staged - marked a file in its current version
+    3. Committed - data stored in database 
+
+The Three Main Sections
+    1. Working Directory/Tree - local or the one version outside of .git folder (latest)
+    2. Staging Area - file (in .git directory) on what will go on the next commit
+                    - version ready to be committed
+    3. .git directory (repository)  - where Git stores the metadata and object database for your project
+                                    - this is the one being copied when you are cloning
+
+Workflow
+    1. Modify - modified 
+    2. Stage - staged 
+    3. Commit and Store at .git - committed 
+
+In sum,   
+    1. fast and modern version control
+    2. provides history of changes 
+    3. collaborative changes 
+    4. easy to use for any type of knowledge worker

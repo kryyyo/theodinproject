@@ -1,0 +1,12 @@
+Copying
+    -Ctrl + Shift + C
+
+Pasting
+    -Ctrl + Shift + V
+
+Tab 
+    -to complete commands
+
+.
+    -refers to all files in the same directory
+    

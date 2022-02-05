@@ -1,0 +1,109 @@
+pwd
+    -present working directory
+
+
+ls
+    -list files and directories
+
+    listing a different directory: ls [full location here]
+    listing all files: ls -a
+    long form listing: ls -l
+
+    human readable sizes (1B, 1kb): ls -lh
+
+    sorting by size: ls -lhS
+    sorting by last modified time: ls -lt
+
+    reverse sort: ls -lr
+    reverse sort with size - lSr
+
+ln 
+    -for linking between two files
+
+    types: Hard and Symbolic
+        Hard links - create an identical copy of the linked file on disk
+                    - if source is changed, so is the linked file
+                    -only works for same file system (same extension)
+
+                Syntax: ln [name of source file with extension] [name of target file you want to create]
+                    additional commands
+                        forcing a link (if there is an exisiting target file already): ls -f
+
+        Symbolic links - can link directories too
+                        - can link different file system
+                Syntax: ln -s [source file] [target file]
+rm
+    -deleting a file
+
+cat 
+    -to see contents of a file
+
+cd
+    -changing directories
+
+    to a directory: cd [directory link]
+    navigating up: cd ..
+    to home: cd
+
+mkdir
+    -creating directories 
+
+    normal: mkdir [folder name]
+    with intermediate (nested) directories: mkdir -p [folder a]/[folder b]/[folder c]
+    verbose output (print the made directory): mkdir -v [folder]
+
+cp
+    -copying files 
+
+    single file: cp [source file] [target file] (mapupunta sa directory nung target file)
+    multiple files: cp [source file1] [source file2]..... [directory]
+    by extension: cp [*.ext] [directory]
+ 
+    copying a directory: cp -R [source directory] [directory]
+
+    repeating commands (for copying/linking/deleting) - add this to your command just right after the main command
+        verbose output: -v
+        forcing: -f
+        confirm overwriting: -i
+        for directories: -R
+
+mv
+    -moving files 
+    -same as copying syntax (pero may added rm na)
+
+    single file: mv [source file] [target file] (mapupunta sa directory nung target file)
+    multiple files: mv [source file1] [source file2]..... [directory]
+    by extension: mv [*.ext] [directory]
+ 
+    copying a directory: mv -R [source directory] [directory]
+
+    -can also be used to rename a directory
+
+
+    mv [location of the first directory] [location with new name of directory]
+        eg: mv /home/test /home/lol
+        from test >>> lol 
+
+input/output
+
+    redirecting output
+        -using pipe (|) operator
+        -to input another command
+        -parang steps in one line, execute step1 | step2 
+
+        eg. ls -a ~ | grep _
+            - command use to get display all file types but only with "_"
+
+            ls -a ~ | grep _ | sed "s/_/-/g"
+            - command use to get display all file types but only with "_" then replace it with "-"
+
+    writing to a file
+        -using (>) operator
+        -ilalagay mo sa file yung kinuha mo sa step 1
+
+        eg. ls -a ~ | grep _ > underscore.txt
+            - find all files, only with underscore, put contents on underscore.txt
+        
+    reading from a file
+        -using (<) operator
+        -instead of writing, reading lang
