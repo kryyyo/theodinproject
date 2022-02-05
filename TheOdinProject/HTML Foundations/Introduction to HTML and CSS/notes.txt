@@ -1,0 +1,38 @@
+HTML VS CSS VS JAVASCRIPT
+
+HTML and CSS - NOT a programming language
+
+HTML (HYPERTEXT MARKUP LANGUAGE)
+    -Create the structure
+    -building block of the web page
+
+CSS (Cascading Style Sheet)
+    -Stylize the website
+    -make web page responsive
+    -look and feel
+
+JAVASCRIPT
+    -Increase interactivity
+    -complex functions and features
+    -programmatic code
+
+ADDITIONAL RESOURCES
+
+What is the Internet?
+    -network of computers that communicate with each other
+    -each computer has a unique IP (Internet Protocol) Address eg. 168.212.226.204
+
+What is a Web?
+    -subset of internet
+    -2 main components
+        1. Web Server - shares and serve the data
+        2. Web Browser Clients - request the data
+    
+    Agreement for clients and servers: API (Application Program Interface)
+
+HTML - markup language
+CSS - design language
+JAVASCRIPT - programming language
+    DOM (Document Object Model) API
+        -access elements through DOM and make them change however you want
+    
