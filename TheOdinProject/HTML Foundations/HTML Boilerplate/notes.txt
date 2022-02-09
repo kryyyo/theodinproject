@@ -1,0 +1,37 @@
+Boilerplate
+    -same basic structure of an HTML
+
+<!DOCTYPE html>
+    -doctype declaration 
+    -tell the browser what version of HTML
+
+<html></html>
+    -HTML element
+    -root element of the document
+    
+    lang
+        -specifies the language of the text content and what region
+        -for accessibility 
+        -invoke correct pronunciation accdg to the language 
+        -lang = "[language]-[script]-[region]"
+            [language] subtag - basic language
+            [script] subtag - writing system
+            [region] - dialect of base language
+    
+<head></head>
+    -HEAD element
+    -where we put meta information, title of the browser, links to external files
+
+    <title></title>
+       -title element
+       -title of the tab in the browser
+       -default is the filename of the html filename
+    
+    <meta charset="utf-8">
+        -charset encoding
+        -complete encoding of characters is UTF-8 UCS Transformation Format (unicode)
+
+<body></body>
+    -BODY Tag
+    -where all contents will be displayed
+    
