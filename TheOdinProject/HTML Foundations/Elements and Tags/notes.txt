@@ -1,0 +1,22 @@
+Opening Tags 
+    -tells the browser this is the START of an HTML element
+
+Closing Tags
+    -end of an HTML element
+
+<p>Example</p>
+opening tag - content - closing tag
+
+Elements 
+    -containers for a content
+
+HTML Tags
+    -to determine how it should be shown in the browser
+
+HTML Elements Reference
+    -https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+2 Impacts of using correct Tag
+    1. how they rank in search engines (seo)
+    2. how accessible (like screen readers/assistive technologies)
+
