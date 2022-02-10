@@ -1,0 +1,76 @@
+<ul></ul>
+    -used to create an unordered list 
+<ol></ol>
+    -used to create an ordered list
+<li></li>
+    -used to create a list item
+<dl>
+    <dt></dt>
+    <dd></dd>
+</dl>
+    -dl description list
+    -dt title of the one being described
+    -dd description itself 
+
+attributes:
+
+<ol start="30">
+    <li></li>
+</ol>
+    -start attribute
+    -define what number to start to
+    -accepts only integer values. but can result to different type if type is defined.
+        eg. 2 = II
+
+<ol reversed>
+    <li></li>
+</ol>
+    -reverses the list
+
+<ol value="9">
+    <li></li>
+</ol>
+    -value attribute
+    -to recalculate the order an start from there
+        eg. 1, 9, 10
+
+List Item Styling
+    1. list-style-type
+        -set what is the type of the list item marker
+        List Style Type Value	    Content
+        none	                    No list item
+        disc	                    A filled circle
+        circle	                    A hollow circle
+        square	                    A filled square
+        decimal	                    Decimal numbers
+        decimal-leading-zero	    Decimal numbers padded by initial zeros
+        lower-roman	                Lowercase roman numerals
+        upper-roman	                Uppercase roman numerals
+        lower-greek	                Lowercase classical Greek
+        lower-alpha / lower-latin	Lowercase ASCII letters
+        upper-alpha / upper-latin	Uppercase ASCII letters
+        armenian	                Traditional Armenian numbering
+        georgian	                Traditional Georgian numbering
+
+        Using an Image as a List marker
+            set list-style-type: none;
+                background: url("image.png") 0 50% no-repeat;
+
+            padding of the background will set the distance of the marker from the list item
+
+    2. list-style-position
+        2 values
+            a. list-style-position: outside;    -default
+            b. list-style-position: inside;     or inherit
+
+    Shorthand for list-style
+        list-style: [type] [position];
+
+Horizontal Displaying List
+    -horizontal list
+        -display: inline;               -can't add margin
+        -display: inline-block;
+
+Floating list
+    -can also be used to display horizontally
+    
