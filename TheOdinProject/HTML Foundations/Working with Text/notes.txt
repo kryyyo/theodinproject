@@ -1,0 +1,41 @@
+<p></p>
+    -Paragraph element
+
+<h1></h1>
+<h2></h2>
+<h3></h3>
+<h4></h4>
+<h5></h5>
+<h6></h6>
+    -Heading tags 
+    -1 smallest 6 largest
+
+<strong></strong>
+    -makes element bold 
+    -denotes importance
+    -use this instead of <b></b> for accessibility
+
+<em></em>
+    -empasize
+    -makes element italic
+    -use this instead of <i></i> for accessibility
+
+Nesting and Indentation
+    -sample: 
+        <body>
+            <p></p>
+            <h1></h1>
+        </body>
+
+        body - parent of p and h1 
+        p and h1 - siblings with each other 
+                -children of body
+
+
+HTML Comments
+        -not visible to the browser
+        -<!-- comment here -->
+
+Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum, facilis placeat aspernatur cumque accusamus ab, eaque laboriosam enim nobis cum aut consectetur dolor ratione amet perferendis impedit explicabo voluptates magni.
+        -dummy text
+        
