@@ -34,4 +34,3 @@ Boilerplate
 <body></body>
     -BODY Tag
     -where all contents will be displayed
-    
