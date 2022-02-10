@@ -1,0 +1,58 @@
+Links
+    -one of the key features
+    -link one webpage to another
+
+<a href="https://www.theodinproject.com/about">hi</a>
+    -anchor tag
+    -always have href = hyperlink reference
+    -content will be blue and underlined
+
+2 Kinds of links
+    1.Absolute - to other domains 
+        syntax: protocol://domain/path
+    2.Relative - within the domain 
+        syntax: ./path
+
+        ./ - should start on the same folder (current directory)
+        ../- one folder above (parent directory)
+    
+<img src="" alt="">
+    -display images
+    -2 important (always) attrib
+        1. src - link of the image
+        2. alt - for accessibility (alternative text)
+
+File Structure Tips
+    1. all lowercase and no spaces
+        - if spaces needed, use "-"
+    2. make names short for faster loading time 
+    3. always start with "index.html" since it will always be the homepage
+    4. do not use spaces 
+
+    Main folder
+    -index.html         -always outside 
+    -otherpages.html
+    -folder for css
+    -folder for js
+    -folder for img
+    and so on....
+
+
+4 Image Formats 
+    1. jpg - for photos
+    2. svg - for all kinds, scalable without sacrificing quality but big in size, transparent
+    3. png - most practical of the four. transparent and large color palettes
+    4. gif - for animation. lack of color palettes
+
+HTML Entity
+    -reserved characters for html
+    -aren't allowed to be inserted into an html document without being encoded
+    -they mean something in the HTML syntax
+
+    syntax: &entity;
+
+    Curly Quotes
+    &ldquo;
+    &rdquo;
+    &lsquo;
+    &rsquo;
