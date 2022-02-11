@@ -154,19 +154,24 @@ The Cascade of CSS
         *
         combinators: +, ~, >, and empty space
 
-Inheritance
-    -CSS properties that, when applied to an element, all descendants will follow the same property
-    -usually: Typography based properties (font-family, font-size, text-align, color)
-    -exception:
-        when directly targeting an element, it does not inherit the property of its parent
+    b. Inheritance
+        -CSS properties that, when applied to an element, all descendants will follow the same property
+        -usually: Typography based properties (font-family, font-size, text-align, color)
+        -exception:
+            when directly targeting an element, it does not inherit the property of its parent
 
-        eg. 
-            #parent {
-            color: red;
-            }
+            eg. 
+                #parent {
+                color: red;
+                }
 
-            .child {
-            color: blue
-            }
+                .child {
+                color: blue
+                }
 
-        child will be color blue even if it is only a class. it will not inherit color red of id parent because it is targeted exclusively
+            child will be color blue even if it is only a class. it will not inherit color red of id parent because it is targeted exclusively
+
+    c. Rule Order
+        -tiebreaker of the tiebreaker
+        -whichever rule is the LAST to be written
+        
