@@ -117,6 +117,9 @@ typography basics and text-align
         -align text horizontally within an element
             eg. text-align: center;
 
+    font shorthand
+        font: [font-family] [font-weight] [font-size];
+
 Image Height and Width
     -default: actual size of the image file
 
