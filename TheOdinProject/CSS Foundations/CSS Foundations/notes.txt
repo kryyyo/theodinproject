@@ -117,3 +117,12 @@ typography basics and text-align
         -align text horizontally within an element
             eg. text-align: center;
 
+Image Height and Width
+    -default: actual size of the image file
+
+    to resize without causing to lose proportions, set height to auto then adjust width
+
+    img {
+        height: auto;
+        width: 500px;
+    }
