@@ -73,4 +73,47 @@ Parts of a CSS
             -only select the child element
             -match only the LAST selector stated no matter how long the selector is
             -element will be selected if and only if it is a child of the parent element indicated
-            
+
+Properties 
+
+color & background-color
+    https://www.w3schools.com/cssref/css_colors_legal.asp
+
+    can be the following:
+        1. Hexadecimal colors - #RRGGBB
+        2. Hexadecimal colors with transparency - #RRGGBB[2 digits between 00 and FF]
+        3. RGB colors - rgb(red, green, blue)
+        4. RGBA colors - rgba(red, green, blue, alpha)
+            a: 0.0 (fully transparent) to 1.0 (fully opaque)
+        5. HSL colors - hsl(hue, saturation, lightness)
+            hue - degree on the color wheel (from 0 to 360)
+            saturation - percentage (0% shade of gray - 100% full color)
+            lightness - percentahge (0% black - 100%white)
+        6. HSLA colors -hsla(hue, saturation, lightness, alpha)
+            a: 0.0 (fully transparent) to 1.0 (fully opaque)
+        7. Predefined/Cross-browser color names - 140 color names (eg. blue, red ...)
+        8. With the currentcolor keyword - value of the color property of an element
+
+typography basics and text-align 
+    1. font-family 
+        -different font families are separated by comma 
+        -if a browser cannot find or does not support the first font in a list, it will use the next one, then the next one and so on until it finds a supported and valid font
+        -recommended: font-family: "font family name", "generic family name";
+            -every font to the right is called a fallback 
+    
+    2. font-size
+        -size of font 
+        -do not use any white space
+            eg. font-size: 22px, 22in, 22vh
+
+    3. font-weight
+        -boldness of text 
+            a. font-weight: bold;
+            b. font-weight: [between 1 and 1000];
+                700 - equivalent of bold
+                usually increments of 100 up to 900
+
+    4. text-align
+        -align text horizontally within an element
+            eg. text-align: center;
+
