@@ -175,3 +175,55 @@ The Cascade of CSS
         -tiebreaker of the tiebreaker
         -whichever rule is the LAST to be written
         
+
+Adding CSS to HTML
+    3 methods
+
+    1. External CSS
+        -creating separate file for the CSS and linking it in the <head></head> using <link> tag 
+
+        eg. 
+            <head>
+            <link rel="stylesheet" href="styles.css">
+            </head>
+
+            href - link of .css file 
+            rel - relationship of the html file to the linked file 
+
+        Pros: 
+            1. HTML and CSS separated making HTML file smaller and easier
+            2. Edit CSS only in one place
+
+    2. Internal CSS 
+        -embedded CSS 
+        -placing <style>CSS Rules here</style> in the <head></head>
+
+        eg:
+            <head>
+            <style>
+                div {
+                color: white;
+                background-color: black;
+                }
+
+                p {
+                color: red;
+                }
+            </style>
+            </head>
+
+        Pros:
+            1. Useful for adding unique style for a single page
+        Cons:
+            1. Make HTML file big and smaller to load 
+
+    3. Inline CSS
+        -add directly to HTML element
+        -<element style="property:value"></element>
+
+        Pros:
+            1. For unique style of an element 
+        Cons:
+            1. Messy and bloated HTML
+            2. Copy and pasting every single style to different elements
+            3. Inline will override that may sometime cause unexpected result 
