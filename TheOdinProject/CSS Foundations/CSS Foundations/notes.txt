@@ -1,0 +1,76 @@
+<div></div>
+    -one of the most basic HTML Element
+    -an empty container
+
+
+Parts of a CSS 
+
+    Selector
+        -which HTML elements will be applied with your CSS Rules
+        -what being "selected"
+
+        Universal Selector (*)
+            -targets all elements of the html
+            eg:
+                * {
+                    color: purple;
+                }
+
+        Type Selector (element name)
+            -also called as Element Selector
+            -targets all same element
+            eg:
+                element {
+                    color: purple;
+                }
+
+        Class Selector (.)
+            -targets elements of the same class only 
+                Class Attribute 
+                    -classes arent meant to be unique
+                    -groupings of different elements
+                    -<element class = "class-name-1 class-name-2"></element>
+            eg. 
+                .class-name-1 {
+                    color: purple;
+                }
+
+        ID Selector (#)
+            -targets an element with the ID
+                ID Attribute
+                    -unique identifier (use only for 1 element)
+                    -cannot be repeated on a single page 
+                    -<element id="id-name-1"></element>
+
+            eg.
+                #id-name-1 {
+                    color: purple;
+                }
+        
+        Grouping Selector (,)
+            -use grouping selector for same properties of different elements/classes/ids for shorthand purposes
+
+            eg. .class-name-1, #id-name-1, element {
+                color: purple;
+                background-color: blue;
+            }
+
+        Chaining Selector
+            -chaining two classes together without any separation
+            -targets only elements if and only if it has the same chained class
+        
+            eg. <element class="subsection header">header</element>
+                <element class="subsection footer">footer</element>
+
+                .subsection.header {
+                    color: purple;
+                }
+
+                only the header will be selected and not the footer even though it has the subsection class
+        
+        Descendant Combinator ( )
+            -single space between selectors
+            -only select the child element
+            -match only the LAST selector stated no matter how long the selector is
+            -element will be selected if and only if it is a child of the parent element indicated
+            
