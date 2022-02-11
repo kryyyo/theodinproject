@@ -126,3 +126,32 @@ Image Height and Width
         height: auto;
         width: 500px;
     }
+
+
+The Cascade of CSS
+    -determines which rules actually get applied to our HTML
+    -only applies to conflicting/same property; different properties of a conflicting selected elements are retain
+
+    Factors:
+
+    a. Specificity
+        -more specific will take over than less specific
+
+        CSS styling way 
+        1. inline styles 
+        2. css head styles 
+        3. external css 
+
+        Selector
+        1. ID
+        2. Class
+        3. Type 
+
+        when no declaration: 
+            larger amount of a single selector will beat a smaller amount of that same selector
+
+        No specificity values:
+        *
+        combinators: +, ~, >, and empty space
+
+        
