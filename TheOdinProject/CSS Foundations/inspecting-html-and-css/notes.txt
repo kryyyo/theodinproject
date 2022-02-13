@@ -43,4 +43,13 @@ Chrome DevTools (Overview only)
     #Security Panel
         -debug mixed content issues, certificate problems... etc
     #Community
-        -file bug reports and feature requests in Crbug 
+        -file bug reports and feature requests in Crbug
+
+Open Chrome DevTools (with nice extras)
+    Extras:
+        a. last panel you open: ctrl+shift+I
+        b. from chrome's main menu
+            click triple dot on upper left > More tools > developer tools
+        c. auto-open on every new tab: open chrome from command line >> --auto-open-devtools-for-tabs
+            -every new tab will open devtools until user will fully quit google chrome
+    
