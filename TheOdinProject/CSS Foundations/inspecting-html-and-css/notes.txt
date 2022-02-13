@@ -1,0 +1,46 @@
+Inspect Element
+    use F12
+
+    you can: 
+        -select element in elements pane
+        -view styles in style tab
+            -can view style that is overwritten (strikethroughed styles)
+
+Testing Styles
+    -Styles pane also allows you to edit styles directly in the browser
+    -real time testing, no need to refresh pages 
+
+Chrome DevTools (Overview only)
+    #Open DevTools
+        a. Work with DOM Or CSS 
+            right-click > Inspect > jump into Elements panel 
+               or press Control+Shift+C (windows, linux, chrome os)
+
+        b. Logged messages or Javascript
+            Control+Shift+J (win, linux, chrome os) > jump into Console panel
+    
+    #Device Mode
+        -simulate mobile devices (test reponsiveness)
+        -emulate sensors: geolocation and accelerometers
+
+    #Elements panel
+        -view and change DOM and CSS
+    #Console panel
+        -view messages and run Javascript 
+    #Sources panel
+        -Debug Javascript
+        -persist changes made in DevTools
+        -save and run snippets of Javascript 
+        -save changes that you make in DevTools to disk 
+    #Network Panel
+        -view and debug network activity
+    #Performance Panel
+        -find ways to improve load and runtime performance
+    #Memory Panel
+        -fix memory problems 
+    #Application Panel
+        -inspect all resources are loaded
+    #Security Panel
+        -debug mixed content issues, certificate problems... etc
+    #Community
+        -file bug reports and feature requests in Crbug 
