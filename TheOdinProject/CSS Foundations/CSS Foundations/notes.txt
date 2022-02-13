@@ -230,3 +230,44 @@ Adding CSS to HTML
             1. Messy and bloated HTML
             2. Copy and pasting every single style to different elements
             3. Inline will override that may sometime cause unexpected result 
+
+Additional Resources
+
+CSS-Cascade
+    Different tiers of Cascade
+        1. Importance
+            4 rules
+                1. transition
+                2. important
+                    -reserved for overriding third party styles
+                3. animation
+                4. normal
+
+        2. Origin 
+            -where the rules were defined
+            3 places
+                1. website
+                    -web developer controls
+                2. user
+                3. browser
+
+            note: an !important browser rule wins over !important website rule (only this)
+
+        3. Specificity
+            5 levels of selector
+                1. inline
+                2. layer 
+                    -soon to be implemented
+                3. id - #id
+                4. class|attribute|pseudo-class
+                    -class: .class
+                    -attribute: [href="./style.css"]
+                    -pseudo-class: :hover
+                5. type|pseudo-element
+                    -type: p 
+                    -pseudo-element: :before, :selection
+
+                note again: *, +, >, ~, _, || have no effect on specificity
+        
+        4. Position 
+            -order of rules defined
