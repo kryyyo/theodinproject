@@ -52,4 +52,30 @@ Open Chrome DevTools (with nice extras)
             click triple dot on upper left > More tools > developer tools
         c. auto-open on every new tab: open chrome from command line >> --auto-open-devtools-for-tabs
             -every new tab will open devtools until user will fully quit google chrome
-    
+
+#CSS on Chrome DevTools
+    View and Change CSS
+        #View an element's CSS
+            -right click > inspect
+        #Add a CSS declaration to an element 
+            1. right-click > inspect
+            2. click element.style near top of styles table
+            3. type in your property:value pair 
+            4. hit enter and see if it is applied in the inline styling of the element
+        #Add a CSS Class to an element 
+            1. right-click > inspect
+            2. click .cls DevTools
+            3. add new class to the text box 
+        #Add a pseudostate to a class
+            -to test what is their appearance when it is in that psuedostate
+            1. right-click > inspect
+            2. click :hov DevTools
+            3. check what state you want to force
+        #Change dimensions of an element
+            1. right-click > inspect
+            2. scroll down style panel to see css box model 
+            3. double click on the value you want to change in the css box model and press enter
+
+            Box Model default: pixels
+                -but it can accept values such as % or vw 
+                
