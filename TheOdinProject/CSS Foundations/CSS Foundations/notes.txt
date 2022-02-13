@@ -271,3 +271,15 @@ CSS-Cascade
         
         4. Position 
             -order of rules defined
+
+    Custom Fonts 
+        1st method
+            1. downloading font files from trusted websites 
+            2. install font
+            3. move .ttf,.otf or .fon on the fonts folder of your website
+
+        Alternative Methods (preferred) 
+        A. Use link tag @HTML File
+            <link rel="stylesheet" href="font-url-here">
+        B. Use import @CSS File
+            @import url ("font-url-here")
