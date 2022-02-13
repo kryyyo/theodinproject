@@ -78,4 +78,64 @@ Open Chrome DevTools (with nice extras)
 
             Box Model default: pixels
                 -but it can accept values such as % or vw 
-                
+
+    CSS Features reference
+        #Select an Element
+            Ways to select:
+                1. right-click > inspect
+                2. open devTools, click Select an Element or ctrl+shift+C, then click the element on the viewport 
+                3. open DevTools, click the element in DOM Tree
+                4. open DevTools, run a query like document.querySelector('p') in the Console, right-click the result, then select Reveal in Elements panel 
+        #View CSS
+            1. Styles pane, click the link next to a CSS rule to open the external stylesheet
+                if stylesheet is minified:
+                    -go to Sources panel > click the file you want to minified > click {} button
+        #View CSS that is actually applied
+            1. Select element
+            2. Click Computed Tab
+            (on wide screens, computed tab is already displayed under style tab)
+
+           
+        #View CSS in alphabetical order
+            -Computed tab is alphabetical
+        #View inherited properties
+            -to view all inherited properties click show all in the Computed panel
+        #View Box-model
+            -scroll down if small screen. if not, it is already in Style Tab
+        #Search and filter an element's CSS
+            -use filter text box in style tab
+                -to search for inherited: click show all
+        #Toggle a pseudo-class
+            -see notes above (add a pseudostate)
+        #View a page in Print Mode
+            1. Open Command Menu (ctrl+shift+p or use menu)
+            2. type Rendering and select Show Rendering
+            3. Emulate CSS Media > print 
+        #View used and unused CSS
+            1. Open Command menu
+            2. type coverage and select Show coverage
+            3. Click start instrumenting coverage and reload page 
+                -how much CSS, Javascript etc... 
+                -Green - used CSS
+                -Red - unused CSS
+            4. Click a CSS file to see a line-by-line breakdown
+        #Force print preview
+            -see notes for Force DevTools into preview mode
+        #Change CSS
+            -see notes for add css declaration (same principle)
+        #Change a declaration name or value
+            -double clicking
+        #Add class
+            -see notes above 
+        #Toggle a class
+            -see notes above for adding classes, untick checkbox of class 
+        #Add style rule
+            -click + on style tab
+        #Choose which stylesheet to add a rule to
+            -click and hold the + button on the style tab 
+        #Toggle a declaration
+            -check and uncheck checkboxes
+        #Change colors with Color Picker
+            -click the square beside a color, then pick using the color picker
+        #Change angle value with the Angle Clock
+            -select an element with an angle value, click angle icon beside the value, then you can preview the angle clock
