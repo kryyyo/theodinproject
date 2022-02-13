@@ -139,3 +139,30 @@ Open Chrome DevTools (with nice extras)
             -click the square beside a color, then pick using the color picker
         #Change angle value with the Angle Clock
             -select an element with an angle value, click angle icon beside the value, then you can preview the angle clock
+
+    Identify Potential CSS improvements
+        #Open CSS Overview
+            1. Open your desired web page 
+            2. right-click > inspect
+            3. triple dot menu > more tools > CSS Overview
+
+            or search CSS Overview in the search box 
+        
+        #Run and rerun CSS overview report
+            1. Click Capture Overview button
+            2. To rerun, click on the clear overview button (stop sign) then repeat step 1
+        
+        #Understand the CSS overview report
+            1. Overview summary
+                -high level summary of your page
+            2. Colors
+                -all colors in your page
+                -shows colors that have low contrast issues
+                -all colors are clickable and can be use to search for the element using that color
+            3. Font info
+                -all fonts grouped into font-size, font-weight, and line-height
+                -clickable and searchable
+            4. Unused declarations 
+                -all styles having no effect grouped by reason
+            5. Media queries 
+                -all the media queries defined grouped by highest occurences
