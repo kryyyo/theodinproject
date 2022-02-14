@@ -10,6 +10,10 @@ The Box Model
         Margin Collapsing - margin between elements collapses with each other (not additive)
                 - the higher margin between the two elements will prevail
 
+                2 positives - higher number
+                2 negative - higher absolute
+                1 positive 1 negative - negative will be subtracted
+
         box-sizing: border-box;
             -padding and border is added to the overall height and width
 
