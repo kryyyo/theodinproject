@@ -1,0 +1,17 @@
+Block VS Inline
+    block - see notes on the box model 
+    inline - see notes on the box model
+
+    note: do not put extra margin and padding in inline because it has little to no effect
+
+Divs and Spans
+    -generic containers
+
+    Div
+        -block-level
+        -divide the page into different blocks
+        -commonly use to group elements
+    
+    Span
+        -inline-level
+        -common to group text content
