@@ -12,3 +12,17 @@ The Box Model
 
         box-sizing: border-box;
             -padding and border is added to the overall height and width
+
+The Box Model (MDN Web Docs)
+    Block and inline boxes
+        1. Outer display type of block
+            -box will break into a new line
+            -box will extend in the inline direction to fill the space available in the container. most cases, boxes are as wide as the container 
+            -width and height are respected
+            -padding, margin, and border will cause other elements to be pushed away from the box
+        
+        2. Outer display type of inline 
+            -box wil not break into new line
+            -width and height will not apply 
+            -vertical padding, margins and border will apply but will not cause other elements to be pushed away from the box (parang non-sense)
+            -horizontal padding, margins, and border will apply and will cause other elements to be pushed away from the box
