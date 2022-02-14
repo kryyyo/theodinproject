@@ -43,3 +43,10 @@ The Box Model (MDN Web Docs)
     alternative box model - box-sizing: border-box;
                         - height and width defines the total box (content + m + p + border)
 
+    Border 
+        -shorthand (all sides)
+            border: [width] [style] [color];
+        -if not add -top-,-right-,-left-,-bottom-
+    
+    Padding
+        - you cannot have negative values 
