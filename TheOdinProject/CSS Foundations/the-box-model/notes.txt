@@ -7,7 +7,7 @@ The Box Model
         border - adds space between the margin and the padding
 
     notes to consider:
-        Margin - margin between elements collapses with each other (not additive)
+        Margin Collapsing - margin between elements collapses with each other (not additive)
                 - the higher margin between the two elements will prevail
 
         box-sizing: border-box;
@@ -30,3 +30,12 @@ The Box Model (MDN Web Docs)
     Aside: Inner and Outer display types
         outer - whether box is block or inline
         inner - how elements are laid out inside the box
+
+
+
+
+    standard box model - height and width defines the CONTENT box only
+                        - padding, margin and border is added to the total height and width
+    alternative box model - box-sizing: border-box;
+                        - height and width defines the total box (content + m + p + border)
+
