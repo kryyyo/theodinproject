@@ -5,3 +5,10 @@ The Box Model
         padding - distance between content inside and edge of the box 
         margin - increases space between the box and other boxes beside it
         border - adds space between the margin and the padding
+
+    notes to consider:
+        Margin - margin between elements collapses with each other (not additive)
+                - the higher margin between the two elements will prevail
+
+        box-sizing: border-box;
+            -padding and border is added to the overall height and width
