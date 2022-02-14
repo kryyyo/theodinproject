@@ -224,3 +224,46 @@ Open Chrome DevTools (with nice extras)
                     -click and drag the white inner circles in the definition    
                 3.Start time delay
                     -click and drag to anywhere except the first and last circle
+    
+    Inspect CSS Grid
+
+        #Discover CSS Grid
+            -if it has display: grid or display: inline-grid, you will see a grid badge next to it
+            -click the grid badge
+            -open Layout pane
+        
+        #Grid viewing options
+            -Grid section in the Layout pane contains 2 sub-sections
+                -Overlay display settings
+                -Grid overlays
+
+            
+            #Overlay display settings
+                2 parts
+                    a. dropdown menu
+                        -hide line labels
+                        -show lines number
+                        -show line names
+                    
+                    b. checkboxes with options within
+                        -show track sizes
+                            [authored size] : [computed size]
+
+                            authored - size defined in stylesheet
+                            computed - actual size on screen
+                        -show area names
+                        -extend grid lines
+
+    Inspect CSS Flexbox
+            #Discover Flex box
+                -if it has display: flex or display: inline-flex, it will have flex badge 
+                -click the flex badge
+
+            #Modify layouts with the flexbox editor
+                1. click flex badge 
+                2. go to Styles pane
+                3. click flexbox editor icon beside display: flex declaration 
+            
+            #Adjust flexbox overlay color
+                -@ Layout pane
+
