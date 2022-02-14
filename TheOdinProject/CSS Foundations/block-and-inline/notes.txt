@@ -27,3 +27,13 @@ Normal Flow
 list of block and inline elements:
 https://www.w3schools.com/html/html_blocks.asp
 
+
+
+CSS Layout Tutorial notes 
+    responsive width (without horizontal scrolling)
+        #main {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        by setting max-width, it prevents horizontal scrolling
