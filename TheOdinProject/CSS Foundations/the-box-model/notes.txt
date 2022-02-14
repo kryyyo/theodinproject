@@ -50,3 +50,5 @@ The Box Model (MDN Web Docs)
     
     Padding
         - you cannot have negative values 
+
+    display: inline-block; (like image-wrap around text in word)
