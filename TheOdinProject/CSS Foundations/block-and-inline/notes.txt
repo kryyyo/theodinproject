@@ -24,3 +24,6 @@ Normal Flow
     Inline elements
         -no new line, no overflowing content will move down to a new line
     
+list of block and inline elements:
+https://www.w3schools.com/html/html_blocks.asp
+
