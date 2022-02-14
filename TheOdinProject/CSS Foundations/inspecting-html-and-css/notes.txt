@@ -166,3 +166,61 @@ Open Chrome DevTools (with nice extras)
                 -all styles having no effect grouped by reason
             5. Media queries 
                 -all the media queries defined grouped by highest occurences
+
+    Inspect Animations 
+        -Animation inspector of DevTools
+
+        #Overview 
+            Two Main Purposes
+                1. Inspecting animations
+                    -slow down, replay, or inspect the source code for an animation group
+                2. Modifying animation
+                    -modify timing, delay, duration, or keyframe offsets of an animation group
+                    -Bezier editing and keyframe editing are currently not supported 
+                
+            Supported:
+                -CSS animations, transitions, and web animations
+            Not supported:
+                -requestAnimationFrame
+        
+        #Animation Group
+            -group of animations related to one another
+            -animation inspector predicts which animations are related based on start time and groups them side-by-side
+
+        #Get Started
+            -right-click > inspect
+            -click triple-dot menu
+            -more tools > Animations 
+
+            or: search Show Animations
+        
+                4 panes 
+                    1. Controls
+                        -clear captured animation groups and select speed percentage
+                    2. Overview
+                        -select an animation group here/ preview
+                    3. Timeline
+                        -pause and start an animation here
+                    4. Details
+                        -inspect and modify animation here
+        
+        #Inspect Animations
+            To replay animations:
+                -Hover its thumbnail in overview pane
+                -select animation group from over and press replay button
+                    -click animation speed buttons 
+                    -use red vertical bar to change your current position
+                -click and drag vertical bar to scrub the viewport animation
+        
+        #View animation details 
+            -leftmost, darker section of an animation = definition
+                right, faded section = iterations
+        
+        #Modify animations
+            3 ways
+                1.Animation duration
+                    -click and drag the first and last circle in the definition
+                2.Keyframe timings
+                    -click and drag the white inner circles in the definition    
+                3.Start time delay
+                    -click and drag to anywhere except the first and last circle
