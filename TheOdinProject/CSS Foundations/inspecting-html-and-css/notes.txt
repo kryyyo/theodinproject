@@ -271,3 +271,9 @@ Open Chrome DevTools (with nice extras)
         1. ctrl+shift+p > command menu
         2. type Show Rendering
         3. under Emulate CSS media, select print 
+
+Get Started With Viewing And Changing The DOM
+
+    Note: HTML - is the initial content of your page, DOM - is the current content of your page
+            JS can add or delete contents thus making HTML and DOM different
+        DOM - tree of contents
