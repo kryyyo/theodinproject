@@ -26,3 +26,7 @@ The Box Model (MDN Web Docs)
             -width and height will not apply 
             -vertical padding, margins and border will apply but will not cause other elements to be pushed away from the box (parang non-sense)
             -horizontal padding, margins, and border will apply and will cause other elements to be pushed away from the box
+    
+    Aside: Inner and Outer display types
+        outer - whether box is block or inline
+        inner - how elements are laid out inside the box
