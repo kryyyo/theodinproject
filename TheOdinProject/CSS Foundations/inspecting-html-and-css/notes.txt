@@ -267,3 +267,7 @@ Open Chrome DevTools (with nice extras)
             #Adjust flexbox overlay color
                 -@ Layout pane
 
+    Force Print Preview Mode
+        1. ctrl+shift+p > command menu
+        2. type Show Rendering
+        3. under Emulate CSS media, select print 
