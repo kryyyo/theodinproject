@@ -52,3 +52,20 @@ The Box Model (MDN Web Docs)
         - you cannot have negative values 
 
     display: inline-block; (like image-wrap around text in word)
+
+CSS Tricks
+    margin shorthand (clockwise)
+        margin: [top] [right] [bottom] [left];
+        use 0 as placeholder
+
+        if only 2 values, top = bottom, right = left
+
+    auto and centering
+        to have an auto-margin, element must have been given a specified width
+        margin: auto;
+
+        note: for HORIZONTAL centering only. NOT FOR VERTICAL centering (no effect because of margin collapsing)
+
+    margin collapsing 
+        -only happens for VERTICAL margins
+        -also applies to nested elements (eg. heading bottom and content top)
