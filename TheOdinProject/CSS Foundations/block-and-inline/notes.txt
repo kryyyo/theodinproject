@@ -37,3 +37,21 @@ CSS Layout Tutorial notes
         }
 
         by setting max-width, it prevents horizontal scrolling
+
+Position Property
+    position: value;
+
+    static
+        -default
+        -not positioned in any special way 
+    relative 
+        -added properties can trigger to be different from static
+        -can overlap
+    fixed 
+        -positioned relative to the viewport
+        -stay on the same place even if the page is scrolled
+        -do not leave gap in the page
+    absolute
+        -trickiest
+        -behaves like fixed but relative to the nearest positioned ancestor instead of relative to the viewport
+        -if no ancestor, it uses the body
