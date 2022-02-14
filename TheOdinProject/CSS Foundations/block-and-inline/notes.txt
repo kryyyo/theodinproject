@@ -15,3 +15,12 @@ Divs and Spans
     Span
         -inline-level
         -common to group text content
+
+Normal Flow
+    Block Flow Direction
+        -top to bottom flow 
+        -this is the normal flow for block elements
+    
+    Inline elements
+        -no new line, no overflowing content will move down to a new line
+    
