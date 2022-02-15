@@ -1,0 +1,18 @@
+flexbox can work either HORIZONTALLY or VERTICALLY
+    default: horizontal or ROW
+
+    to change directions: 
+    flex-direction: column;
+    flex-direction: row;
+
+Axes
+    2 axes of flexbox:
+        1. main axis
+        2. cross axis 
+    
+        most cases: flex-direction: row; puts the main axis horizontal while flex-direction: column; puts the main axis vertical
+    
+again: flex-basis: 0; -will not consider your declared width (row) or declared height (column)
+
+flex-direction: row; -block level elements default to full width of PARENT
+flex-direction: column; -block level elements default to full height of CONTENT
