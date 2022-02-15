@@ -146,3 +146,75 @@ MDN Webdocs
             justify-content: space-evenly;
                 -full space on either end
                 -available space equally distributed
+
+MDN Aligning Items in a Flex Container 
+    Properties that control alignment
+        1. justify-content
+            -on main axis 
+        2. align-items
+            -on cross axis 
+        3. align-self
+            -individual flex item on cross axis
+        4. align-content 
+            -'packing flex lines'
+            -space between flex lines on cross axis 
+        5. gap, column-gap, and row-gap
+            -create gap or gutters BETWEEN flex items (like margin)
+        
+    The Cross Axis 
+        align-items: flex-start
+        align-items: flex-end
+        align-items: center
+        align-items: stretch
+        align-items: baseline
+
+        see above notes for align-items 
+    
+    One item Aligning 
+        align-self: flex-start
+        align-self: flex-end
+        align-self: center
+        align-self: stretch
+        align-self: baseline
+
+    Aligning content on cross axis 
+        -same as justify-content but on cross axis
+        -you need an extra space on your height of the container to apply this property
+
+        align-content: flex-start
+        align-content: flex-end
+        align-content: center
+        align-content: space-between
+        align-content: space-around
+        align-content: stretch (default)
+        align-content: space-evenly
+
+        see notes for justify-content values
+
+    Aligning content on main axis
+
+        justify-content: flex-start
+        justify-content: flex-end
+        justify-content: center
+        justify-content: space-between
+        justify-content: space-around
+        justify-content: space-evenly
+
+    Using auto margins for main axis adjustment
+        -there is no justify-self that is why we will use auto margins when dealing with main axis spacing per item 
+
+        margin-left: auto;
+        margin-right: auto;
+
+    Creating gaps  
+        column-gap 
+            -gap between items on MAIN axis 
+
+        row-gap
+            -gap between items on CROSS axis
+        
+        gap
+            -both
+        
+        note of the keyword "BETWEEN". space will only be between 2 flex items and not on the sides 
+        
