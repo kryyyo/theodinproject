@@ -1,0 +1,23 @@
+flex: 1; 
+    -use it to FILL all available space by growing and shrinking the flex items 
+
+suppose you do not want to grow/shrink the flex items but want to take up the space of the container: 
+    remove flex: 1;
+    this is where alignment properties will take place
+
+justify-content
+    -aligns items accross the main axis
+    -@ flex container
+
+align-items
+    -align items along the cross axis
+    -@ flex container
+
+align-self
+    -align itself within the cross axis
+    -@ flex item
+
+gap Property 
+    -similar to margin property
+    -add space between flex items (like column gutter)
+    -use it in the parent container 
