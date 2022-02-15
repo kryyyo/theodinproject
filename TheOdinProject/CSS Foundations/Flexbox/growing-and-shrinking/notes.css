@@ -1,0 +1,43 @@
+The flex shorthand
+    flex is actually a shorthand for flex-grow, flex-shrink, and flex-basis
+
+    flex: [flex-grow] [flex-shrink] [flex-basis];
+
+    DEFAULT VALUE OF FLEX
+    div {
+        flex: 0 1 0%;
+    }
+
+    flex: 1;
+    means: flex: 1 1 0%;
+
+flex-grow
+    -single number for its value
+    -value is for 'growth factor'
+    -flex: 1; - div will grow the same amount (x1)
+    -flex: 2; - div will be 2x the size of others
+
+flex-shrink
+    -value is for 'shrink factor'
+    -applied if and only if: size of all flex items is larger than their parent container
+
+    same concept as flex-grow
+    flex-shrink: 1; shrink evenly
+    flex-shrink: 0; if you do not want the item to shrink
+
+important implication:
+    if you specify flex-grow and flex-shrink, your specified width may not be respected (items will grow to fill or shrink to fit)
+
+flex-basis
+    -sets the initial size of a flex item
+    -growing and shrinking starts from that baseline
+
+    flex-basis: 0; -items will ignore specified width and will shrink evenly 
+    flex-basis: auto; -tells the item to check for width declaration
+
+important note:
+    default value for flex-basis is auto but
+    @flex shorthand, flex: 1; will set flex-basis to 0
+
+    if you want to make it auto, use full syntax:
+    flex: 1 1 auto;
