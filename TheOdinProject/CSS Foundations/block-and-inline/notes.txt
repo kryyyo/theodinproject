@@ -82,3 +82,51 @@ Clear
 
 Percent Width Layout
     -we can use percentages for width so that it will be that percentage of its container in every viewport 
+
+Responsive Design
+    -responds to the browser and devices that it is being shown
+
+Media Queries 
+   used for the following:
+        -conditionally apply styles with the CSS @media and @import at-rules
+        -to target specific media for <style>, <link>, <source> and other HTML elements with the media= attribute.
+        -to test and monitor media states using the Window.matchMedia() and MediaQueryList.addListener() JavaScript methods.
+
+    Targeting Media Types 
+        Media Types - general category of a device
+
+        all 
+            -suitable for all devices 
+        print 
+            -paged material and documents viewed on screen in print preview mode
+        screen
+            -for screens
+
+        @media [media type], [media type] {}
+
+    Targetting Media Features
+        Media Features  - specific characteristics of a given user agent, output device or environment
+
+        eg. 
+            @media (hover: hover) {}
+            @media (max-width: value) {}
+            @media (color) {}
+
+    Complex Media Queries
+        -with the logical operators 'not', 'and', & 'only'
+        -combine multiple using ',' comma
+
+        @media (min-width: 30em) and (orientation: landscape) { ... }
+
+        @media (min-height: 680px), screen and (orientation: portrait) { ... }
+
+        @media not all and (monochrome) { ... }
+        
+        for compatibility with old browsers: 
+        @media only screen and (color) { ... }
+
+        @media (not(hover)) { ... }
+
+        can also use 'or'
+        @media (not (color)) or (hover) { ... }
+        
