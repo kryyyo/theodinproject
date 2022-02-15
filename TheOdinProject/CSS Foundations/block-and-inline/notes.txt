@@ -79,3 +79,6 @@ Clear
         clear: both;
         display: table;
     }
+
+Percent Width Layout
+    -we can use percentages for width so that it will be that percentage of its container in every viewport 
