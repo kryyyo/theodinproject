@@ -217,4 +217,24 @@ MDN Aligning Items in a Flex Container
             -both
         
         note of the keyword "BETWEEN". space will only be between 2 flex items and not on the sides 
+
+Typical use cases of Flexbox
+    Why? 
+        -for controlling a collection of items in one direction
+
+    Common uses: 
+    
+        Navigation 
+
+        Cards (to push footer down)
+        
+        Media Objects
+            -image and text side by side
+                -set max-width for image (it is equivalent to img-fluid)
+                -it will be the flex-basis of the flex items 
+
+                -you can also use flex: 1; so the basis of the image and text is 0, thus growing and shrinking them proportionally
+                -you can also use flex: auto; @ text content so the content size will be the flex-basis for your image and text
+
+        Form Controls
         
