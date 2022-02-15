@@ -137,3 +137,15 @@ display: inline-block;
         1.inline-blocks are affected by vertical-align property 
         2.set width of each column
         3.there will be a gap between columns if there is a gap in the html
+
+Creating Multi-column in CSS
+
+.three-column {
+  padding: 1em;
+  -moz-column-count: 3;
+  -moz-column-gap: 1em;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 1em;
+  column-count: 3;
+  column-gap: 1em;
+}
