@@ -55,3 +55,27 @@ Position Property
         -trickiest
         -behaves like fixed but relative to the nearest positioned ancestor instead of relative to the viewport
         -if no ancestor, it uses the body
+
+Float 
+    -wrapping text around image 
+
+    float: none|left|right|initial|inherit;
+
+Clear
+    -important for controlling the behavior of floats
+
+    If an element is floated to the left, then you should clear to the left.
+
+    clear: none|left|right|both|inherit;
+
+    clearfix hack: 
+
+    .clearfix {
+         overflow: auto;
+    }
+
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
