@@ -1,0 +1,10 @@
+target div child element of the .flex-container class
+    -this is like d-flex in bootstrap. it targets the child elements of your assigned parent with d-flex
+
+flex container
+    -any element that has a display: flex; on it
+
+flex item
+    -any element that lives inside a flex container
+
+    *nesting is allowed. a flex item can also be a flex container for its contents/flex items inside 
