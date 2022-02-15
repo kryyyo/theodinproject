@@ -129,4 +129,11 @@ Media Queries
 
         can also use 'or'
         @media (not (color)) or (hover) { ... }
-        
+
+display: inline-block;
+    -behave like inline but have height and width
+
+    notes:
+        1.inline-blocks are affected by vertical-align property 
+        2.set width of each column
+        3.there will be a gap between columns if there is a gap in the html
