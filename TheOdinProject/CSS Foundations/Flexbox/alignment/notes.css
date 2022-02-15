@@ -227,7 +227,7 @@ Typical use cases of Flexbox
         Navigation 
 
         Cards (to push footer down)
-        
+
         Media Objects
             -image and text side by side
                 -set max-width for image (it is equivalent to img-fluid)
@@ -237,4 +237,26 @@ Typical use cases of Flexbox
                 -you can also use flex: auto; @ text content so the content size will be the flex-basis for your image and text
 
         Form Controls
+
+CSS Tricks (additional notes)
+    cheatsheet link: https://css-tricks.com/snippets/css/a-guide-to-flexbox/#aa-background
+
+   Properties for parent (flex container)
+        display
+        flex-direction
+        flex-wrap 
+        flex-flow
+        justify-content
+        align-items
+        align-content (if there is an excess height on the cross axis)
+        gap, row-gap, column-gap
+
+    Properties for children (flex items)
+        order: [n];
+            -default is 0
+        flex-grow
+        flex-shrink
+        flex-basis
+        flex
+        align-self
         
