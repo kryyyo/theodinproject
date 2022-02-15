@@ -21,3 +21,128 @@ gap Property
     -similar to margin property
     -add space between flex items (like column gutter)
     -use it in the parent container 
+
+
+MDN Webdocs
+    Flexible Box Module (flexbox)
+        -one-dimensional layout model
+            -deals with one dimension at a time
+        -space distribution and alignment capabilities
+
+    flex-direction values:
+        -row
+        -row-reverse
+        -column
+        -column-reverse
+
+
+    Start and End Lines
+        -may vary depending on the language specified in HTML file 
+            eg. English may start from left, Arabic may start from right without even specifying it as row-reverse 
+        
+    The flex container
+        display: flex; or display: inline-flex;
+
+        all its child element will become FLEX ITEMS
+
+        initial values for containers as soon as display: flex is defined: 
+
+            -Items display in a row (the flex-direction property's default is row).
+            -The items start from the start edge of the main axis.
+            -The items do not stretch on the main dimension, but can shrink.
+            -The items will stretch to fill the size of the cross axis.
+            -The flex-basis property is set to auto.
+            -The flex-wrap property is set to nowrap
+
+    Changing flex-direction 
+        -row-reverse/column-reverse 
+            -will change the start line (suppose we use English) from left to right or top to bottom as well as the order of our flex items
+    
+    Multi-line flex containers with flex-wrap 
+        flex-wrap: wrap; or flex-wrap: nowrap;
+
+        flex-wrap: wrap; (@ flex container)
+            -if items too large, it will be wrap onto a NEW line.
+
+        flex-wrap: nowrap; (@ flex container) (default)
+            -if items too large, it will shrink to fit
+            -if items cannot shrink, it will cause OVERFLOW
+
+    The flex-flow shorthand
+        combination of flex-direction and flex-wrap
+
+        flex-flow: [flex-direction] [flex-wrap];
+    
+    Properties applied to flex items
+        -flex-grow
+        -flex-shrink
+        -flex-basis
+
+        flex-basis
+            -default value (not in shorthand): auto 
+            -looks if items have a declared size
+            -if no declared size, it takes up content size
+        
+        flex-grow 
+            -grow along the main axis from their flex basis
+            -'growth factor'
+
+        flex-shrink 
+            -shrink along the main axis from their flex basis
+            -'shrink factor'
+
+    Flex shorthand
+        flex: [flex-grow] [flex-shrink] [flex-basis]
+
+        predefined shorthands:
+            flex: initial;
+                flex: 0 1 auto;
+                items will not grow larger than flex-basis
+
+            flex: auto;
+                flex: 1 1 auto;
+                grow and shrink
+
+            flex: none;
+                flex: 0 0 auto;
+                not grow and shrink from basis but will be laid out as flex items 
+                for alignment purposes only 
+
+            flex: <positive-number>;
+                flex: [n] [n] 0; 
+                grow and shrink from 0 dimension
+
+    Alignment, justification and distribution of free space between items
+        
+        align-items 
+            align on cross axis
+
+            initial value: align-items: stretch; 
+
+            values:
+            align-items: stretch;
+            align-items: flex-start;
+            align-items: flex-end;
+            align-items: center;
+
+        justify-content
+            align on main axis 
+
+            initial value: flex-start;
+
+            value:
+            justify-content: flex-start;
+            justify-content: flex-end;
+            justify-content: center;
+
+            justify-content: space-around;
+                -half-space on either end
+                -available space distributed around PER item
+
+            justify-content: space-between;
+                -equal amount of space between each item
+                -no space on either end
+
+            justify-content: space-evenly;
+                -full space on either end
+                -available space equally distributed
