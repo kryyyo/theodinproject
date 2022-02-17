@@ -259,4 +259,8 @@ CSS Tricks (additional notes)
         flex-basis
         flex
         align-self
-        
+
+
+Notes: (from flexbox zombies)
+    -flex-grow, flex-shrink and flex-basis is on the main axis 
+    -you do not need to justify-content if anything is growing/shrinking
