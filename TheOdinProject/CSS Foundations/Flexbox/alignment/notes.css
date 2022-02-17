@@ -285,3 +285,11 @@ Notes: (from flexbox zombies)
         -order: 0; -default
         -parang ang concept ay "dagdagan mo ang order ng ganitong value"
         -does not affect the :nth-of-type() number
+    
+    -flex-wrap
+        -flex-wrap: nowrap; -default
+        -flex-wrap: wrap;  -new line created below first line
+        -flex-wrap: wrap-reverse; -new line created on top of first line, also reverse the setting of align-items
+        -"wrap first, shrink second"
+        -"wrap first, grow second"
+        -justify-content, align-items, and align-self will be the basis/the side where they wrap 
