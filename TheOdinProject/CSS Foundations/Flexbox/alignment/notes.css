@@ -266,3 +266,13 @@ Notes: (from flexbox zombies)
     -you do not need to justify-content if anything is growing/shrinking
     -flex-grow: 0; -default (start pt)
     -flex-shrink: 1; -default (start pt)
+    -flex-basis - will override width/height property (its values are units of measurement like px, in, rem) depending on your main axis
+        -0 = 0px
+        -auto = declared width/height, if none: 0
+
+        but! flex-basis also respects min-width / min-height and max-width / min-height
+            -min- will be the lower limit of flex-basis
+            -max- will be the higher limit of flex-basis
+
+        -flex-basis is only a BASIS or a starting pt!
+        -flex-basis: auto; -default (start pt)
