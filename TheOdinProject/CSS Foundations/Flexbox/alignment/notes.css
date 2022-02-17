@@ -276,3 +276,12 @@ Notes: (from flexbox zombies)
 
         -flex-basis is only a BASIS or a starting pt!
         -flex-basis: auto; -default (start pt)
+
+        -% percentages value of flex-basis looks like items using flex-grow but it is not 
+
+    -order
+        -the higher the order, the farther from you
+        -any element that has an order: 1 will be sent back if there are no set orders for other elements
+        -order: 0; -default
+        -parang ang concept ay "dagdagan mo ang order ng ganitong value"
+        -does not affect the :nth-of-type() number
