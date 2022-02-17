@@ -265,7 +265,7 @@ Notes: (from flexbox zombies)
     -flex-grow, flex-shrink and flex-basis is on the main axis 
     -you do not need to justify-content if anything is growing/shrinking
     -flex-grow: 0; -default (start pt)
-    -flex-shrink: 1; -default (start pt)
+    -flex-shrink: 1; -default (start pt) if and only if flex-grow is activated
     -flex-basis - will override width/height property (its values are units of measurement like px, in, rem) depending on your main axis
         -0 = 0px
         -auto = declared width/height, if none: 0
@@ -303,3 +303,14 @@ Notes: (from flexbox zombies)
             align-content
         -use this alignment method only AFTER wrapping 
         -same values as justify-content
+
+    flex shorthand 
+        -flex: [flex-grow] [flex-shrink] [flex-basis];
+
+        if not using shorthand: flex-basis: auto; as default
+        if using shorthand: flex-basis: 0 if you do not specify a basis
+
+        -if flex-shrink is skipped, it is set to default value of 1
+
+        -note: flex: none; = flex-grow: 0; flex-shrink: 0; flex-basis: auto;
+            -dont grow, dont shrink, just use your width as your basis 
