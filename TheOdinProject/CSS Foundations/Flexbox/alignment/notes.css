@@ -264,3 +264,5 @@ CSS Tricks (additional notes)
 Notes: (from flexbox zombies)
     -flex-grow, flex-shrink and flex-basis is on the main axis 
     -you do not need to justify-content if anything is growing/shrinking
+    -flex-grow: 0; -default (start pt)
+    -flex-shrink: 1; -default (start pt)
