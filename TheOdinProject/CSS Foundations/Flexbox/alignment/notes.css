@@ -293,3 +293,13 @@ Notes: (from flexbox zombies)
         -"wrap first, shrink second"
         -"wrap first, grow second"
         -justify-content, align-items, and align-self will be the basis/the side where they wrap 
+
+    -align-content
+        order of importance (for me) for parent container
+            flex-direction
+            justify-content
+            align-items
+            flex-wrap
+            align-content
+        -use this alignment method only AFTER wrapping 
+        -same values as justify-content
