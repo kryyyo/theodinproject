@@ -520,3 +520,7 @@ Javascript.info (additional notes)
         undefined == NaN
         null != NaN
         null == 0
+
+
+return statement
+    -result of the code it executes (more about this later)
