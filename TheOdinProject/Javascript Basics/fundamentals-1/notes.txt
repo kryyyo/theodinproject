@@ -106,4 +106,18 @@ Constants
 Name Things Right
     -should have a clean and obvious meaning describing the data it stores 
     -most important and complex skills
+
+    
+    Good-to-Follow Rules: 
+        - use human readable names
+        - stay away from abbreviations like a, b, c
+        - make names maximally descriptive and concise
+        - agree on terms within your team and in your own mind
+    
+    Reuse or Create?    
+        - always Create! 
+        - saves time for debugging
+        - extra variable is good! 
+        - modern JS minifiers and browsers optimize code well enough and using different variables will help the engine optimize your code
+
     
