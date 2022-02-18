@@ -301,6 +301,8 @@ Numbers
 
             when you use NaN in a string concatenation: 
                 eg. NaN + "5" = NaN5 
+            
+            also: undefined in arithmetic returns NaN but not null
 
             typeof NaN = number         -ironic
         
@@ -414,7 +416,10 @@ MDN Web Docs (additional notes)
     Increment and Decrement Operators
         ++ and -- 
 
+        "POSTFIX FORM"
         i++ or i--          >>return value first before increment/decrement
+
+        "PREFIX FORM"
         ++i or --i          >>increment/decrement first before return
 
         important note: you CAN'T apply this directly to a number, only variables. you may need to put the number in a variable first 
@@ -440,4 +445,78 @@ MDN Web Docs (additional notes)
 
         note: recommended to use STRICT
 
-        
+Javascript.info (additional notes)
+
+    unary
+        -operator with single operand 
+
+        eg.
+            x = -x
+            (using unary negation)
+
+    binary 
+        -operator with two operands
+            return y - x
+    
+    Numeric Conversion, unary +
+        -if operand is a number, it DOES NOT DO ANYTHING
+        -if operand is not a number, it converts it into an equivalent number
+        -does the same thing as Number() method
+            -shorthand method
+
+            eg. 
+                // No effect on numbers
+                let x = 1;
+                alert( +x ); // 1
+
+                let y = -2;
+                alert( +y ); // -2
+
+                // Converts non-numbers
+                alert( +true ); // 1
+                alert( +"" );   // 0
+
+        note: UNARY PLUS and UNARY NEGATION is of the HIGHEST precedence!!!
+    
+    Chaining Assignments
+        let a, b, c;
+
+        a = b = c = 2 + 2;
+
+        alert( a ); // 4
+        alert( b ); // 4
+        alert( c ); // 4
+
+        but NOT RECOMMENDED as it is not that readable 
+
+    Modify and Assign Operators 
+        +=, -=, etc... 
+
+        Note: still use a style of 'one line - one action' in coding for readability
+
+    Bitwise Operators
+        -treat arguments as 32-bit integer numbers
+        -NOT JavaScript specific
+        -not that used in web development 
+
+    
+    Comma
+        -"," rarest and most unusual 
+        -it allows multiple evaluation of several expressions but only returns the LAST result
+
+        eg.
+            let a = (1 + 2, 3 + 4);
+
+            alert( a );          // 7 (the result of 3 + 4)
+
+        note: ',' is the LOWEST Precedence that is why we need to enclose it in parentheses so that the assignment operator will decrease its order of precedence
+
+        eg: 
+            a = 1 + 2, 3 + 4
+            a = 3, 7
+            a = 3
+
+    Important Note:
+        undefined == NaN
+        null != NaN
+        null == 0
