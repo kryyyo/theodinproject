@@ -293,3 +293,92 @@ MDN Web Docs String (Additional Notes)
             let longString = "This is a very long string which needs \
             to wrap across multiple lines because \
             otherwise my code is unreadable."
+
+https://javascript.info/comparison Notes
+    String comparison 
+        -JS uses "dictionary" or "lexicographical" order
+        -strings are compared letter-by-letter
+
+        eg:
+            alert( 'Z' > 'A' ); // true
+            alert( 'Glow' > 'Glee' ); // true
+            alert( 'Bee' > 'Be' ); // true
+
+        -not real dictionary but UNICODE ORDER
+            a > A       //true 
+
+            because lowercase characters has a GREATER index in unicode
+    
+    Truthy and Falsy
+        true has a value of 1
+        false has a value of 0 
+
+        eg.
+            alert( true == 1 ); // true
+            alert( false == 0 ); // true  
+
+            Boolean() method
+                -converts a type to Boolean
+
+    Comparison with null and undefined 
+
+        strict equality check ===
+            alert( null === undefined ); // false      
+
+        non-strict equality check ==
+            alert( null == undefined ); // true
+
+            (only here)
+
+        maths and other comparisons
+            null/undefined are converted to numbers: null becomes 0, while undefined becomes NaN
+        
+        Strange result: null vs 0
+            alert( null > 0 );  // (1) false
+            alert( null == 0 ); // (2) false
+            alert( null >= 0 ); // (3) true
+
+            explanation: 
+                Comparisons (>, <, >=, <=)
+                    -convert null to a number 
+                    -null to 0
+
+                    alert( null > 0 );
+                    alert( 0 > 0)       ---false! 
+
+                    alert( null >= 0 );
+                    alert( 0 >= 0 )     ---true!
+                
+                Equality Check (==, ===, !=, !==)
+                    -original undefined and null 
+
+                    only null = undefined is true for these two!! 
+                        they equal each other and don’t equal anything else
+
+        Incomparable undefined
+            alert( undefined > 0 ); // false (1)
+            alert( undefined < 0 ); // false (2)
+            alert( undefined == 0 ); // false (3)
+
+            explanation:
+                Comparisons (>, <, >=, <=)
+                    -convert undefined to NaN
+                    -NaN is always false! (falsy)
+                
+                Equality Check (==, ===, !=, !==)
+                    -original undefined and null 
+
+                    only undefined = null is true again! 
+
+    Avoid Problems:
+        -treat any comparison with undefined/null with exceptional care
+        -don't use comparisons with null/undefined value unless you're sure of what you're doing 
+    
+        Sample:
+            5 > 4 → true
+            "apple" > "pineapple" → false
+            "2" > "12" → true
+            undefined == null → true
+            undefined === null → false
+            null == "\n0\n" → false
+            null === +"\n0\n" → false
