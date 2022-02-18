@@ -6,4 +6,104 @@
     2. external
         <script type="text/JavaScript" src="./script.js"></script>
         -for more complex scripts
+
+
+Variables
+    -"storage containers", "named storage" for data, real-life analogy: a box
+    -old:   var [variableName];
+    -new:   let [variableName];
+            const [variableName]; ----for constants; see notes below
+
+    assignment operator: '='
+    alert()
+ 
+    syntax for multiple variables (NOT RECOMMENDED)
+        let [variableName1] = [value1], [variableName2] = [value2] ....;
+
+    for readability, use single declarations/multiline 
+        let [variableName1] = [value1]
+        let [variableName2] = [value2]
+
+    other styles: 
+        multiline with multiple
+            let [variableName1] = [value1],
+                        [variableName2] = [value2]
         
+        comma first
+            let [variableName1] = [value1]
+                    , [variableName2] = [value2]
+
+    -Variables should only be declared once or it will result to error.
+        -if we will to change the value of a declared variable just re-assign a value to it
+
+            let [varA] = [valueA]
+
+                [varA] = [newValue]
+
+        -note: there are languages that do not allow variable reassignment like Scala or Erlang. They are called FUNCTIONAL LANGUAGES
+
+    Limitations for Variable Naming: 
+        1. must contain only letters, digits, $ and _ 
+        2. first character must not be a digit (but can be $ and _)
+
+        camelCase is the naming convention for JavaScript
+            -every word starts with a capital letter except for the 1st letter
+        
+        -variable names are CASE-SENSITIVE
+        -non-latin letters are allowed but not recommended
+            -only use English names so it will have readability across the globe
+
+    Reserved names 
+        -list of reserved words: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
+
+        -because it is used by the language itself 
+        -some examples:
+            -let
+            -class
+            -return
+            -function 
+        
+        -SyntaxError: Unexpected strict mode reserved word
+
+    Assignment without use strict
+        -just like declaring variables in python
+            [varName] = [value] 
+        -bad practice because it would cause an error in strict mode:
+            [varName] is not defined 
+    
+Constants 
+    -this is an UNCHANGING variable/ unchanging storage of data
+    -once you declare a value for this, it cannot be reassigned
+
+    syntax:
+        const [varA] = [valueA]
+
+    -reassigning will cause the error:
+        TypeError: Assignment to constant variable.
+
+    Uppercase Constants
+        -for "hard-coded" values 
+        -used for constants with a pre-defined value right from the beginning of time
+        -uses capital letters and underscores 
+        -this is for readability
+
+        eg:
+            const COLOR_RED = "#F00";
+            const COLOR_GREEN = "#0F0";
+            const COLOR_BLUE = "#00F";
+            const COLOR_ORANGE = "#FF7F00";
+
+            // ...when we need to pick a color
+            let color = COLOR_ORANGE;
+            alert(color); // #FF7F00
+
+        -when not to use this Uppercase constants:
+            -if a constant does not have a universal value for all codes
+                eg: const myBirthday = 'January 31' 
+
+                not all people have the same birthday
+    
+Name Things Right
+    -should have a clean and obvious meaning describing the data it stores 
+    -most important and complex skills
+    
