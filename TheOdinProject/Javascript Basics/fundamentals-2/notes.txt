@@ -246,3 +246,6 @@ JavaScript String Methods (w3Schools)
                 eg.
                 text = 'hello'
                 text.split("")        //[H,e,l,l,o]
+
+    JS String References: 
+    https://www.w3schools.com/jsref/jsref_obj_string.asp
