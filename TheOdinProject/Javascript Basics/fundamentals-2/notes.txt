@@ -106,3 +106,143 @@ Handling text — strings in JavaScript
             const myNum2 = 123;
             const myString2 = myNum2.toString();
             console.log(typeof myString2);          //string 
+
+JavaScript String Methods (w3Schools)
+
+    .length
+        -returns the length of a string
+
+    Extracting String Parts 
+        3 Methods   
+            - slice(start, end)
+            - substring(start, end)
+            - substr(start, length)
+
+    .slice(start, end)
+        -end position not included
+
+        eg. 
+            let str = "Apple, Banana, Kiwi";
+            let part = str.slice(7, 13);        //Banana 
+
+        
+        note: first position is 0 (for positive parameters)
+
+            if negative parameters: position is counted from END of string
+        
+        -omitting the 2nd parameter will slice out the rest of the string that is not counted by the 1st parameter! 
+
+    .substring(start, end)
+        -like slice(), but NO NEGATIVE values 
+
+    .substr(start, length)
+        -like slice(), but the 2nd parameter is the LENGTH of the extracted part
+
+        eg.
+            let str = "Apple, Banana, Kiwi";
+            let part = str.substr(7, 6);            //Banana
+        
+    .replace( 'stringToBeReplaced' , 'newString')
+        notes:
+            -it does not change the ORIGINAL string it is called on
+            -returns to a NEW string 
+            -replaces only first match
+                solution for this:
+                    use /g flag
+
+                    eg.
+                    let text = "Please visit Microsoft and Microsoft!";
+                    let newText = text.replace(/Microsoft/g, "W3Schools");
+
+
+
+            -case sensitive
+                solution for this: 
+                    use /i flag
+
+                    eg. 
+                        let text = "Please visit Microsoft!";
+                        let newText = text.replace(/MICROSOFT/i, "W3Schools");          
+    
+    .toUpperCase()
+
+    .toLowerCase()
+
+    .concat()
+        -join two or more strings 
+        -can be used instead of + operator 
+    
+        IMPORTANT NOTE:
+            All string methods return a new string. They don't modify the original string.
+
+            Formally said:
+
+            Strings are immutable: Strings cannot be changed, only replaced.
+    
+    .trim()
+        -removes whitespace from both sides of a string
+
+        eg.
+            let text1 = "      Hello World!      ";
+            let text2 = text1.trim();
+
+    ES2017 JavaScript String Padding
+        -support padding at beginning and ending of a string 
+        2 additional methods:
+            1. padStart
+            2. padEnd
+
+    .padStart( numberOfDesiredCharacters, characterToBeAdded )
+    .padEnd( numberOfDesiredCharacters, characterToBeAdded )
+
+        eg.
+
+        let text = "5";
+        let padded = text.padStart(4,0);        //0005
+
+        let text = "5";
+        let padded = text.padEnd(4,0);          //5000
+    
+    Extracting String Characters 
+        3 methods
+            -charAt(position)
+            -charCodeAt(position)
+            -Property access []
+
+    .charAt(position)
+        -returns the character at the specified index(position)
+
+    .charCodeAt(position)
+        -returns the UNICODE of the character at the specified index(position)
+
+    ES2009 - property access
+        [position]
+
+        eg.
+            let text = "HELLO WORLD";
+            let char = text[0];         //H
+
+        -might be a little unpredictable! avoid
+            -make strings look like array
+            -if no character is found, it returns Undefined
+            -read only (does not specify errors)
+    
+    .split("<separatorCharacter>")
+        -converts string to an array
+        
+        eg.
+            text.split(",")    // Split on commas
+            text.split(" ")    // Split on spaces
+            text.split("|")    // Split on pipe
+
+        .split()
+            -returned array will contain the WHOLE string with index of 0 
+                eg. 
+                text = 'hello'
+                text.split()        //[Hello]
+                
+        .split("")
+            -returned array will contain the array of EACH single characters 
+                eg.
+                text = 'hello'
+                text.split("")        //[H,e,l,l,o]
