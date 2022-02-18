@@ -1,0 +1,9 @@
+2 ways to include JS
+    1. internal
+        <script>
+            [insert JS code here]
+        </script>
+    2. external
+        <script type="text/JavaScript" src="./script.js"></script>
+        -for more complex scripts
+        
