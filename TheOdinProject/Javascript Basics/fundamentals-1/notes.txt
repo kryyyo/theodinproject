@@ -120,4 +120,115 @@ Name Things Right
         - extra variable is good! 
         - modern JS minifiers and browsers optimize code well enough and using different variables will help the engine optimize your code
 
+Numbers
+    -BUILDING BLOCKS of programming logic
+
+    JavaScript Arithmetic
+        JS Operators
+            -perform arithmetic on numbers (literals/variables)
+
+            + >> addition
+            - >> subtraction
+            * >> multiplication
+            ** >> exponentiation (ES2016)
+            / >> division
+            % >> modulus division (Remainder)
+            ++ >> increment (+1)
+            -- >> decrement (-1)
+
+        Arithmetic Operations
+            -operates on two numbers  (literals/variables)
+
+            eg: 
+                2 literals:
+                    let x = 100 + 50;
+
+                2 variables:
+                    let x = a + b;
+
+                expressions:
+                    let x = (100 + 50) * a;
+
+        Operators and Operands
+            operands - the numbers/literals in an operation
+            operator - the one who is performing the operation
+
+            eg:
+                in let x = (100 + 50) * a;
+
+                operands: 100, 50, a
+                operators: +, * 
+                    = is an assignment operator
+
+        before ES2016 for exponentiation
+            ** is also equal to Math.pow(x,y)
+
+                where:
+                    x - base
+                    y - exponent
+
+        Operator Precedence
+            PEMDAS Rule (same na same sa alam mo)
+                -parentheses, exponent, multiplication/division, addition/subtraction
+                -md interchangeable (order is important left to right)
+                -as interchangeable (order is important left to right)
+
+            to be more precise, see table on JS Operator Precedence Values:
+            https://www.w3schools.com/js/js_arithmetic.asp
+
+                same number follows order precedence
+
+                1.  expression grouping     ()
+                2.  member                  .
+                    member                  []
+                    function call           ()
+                    create                  new
+                3.  postfix increment       i++
+                    postfix decrement       i--
+                4.  prefix increment        ++i
+                    prefix decrement        --i
+                    logical not             !
+                    type                    typeof
+                5.  exponentiation          **
+                6.  multiplication          *
+                    division                /
+                    modulus                 %
+                7.  addition                +
+                    subtraction             -
+                8.  shift left              <<
+                    shift right             >>
+                    shift right (unsigned)  >>>
+                9.  less than               <
+                    less than equal         <=
+                    greater than            >
+                    greater than equal      >=
+                    property in object      in
+                    instace of object       instanceof
+                10. equal                   ==
+                    strict equal            ===
+                    unequal                 !=
+                    strict unequal          !==
+                11. bitwise AND             &
+                12. bitwise XOR             ^
+                13. bitwise OR              |
+                14. logical AND             &&
+                15. logical OR              ||
+                16. nullish coalescing      ??
+                17. condition               ?:
+                18. assignment              +=
+                                            /=
+                                            -=
+                                            *=
+                                            %=
+                                            <<=
+                                            >>=
+                                            >>>=
+                                            &=
+                                            ^=
+                                            |=
+                19. pause function          yield
+                20. comma                   ,
+    
+
+    Javascript Numbers
     
