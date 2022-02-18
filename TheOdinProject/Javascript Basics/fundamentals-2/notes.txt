@@ -249,3 +249,9 @@ JavaScript String Methods (w3Schools)
 
     JS String References: 
     https://www.w3schools.com/jsref/jsref_obj_string.asp
+
+Method 
+    -bit of functionality that is BUILT-INTO the language or into specific data types
+
+    String References from MDN Web Docs:
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
