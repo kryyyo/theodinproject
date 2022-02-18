@@ -68,3 +68,41 @@ Javascript.info
             typeof null     // "object"      --should be null
             typeof alert    // "function"    --should be objects
             
+MDN Web Docs Notes 
+
+Handling text — strings in JavaScript
+
+    Escaping characters in a string 
+        use \ before any character you are escaping (like in terminal window)
+
+        eg. 
+        const bigmouth = 'I\'ve got no right to take my place...';
+        console.log(bigmouth);
+
+        output: I've got no right ot take my place...
+
+        reference for other Escape Sequences:
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#escape_sequences
+
+    Concatenating strings 
+        -use of template literals
+            -use of Backticks ``
+            -so we can embed variables in it without using the + operator
+            -embedding syntax:  ${expression here}
+            -respects line breaks (no need to use \n)
+
+    prompt() and alert() functions
+        prompt()
+            -ask the user via popup dialog box and store the input as text
+
+        alert()
+            -display a popup containing its arguments 
+    
+    toString() method
+        -converts number to string type
+        -counterpart of Number() and unary operator
+
+        eg.
+            const myNum2 = 123;
+            const myString2 = myNum2.toString();
+            console.log(typeof myString2);          //string 
