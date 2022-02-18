@@ -255,3 +255,41 @@ Method
 
     String References from MDN Web Docs:
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+MDN Web Docs String (Additional Notes)
+    String() constructor
+        -built-in constructor 
+        -not recommended as it turns the string type into object type
+
+        const string4 = new String("A String object");
+
+        typeof string4      //object
+
+    Character access
+        1. 'string'.charAt(index)
+        2. 'string'[index]
+
+    Comparing Strings 
+        -using less than and greater than operators 
+
+        -values of alphabet also increases alphabetically 
+            eg. a ~ 1, b ~ 2
+        
+    String primitives and String objects
+        -primitives (commonly)
+        -objects (from constructors)
+            -this does not perform arithmetics on number strings! it returns the original expression
+
+        to convert string object to string primitive use .valueOf() method
+            stringObject.valueOf()          //stringPrimitive
+    
+    Long Literal Strings
+        eg. (same output)
+
+            let longString = "This is a very long string which needs " +
+                 "to wrap across multiple lines because " +
+                 "otherwise my code is unreadable."
+            
+            let longString = "This is a very long string which needs \
+            to wrap across multiple lines because \
+            otherwise my code is unreadable."
