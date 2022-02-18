@@ -368,4 +368,76 @@ Numbers
         this is for the methods and properties for numbers
 
         All number methods return a new value. They do not change the original variable.
+
+MDN Web Docs (additional notes)
+    Basic math in JS - numbers and operators
+
+    Fun Fact: JS has a second number type: BigInt 
+        (used for very very large integers)
+
+    Useful Number Methods
+        -see JS number reference above
+
+        1 example of a useful number method:
+
+            toFixed(n) method
+                where n = no. of decimal places
+
+            eg. 
+                const lotsOfDecimal = 1.766584958675746364;
+                lotsOfDecimal;      //1.7665849586757463
+                const twoDecimalPlaces = lotsOfDecimal.toFixed(2);
+                twoDecimalPlaces;   //1.77
+
+    Converting to number data types 
+        -this is common for forms (input type as text)
+
+        use Number() method
+
+            eg. 
+                let myNumber = '74'
+
+                typeof myNumber = string
+
+                Number(myNumber)
+
+                typeof Number(myNumber) = number    //do not forget the Number method
+
+    Arithmetic operators    
+        -same as above notes 
     
+    Operator precedence 
+        -same as above notes 
+        full list of JS Operators and precedence here:
+            https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#operator_precedence
+
+    Increment and Decrement Operators
+        ++ and -- 
+
+        i++ or i--          >>return value first before increment/decrement
+        ++i or --i          >>increment/decrement first before return
+
+        important note: you CAN'T apply this directly to a number, only variables. you may need to put the number in a variable first 
+
+    Assignment Operators
+        -same as above notes
+            +=              x += 4;  x = x + 4
+            -=              x -= 4;  x = x - 4
+            *=              x *= 4;  x = x * 4
+            /=              x /= 4;  x = x / 4
+    
+    Comparison Operators 
+        same as above notes 
+
+        ===                 strict equality         (considers data types)
+        !==                 strict unequality       (considers data types)
+        ==                  unstrict equality
+        !=                  unstrict unequality
+        <                   lt                 
+        >                   gt
+        <=                  lte
+        >=                  gte
+
+        note: recommended to use STRICT
+
+        
