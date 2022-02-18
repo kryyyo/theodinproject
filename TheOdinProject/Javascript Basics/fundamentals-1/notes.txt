@@ -259,3 +259,113 @@ Numbers
                     let x = 0.2 + 0.1;                  //slight inaccuracy
 
                     let x = (0.2 * 10 + 0.1 * 10) / 10;       //exact value
+
+        Adding Numbers and Strings 
+            2 numbers >> normal arithmetic
+            2 strings >> concatenation
+            1 number and 1 string >> concatenation eg. 10 + "20" = "1020"
+                -order of precedence: left to right
+                -pwedeng "string" + 10 + 30 = "string1030"
+                    -steps: "string"+10 = "string10" 
+                            "string10"+30 = "string1030"
+
+                -pwede ring ganto: 10 + 20 + "30" = "3030"
+                    -steps: 10 + 20 = 30
+                            30 + "30" = "3030" 
+
+        Numeric Strings
+            -pwedeng as string yung mga numbers sa ibang operators pero hindi pwede sa "+"
+
+            eg: "10" - "10" = 0
+                "100" * "10" = 1000
+                "100" / "10" = 10
+
+                pero di pede "100" + "10" kase ang result na nyan ay 10010
+        
+        NaN - Not a Number 
+            - number is not a legal number
+
+            trying to do arithmetic with a NON-NUMERIC string will result in NaN
+
+                eg. x = 100 / "apple"
+                    x = NaN
+            
+            but numeric string will do 
+                
+                eg. x = 100 / "10"
+                    x = 10
+
+            -use isNan() method to know if a value is not a number 
+
+            when you use NaN in an mathematical operation, the result will be NaN! 
+
+            when you use NaN in a string concatenation: 
+                eg. NaN + "5" = NaN5 
+
+            typeof NaN = number         -ironic
+        
+        Infinity (or -Infinity)
+            -outside largest possible number 
+
+                eg. 
+                    let myNumber = 2;
+
+                    while (myNumber != Infinity) {
+                    myNumber = myNumber * myNumber;
+                    }
+
+            -division by 0 also generates Infinity 
+            -typeof Infinity = number 
+
+        Hexadecimal
+            -numeric constants with 0x prefix
+            -do not write a number with a leading zero as JS may interpret it as OCTAL 
+
+        toString(n) method
+            -to convert decimal (base 10) to other number systems
+                base 16 - Hexadecimal
+                base 10 - Decimal
+                base 8 - Octal
+                base 2 - Binary
+            -n is the base and can be from base 2 to base 36 
+            
+            eg.
+                let myNumber = 32 
+                
+                myNumber.toString(2); -----binary
+        
+        Javascript Numbers as Objects
+            -naming convention: PascalCase
+            -defined by 'new' keyword 
+            
+            eg.
+                let x = 123;
+                let y = new Number(123);
+
+            typeof x = number
+            typeof y = object
+
+            -note: do not do this. new keyword complicates code
+                -it can also produce unexpected results since they are different types
+
+            eg. 
+                    x === y   >> false (different types)
+                    x == y    >> true 
+
+
+            -but! JS objects CANNOT be compared with each other
+                -it will always return FALSE! 
+
+                eg. let x = new Number(500)
+                    let y = new Number(500)
+
+                    x === y     >> false
+                    x == y      >> false        ---still false since JS objects cannot be compared 
+
+    Javascript Number Reference
+        https://www.w3schools.com/jsref/jsref_obj_number.asp
+
+        this is for the methods and properties for numbers
+
+        All number methods return a new value. They do not change the original variable.
+    
