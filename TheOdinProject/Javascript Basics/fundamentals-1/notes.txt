@@ -524,3 +524,25 @@ Javascript.info (additional notes)
 
 return statement
     -result of the code it executes (more about this later)
+
+Why you shouldn't use var 
+    -let provides block-scoping
+    -var is more of a function scope only
+
+Another note:
+    const isn't truly immutable
+
+    eg. 
+        const myNotQuiteImmutableObject = {
+            thisCanBeChanged: "not immutable"
+        };
+
+        myNotQuiteImmutableObject.thisCanBeChanged = "see I changed it.";
+
+        value of its property can be changed by calling them
+
+        but simple mutation will result to an error:
+            eg.
+                const immutableString = "you can't change me";
+
+                immutableString = "D'OH!"; // error
