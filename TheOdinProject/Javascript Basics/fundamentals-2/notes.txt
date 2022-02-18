@@ -1,0 +1,70 @@
+Javascript.info
+    a variable that can be a string at one moment and then store a number is possible in "dynamically typed" programming languages such as JavaScript
+
+    8 Data Types
+        1. Number 
+            Includes:
+                -both integer and floating pt
+                -"special numeric values": Infinity, -Infinity and NaN
+
+            note: doing maths is safe in JS. Script will never stop with a fatal error. only NaN
+        
+        2. BigInt
+            -really big numbers
+            -for cryptography or microsecond-precision
+            -integers of arbitrary length
+
+            syntax: (example)
+                let thisIsABigInt = 1234567890123456789012345678901234567890n;
+            
+            -it is specified by adding 'n' on the end of an integer
+            -not supported in IE
+
+        3. String 
+            3 types of quotes
+                1. Double quotes: "hello"
+                2. Single quotes: 'hello'
+                3. Backticks: `hello`
+
+            Backticks
+                -'extended functionality' quotes
+                -for template literals
+                    -allows us to embed variables and expressions 
+            
+            there is NO char type (character) in JavaScript
+
+        4. Boolean
+            -logical type
+
+                2 values
+                    1. True
+                    2. False
+
+        5. Null
+            -null value
+            -typeof null = object       //officialy recognized error and is kept for compatibility
+            -'nothing', 'empty', or 'value unknown'
+
+        6. Undefined 
+            -'value not assigned'
+            -typeof undefined = undefined 
+            -use only undefined for the default initial value for UNASSIGNED things 
+
+        7. Objects
+            -data type that is used to store collections of data and more complex entities (eg built-in objects)
+                eg. array, objects 
+
+            -typeof [arrayhere] = object
+            -typeof {key:value} = object
+
+        8. Symbol type is used to create unique identifiers for objects 
+
+    typeof Operator
+        -returns the type of the argument 
+        -typeof [argument here]
+            or typeof(argument)
+
+        officially recognized errors:
+            typeof null     // "object"      --should be null
+            typeof alert    // "function"    --should be objects
+            
