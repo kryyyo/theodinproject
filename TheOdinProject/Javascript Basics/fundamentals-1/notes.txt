@@ -231,4 +231,31 @@ Numbers
     
 
     Javascript Numbers
-    
+        -only ONE type of number 
+
+        can be written:
+            -with decimals (eg. 3.14)
+            -without decimals (eg. 3)
+            -with scientific notations (eg. 3e5, 3e-5)
+
+        -always 64-bit Floating Point
+            -numbers in 64 bits
+                -fraction/mantissa in 52 bits (0-51)
+                -exponent in 11 bits (52 to 62)
+                -sign in 1 bit (63)
+
+        Integer Precision
+            -accurate up to 15 digits
+
+            let x = 999999999999999;   // x will be 999999999999999
+            let y = 9999999999999999;  // y will be 10000000000000000
+
+            -max number of decimals is 17
+
+        Floating Precision
+            -floating pt arithmetic NOT ALWAYS 100% accurate
+            -to solve the problem, make a floating pt as integer (multiplying by powers of 10) then divide the whole expression to what you multiplied
+                eg: 
+                    let x = 0.2 + 0.1;                  //slight inaccuracy
+
+                    let x = (0.2 * 10 + 0.1 * 10) / 10;       //exact value
