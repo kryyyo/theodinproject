@@ -418,3 +418,142 @@ JavaScript if else and else if
             } else {
                  //block of code to be executed if all the conditions are false
             }
+
+javascript.info
+
+Logical Operators
+    4 logical operators in Javascript
+        1. || (OR)
+        2. && (AND)
+        3. ! (NOT)
+        4. ?? (NULLISH COALESCING)
+
+    note: they can be applied to values of any type not just boolean and their result is also of any type
+
+    || (OR)
+        eg. result = a || b;
+        
+        -in classical programming,
+            logical OR is meant for boolean values only
+            any true arguments, it returns true, otherwise it returns false
+
+            4 possible logical combinations 
+                1. alert( true || true );   // true
+                2. alert( false || true );  // true
+                3. alert( true || false );  // true
+                4. alert( false || false ); // false
+            
+            if operand is not a boolean, it is converted to a boolean for the evaluation
+                for instance: number 1 is treated as true, number 0 as false 
+
+            most of the time, || statement is used in an if statement to test if ANY of the given condition is true (KAHIT NASAANG ORDER)
+
+        -"extra" features aside from classical programming
+            || (OR) finds the FIRST TRUTHY value
+
+                steps on how || evaluate conditions 
+                    1. left to right
+                    2. converts each operand to boolean from
+                    3. find the first TRUTHY value and return the original operand (before conversion to boolean) 
+                    4. if there are NO TRUTHY value (all false), it will return the LAST operand 
+
+                interesting usage for this: 
+                    1. Getting the first truthy value from a list of variables or expressions
+
+                        eg. 
+                            let firstName = "";
+                            let lastName = "";
+                            let nickName = "SuperCoder";
+
+                            alert( firstName || lastName || nickName || "Anonymous"); // SuperCoder
+
+                    2. Short-circuit evaluation
+                        -after finding the FIRST TRUTHY, it will terminate the conditional process, do not touch the other arguments after it, and return the first truthy value immediately 
+                        
+                        eg.
+                            true || alert("not printed");
+                            false || alert("printed");
+
+                            //only the 2nd one will execute alert! 
+
+    && (AND)
+        eg. result = a && b;
+
+        -in classical programming
+            AND returns true if both operands are truthy and false otherwise
+
+            eg. 
+                alert( true && true );   // true
+                alert( false && true );  // false
+                alert( true && false );  // false
+                alert( false && false ); // false
+            
+        -extra features
+            && (AND) finds the FIRST FALSY value
+
+                steps on how && evaluate conditions 
+                    1. left to right
+                    2. converts each operand to boolean from
+                    3. find the first FALSY value and return the original operand (before conversion to boolean) 
+                    4. if all are TRUTHY value (all true), it will return the LAST operand 
+                
+    note: do not replace if with || or &&!!! it is not readable! 
+
+    ! (NOT)
+        eg. result = !value;
+
+            steps on how ! evaluate
+                1. convert operand to boolean type
+                2. returns the inverse value (boolean type)
+            
+            sometimes used to convert data types to boolean using the DOUBLE NOT (!!)
+                1. first ! - convert operand and return the inverse value as boolean 
+                2. second ! - inverse the inversed value (return to original value)
+
+            but there is a more verbose way to convert to boolean
+                use Boolean(argument) function 
+
+    Precedence of Logical Operators
+        ! > && > ||
+    
+    notes: (examples)
+        alert( alert(1) || 2 || alert(3) );         //1 and then 2
+            1. The first OR || evaluates its left operand alert(1). That shows the first message with 1.
+            2. The alert returns undefined, so OR goes on to the second operand searching for a truthy value.
+            3. The second operand 2 is truthy, so the execution is halted, 2 is returned and then shown by the outer alert.
+
+        alert( alert(1) && alert(2) );              //1 and then undefined
+            1. The call to alert returns undefined (it just shows a message, so there’s no meaningful return).
+
+            2. Because of that, && evaluates the left operand (outputs 1), and immediately stops, because undefined is a falsy value. And && looks for a falsy value and returns it, so it’s done.
+
+
+        tasks
+            Check the range between
+                if (age >= 14 && age <=90) {
+                    return age 
+                }
+
+            Check the range outside
+                if (age > 90 || age < 14 ) {}
+                if (!(age >= 14 && age <=90)) {}
+            
+            Check the login
+                let user = prompt('login here')
+
+                if (user === "Admin") {
+                    let password = prompt('password?')
+                        if (password === 'TheMaster') {
+                            alert("Welcome!")
+                        } else if (pass === '' || password === null) {
+                            alert("Cancelled")
+                        } else
+                            alert("Wrong Password")
+                } else if (user === '' || user === null) {
+                    alert("Cancelled")
+                } else {
+                    alert("I don't know you")
+                }
+
+            //please paunahin mo yung user === '' sa user === null
+            //do not forget, = is not the same as == and ===
