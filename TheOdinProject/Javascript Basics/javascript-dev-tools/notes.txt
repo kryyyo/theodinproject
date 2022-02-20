@@ -61,3 +61,104 @@ Simulate mobile devices with Device Mode
         
         Set orientation 
             More options > more tools > sensors
+
+Javascript
+    Debug Javascript
+        without using console.log
+
+        Accessing JS Source
+            Inspect > Sources panel
+
+            Pausing an event
+                > Event Listener Breakpoints > select what you want to pause
+
+        https://www.youtube.com/watch?v=H0XScE08hy8
+    
+    Pause your code with breakpoints 
+        Breakpoint Type and when to use them
+            Line-of-code
+                -On an exact region of code 
+            
+            Conditional line-of-code
+                -On an exact region of code, but only when some other condition is true
+            
+            DOM 
+                -On the code that changes or removes a specific DOM node, or its children
+            
+            XHR
+                -When an XHR URL contains a string pattern.
+
+            Event Listener
+                -On the code that runs after an event, such as click, is fired.
+
+            Exception
+                -On the line of code that is throwing a caught or uncaught exception
+
+            Function 
+                -Whenever a specific function is called
+
+        Line-of-code breakpoints
+            @devtools
+                just click the line number of the source javascript file
+            
+            @code
+                call 'debugger;' eg:
+                    console.log('a');
+                    console.log('b');
+                    debugger;
+                    console.log('c');
+
+    Conditional line-of-code breakpoints 
+        Right-click on the line of code > Add conditional breakpoint > Enter your condition in the dialog 
+
+        -should have an orange tab in the line numbers 
+
+        -'pause mo to kung tama itong condition na to'
+
+    Manage line-of-code Breakpoints
+        use Breakpoints pane and select what you want to activate and deactivate
+
+        Check the checkbox next to an entry to disable that breakpoint.
+
+        Right-click an entry to remove that breakpoint.
+
+        Right-click anywhere in the Breakpoints pane to deactivate all breakpoints, disable all breakpoints, or remove all breakpoints. Disabling all breakpoints is equivalent to unchecking each one. Deactivating all breakpoints instructs DevTools to ignore all line-of-code breakpoints as well as preserve their enabled state so that they are in the same state as before when you reactivate them.
+
+    DOM change breakpoints 
+        Elements > right-click element > Break on... > select Subtree modifications, Attribute modifications, or Node removal
+
+        -Subtree modifications. Triggered when a child of the currently-selected node is removed or added, or the contents of a child are changed. Not triggered on child node attribute changes, or on any changes to the currently-selected node.
+
+        -Attributes modifications: Triggered when an attribute is added or removed on the currently-selected node, or when an attribute value changes.
+
+        -Node Removal: Triggered when the currently-selected node is removed.
+
+    XHR/Fetch breakpoints
+        Sources > XHR Breakpoints pane > Add breakpoint > enter string you want to break on
+
+        Devtools will pause when the string you entered is PRESENT IN THE URL
+
+    Event listener breakpoints
+        Sources > Event Listener Breakpoints pane > select the event you want to break on 
+    
+    Exception Breakpoints 
+        Sources > Pause on exceptions icon > (optional) Pause On Caught Exceptions 
+    
+    Function Breakpoints
+        @code
+            call debug function 
+
+            eg. 
+                function sum(a, b) {
+                    let result = a + b; // DevTools pauses on this line.
+                    return result;
+                }
+                debug(sum); // Pass the function object, not a string.
+                sum();
+        
+        @Devtools
+            console.debug()
+
+            -equivalent to setting a line-of-code breakpoint
+
+        Make sure the target function is in scope so it will not result to Reference Error 
