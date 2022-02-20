@@ -834,6 +834,7 @@ The Net Ninja’s Regular Expressions Tutorial (RegEx)
 
             {length}
                 -how many you want the charset to be long
+                -matches in ANY POSITION
                 -see notes on start and end for this 
             
             eg. /[a-z]{11}/ - 11 letter word 
@@ -972,3 +973,12 @@ The Net Ninja’s Regular Expressions Tutorial (RegEx)
                         toy rabbit
                         crazy rabbit
                         rabbit
+
+    Two different methods for creating RegEx in JavaScript
+
+    Method 1 
+        let reg = /[a-z]/ig;
+
+    Method 2 - using constructors
+        let reg2 = new RegExp(/[a-z]/, 'i')
+
