@@ -353,7 +353,7 @@ https://javascript.info/comparison Notes
                 Equality Check (==, ===, !=, !==)
                     -original undefined and null 
 
-                    only null = undefined is true for these two!! 
+                    only null == undefined is true for these two!! 
                         they equal each other and don’t equal anything else
 
         Incomparable undefined
@@ -369,7 +369,7 @@ https://javascript.info/comparison Notes
                 Equality Check (==, ===, !=, !==)
                     -original undefined and null 
 
-                    only undefined = null is true again! 
+                    only undefined == null is true again! 
 
     Avoid Problems:
         -treat any comparison with undefined/null with exceptional care
@@ -750,5 +750,225 @@ How To Use the Switch Statement in JavaScript (from digitalocean)
                     run this code instead
             }
 
-The Net Ninja’s Regular Expressions Tutorial (regex)
+The Net Ninja’s Regular Expressions Tutorial (RegEx)
+    -allows us to check a series of characters for 'matches'
+    -check a form field to try and match a valid email address 
+        -must have @ symbol at a certain position 
+        -end an extendsion like .com 
+    -allows us to check things 
+
+    RegEx syntax:
+        / expression /flags
+
+        flags: 
+            g - global 
+                - matches all not just first
+            m - multi line
+                -^ and $ match start/end of the line  
+            i - insensitive
+                -case insensitive match
+            y - sticky
+                -anchor to start of pattern, or at the end of the most recent match 
+            u - unicode
+                -match with full unicode
+            s - single line
+                -dot matches newline
+            d - indices 
+                -regex engine returns match indices
+
+    Character Sets
+        -match different characters in a single position 
+        -note: every one pair of [] it occupies one character
+
+        /[character set]other characters/
+
+        eg. 
+
+        /[abc123]/
+            can match any of the following 
+            a,b,c,1,2,3
+
+        /[abc123]0000/
+            match must be ending in 0000
+            eg. a0000
+                b0000
+                c0000
+                10000
+                20000
+                30000
+       
+        exclude a character set
+        -match except a certain character 
+
+        /[^chars you dont want to match]other characters/
+
+        eg.
+
+        /[^pe]000
+            p000 wrong 
+            e000 wrong 
+            [any other than p and e]000 correct! 
+
+    Ranges
+        
+        eg.
+        /[ upperLimit - lowerLimit ]other characters/
+
+        eg. 
+        /[a-z]inja/
+
+        or we can include other ranges by this: (directly adding beside)
+        /[a-zA-Z]inja/ 
+
+        for a phone number (11digits)
+        /[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/
+
+    Repeating Characters
+        /[charSet]+/
+
+            + 
+                -matches the previous token between one and UNLIMITED times, as many times as possible, giving back as needed 
+                -should have 1 character
+            
+        /[charSet]{length}/
+
+            {length}
+                -how many you want the charset to be long
+                -see notes on start and end for this 
+            
+            eg. /[a-z]{11}/ - 11 letter word 
+                /[0-9]{11}/ - 11 numbers
+            
+        /[charSet]{upperRange,lowerRange}/
+                
+            {upperRange,lowerRange}
+                -length between specific ranges
+
+            eg. /[a-z]{5,8}/ will match:
+                    5 letter word
+                    6 letter word
+                    7 letter word
+                    8 letter word
+
+            {upperRange,}
+                -from upperRange to infinity
+
+            eg. /[0-9]{5,}/
+                    9000 not match
+                    90000 match 
+                    9000000 match
+
+    Metacharacters (occupy 1 space per Metacharacter)
+        \d
+            match any digit character
+            same as [0-9]
+        
+        \w
+            match any word character 
+            a-z A-Z 0-9 and _
+        
+        \s
+            match a whitespace character 
+            spaces, tabs etc
+        
+        \t
+            match a tab character only
+            tab only 
+
+    reference: https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+
+        eg. 
+            / \d\s\w /
+                1 digit
+                1 whitespace
+                1 word
+
+            / \d{3}\s\w{5} /
+                3 digits
+                1 whitespace only
+                5 word characters
+
+    Special Characters (like html entities)
+        '+'
+            the one-or-more quantifier 
+        '\'
+            the escape character
+            escape the special characters (in html entities we use $;)
+        '[]'
+            the character set 
+        '[^]'
+            the negate symbol 
+
+        '?'
+            zero-or-one quantifier (makes a preceding character optional)
+
+            eg. 
+            / hello? /
+                o is optional! (zero or one only)
+
+            /a[a-z]?/
+                abc not a match
+                ab match
+                a match
+                [a-z] is optional! 
+
+
+        '.'
+            any character whatsoever (except the newline character)
+
+            eg.
+            /car./
+                4 letter word with car on the start
+                cannot accept newline characters for the 4th character 
+            
+            /.+/
+                at least one character with infinite length of characters
+
+        '*'
+            the 0-or-more quantifier (a bit like + but it doesnt require 1 character)
+
+            optional but UNLIMITED unlike ?
+
+            /a[a-z]*/
+                abc match
+                a match 
+                ab match 
+                [a-z] is optional but unlimited not only for 1 char 
     
+    Start and Ending Patterns (Strict length)
+        syntax:
+            /^[charSet]{}$/
+
+            eg. /^[a-z]{5}$/
+                    -5 letter word only strictly 1 time only
+
+                /[a-z]{5}$/
+                    -5 letter word pattern at the end only 
+                
+                /^[a-z]{5}/
+                    -5 letter word patter at the start only
+    
+    Alternate Characters/Words 
+        -using pipe (|) symbol 
+        -we can enclose characters in parenthesis just like arithmetics
+
+            / charExpression | charExpression /
+
+            eg. 
+                /(p|t)yre/
+                    matches:
+                        pyre
+                        tyre 
+                
+                /(pet|toy|crazy) rabbit/
+                    matches:
+                        pet rabbit
+                        toy rabbit
+                        crazy rabbit
+
+                /(pet|toy|crazy)? rabbit/
+                    matches:
+                        pet rabbit 
+                        toy rabbit
+                        crazy rabbit
+                        rabbit
