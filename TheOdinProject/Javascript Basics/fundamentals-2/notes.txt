@@ -606,4 +606,57 @@ MDN Web Docs - Making your decisions in your code (Additonal notes)
         notes: please check this website we can use this for the nightmode function 
         https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals#ternary_operator
 
-    
+javascript.info (as a review)
+    again: 
+        -A number 0, an empty string "", null, undefined, and NaN all become false. Because of that they are called “falsy” values. 
+        -Other values become true, so they are called “truthy”.
+
+    "question mark" operator or Ternary operator
+        syntax:
+            (condition) ? value1 if true : value2 if false
+
+            more readable way and recommended way: 
+            let variable = (condition) ? value1 if true : value2 if false
+        
+        we can also nest multiple ? here (but not recommended)
+
+        eg. 
+            (condition) ? value if true :
+            (condition) ? value if true :
+            (condition) ? value if true :
+            value if all false;
+
+        note: always try to use ? operator in a horizontal way because vertical way is for if statements for readability
+
+    tasks
+        Take note! 0 must be a number to be false. If 0 is a STRING,  it will not be false! 
+
+        The name of JavaScript
+            let visitorAnswer = prompt('What's the "official" name of Javascript?,'')
+
+            if (visitorAnswer === 'ECMAScript') {
+                alert('Right!');
+            } else {
+                alert('You don't know? ECMAScript!'); 
+            }
+
+        Show the sign 
+            let number = parseInt(prompt('input a number', ''))
+
+            if (number > 0) {
+                alert(1)
+            } else if (number < 0) {
+                alert(-1)
+            } else {
+                alert(0)
+            }
+        
+        Rewrite 'if' into '?'
+            let result = (a + b < 4) ? 'Below' : 'Over'
+
+        Rewrite 'if..else' into '?'
+            let message = (login == 'Employee') ? 'Hello' :
+                (login == 'Director') ? 'Greetings' :
+                (login == '') ? 'No login' : ''
+
+    IMPORTANT NOTE: DO NOT USE NESTED TERNARYS! It makes the code harder to read, and a properly configured linter (ESLint w/ Airbnb style guide) will consider it an error.
