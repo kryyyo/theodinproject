@@ -1,0 +1,63 @@
+JS DevTools from Chrome (Additional apart from the CSS Lesson)
+
+Console
+    2 main uses
+        - viewing logged messages
+        - running JavaScript
+    
+    devs log messages for 2 general reasons:
+        -making sure that code is executing in the right order
+        -ispecting the values of variables at a certain moment in time
+    
+    full list of console methods
+    https://developer.chrome.com/docs/devtools/console/api/
+
+    REPL
+        -read-eval-print loop 
+        -interactive toplevel or language shell
+    
+    you can use console to try out new code without compromising your js file
+
+Simulate mobile devices with Device Mode
+    Remote Debugging
+        -you can use this to view, change, debug, and profile a page's code from your laptop or desktop while it actually runs on a mobile device
+        -you need your phone to do this
+        -actual tutorial here: 
+            https://developer.chrome.com/docs/devtools/remote-debugging/
+        
+    Accessing Device Mode in DevTools 
+        Click Toggle Device Toolbar
+
+    Show Media Queries
+        upon accessing device mode, click triple dot (More Options) then select media queries
+
+    Set Device Type
+        see png file on the same folder for the Device Type List
+    
+    Mobile Device Viewport Mode 
+        you can simulate a specific mobile device like iphone se ... 
+
+        you can also show device frame using more options 
+
+        you can also add a custom device by selecting Edit... 
+
+    Show Ruler
+        more options > show rulers 
+    
+    Zoom Viewport
+        dropdown menu of Zoom list 
+    
+    Throttle the network and CPU
+        you can also throttle the network and CPU with the choices of Mid-tier, Low-end, and offline
+
+        Throttle CPU only 
+            Performance Panel > Capture Settings > select CPU list
+        
+        Throttle Network only 
+            Network Panel > Throttle List
+        
+        Override geolocation 
+            More options > more tools > sensors
+        
+        Set orientation 
+            More options > more tools > sensors
