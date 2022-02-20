@@ -557,3 +557,53 @@ Logical Operators
 
             //please paunahin mo yung user === '' sa user === null
             //do not forget, = is not the same as == and ===
+
+MDN Web Docs - Making your decisions in your code (Additonal notes)
+
+    only Falsy values: (return false even if not explicitly given)
+        -false
+        -undefined
+        -null
+        -0
+        -NaN
+        -''
+        -""
+
+    the rest is truthy! even negative integers (return true even if not explicitly given)
+
+    switch Statements
+        -for testing a single expression/value with many outcomes/choices
+
+        syntax: 
+            switch (expression/value) {
+                case choice1:               //do not forget colon
+                    run this code
+                    break;                  //do not forget break for every case
+                
+                case choice2:
+                    run this code
+                    break;
+
+                case choice3:
+                    run this code
+                    break;
+                
+                //include as many cases as you want
+
+                default:          //this is like the else statement which is optional
+                    actually, just run this code
+            }
+        
+    Ternary Operator
+        test a condition, returns one value/expression if it is true, and another if it is false
+
+        Syntax:
+            ( condition ) ? run this code : run this code instead
+
+        eg. 
+            let greeting = ( is Birthday ) ? 'HBD' : 'Kelan Bday?'
+
+        notes: please check this website we can use this for the nightmode function 
+        https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals#ternary_operator
+
+    
