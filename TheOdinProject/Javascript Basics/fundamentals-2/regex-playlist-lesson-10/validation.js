@@ -4,10 +4,13 @@
 //Getting inputs from our index.html
 const inputs = document.querySelectorAll('input')
 
-
-//Telephone RegEx
 const patterns = {
-    telephone: /^\d{11}$/
+
+    //name property: RegEx pattern
+    telephone: /^\d{11}$/,
+    username: /^[a-z\d]{5,12}$/i,
+    password: /^[\w@-]{8,20}$/,
+    slug: /^[a-z\d-]{8-20}$/
 }
 
 //validation function 
