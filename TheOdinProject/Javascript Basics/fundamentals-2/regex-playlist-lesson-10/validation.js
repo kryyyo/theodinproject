@@ -11,6 +11,9 @@ const patterns = {
     username: /^[a-z\d]{5,12}$/i,
     password: /^[\w@-]{8,20}$/,
     slug: /^[a-z\d-]{8-20}$/
+
+    //(1-yourname) @ (2-domain) . (3-extension) (4-optionalextension)
+    email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(.[a-z]{2,8})?$/
 }
 
 //validation function 
