@@ -52,6 +52,7 @@ Javascript.info
 
         7. Objects
             -data type that is used to store collections of data and more complex entities (eg built-in objects)
+            -not a 'primitive' type because it can contain many collections
                 eg. array, objects 
 
             -typeof [arrayhere] = object
@@ -748,3 +749,6 @@ How To Use the Switch Statement in JavaScript (from digitalocean)
                 default:
                     run this code instead
             }
+
+The Net Ninja’s Regular Expressions Tutorial (regex)
+    
