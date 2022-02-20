@@ -162,3 +162,58 @@ Javascript
             -equivalent to setting a line-of-code breakpoint
 
         Make sure the target function is in scope so it will not result to Reference Error 
+
+Google Chrome Developer Tools (additional notes from The Net Ninja)
+    https://www.youtube.com/watch?v=JzZFccCEgGA
+
+14 Must Know Chrome Dev Tools Tricks (additional notes)
+    https://www.youtube.com/watch?v=xkzDaKwinA8
+    i'll only note what I haven't noted yet 
+
+    Interpolated string
+        console.log('hello i'm a %s string','lol')  //hello i'm a lol string
+
+        syntax:
+            console.log('%s','argument')   //but not anymore since template literals
+    
+    Style
+        using %c
+
+        eg. console.log('%c I am some great text','font-size:50px')
+
+        syntax:
+            console.log('%c','css here')
+    
+    Warning
+        console.warn('message')
+    
+    Error
+        console.error('message')
+
+    Info
+        console.info('message')
+    
+    Testing 
+        console.assert(condition, 'message here only if WRONG')
+    
+    Clearing
+        console.clear()
+
+    Viewing DOM Elements
+        console.log(p)  - for the actual element only
+        console.dir(p)  - for more descriptions of the element
+
+    Grouping together
+        console.groupCollapsed()     - for grouping console logs
+        console.groupEnd()
+
+    counting
+        console.count()                 - counting how many we've counted at that time
+            -how many times we use console.count()
+
+    timing (but we have a Performance pane already in a browser )
+        console.time()
+        console.timeEnd()
+        console.log(data) 
+
+    console.table([array]) - display an array by table 
