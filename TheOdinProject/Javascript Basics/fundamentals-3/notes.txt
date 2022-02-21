@@ -83,5 +83,14 @@ Function return values (MDN Web Docs)
     
     Using return values in your own functions
         -you need to use the return keyword
+
+Parameters and Arguments
+
+    Parameters
+        -items listed between the parentheses in a function declaration 
+        -placeholder for some future value
     
+    Arguments 
+        the actual values we decide to pass to the function
     
+
