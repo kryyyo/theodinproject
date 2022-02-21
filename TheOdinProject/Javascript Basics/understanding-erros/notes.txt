@@ -70,3 +70,7 @@ Types of Error (MDN WEB DOCS)
 
     Logic Errors
         correct syntax, running code, but INCORRECT results 
+
+Error Reference
+    devtools can redirect you to this 
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors
