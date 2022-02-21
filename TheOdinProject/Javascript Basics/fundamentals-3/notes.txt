@@ -73,4 +73,15 @@ FUNCTIONS (MDN WEB DOCS)
     Functions inside functions
         -you can call a function anywhere, even inside another function
     
+Function return values (MDN Web Docs)
+    Return Values 
+        -value that a function returns when it has completed 
+
+    functions that do not return any value has a return value as VOID or UNDEFINED
+        eg. displayMessage()
+                -no value return but is an event invoker
+    
+    Using return values in your own functions
+        -you need to use the return keyword
+    
     
