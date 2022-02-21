@@ -1,0 +1,72 @@
+The Anatomy of an Error
+    type of OBJECT
+        consists of:    
+            name/type
+            message 
+
+            message can contain
+                at fileName:lineNumber:charNumber
+
+    THROWING an error
+        -generating an error
+
+    stack trace
+        when the error was thrown, and what function were called to led up to this 
+
+        lets you trace the evolution of an error back to its origin
+
+        eg. 
+        Uncaught ReferenceError: c is not defined 
+            at add (script.js:5)
+            at print (script.js:9)
+            at script.js:12
+
+            1. c is not defined in scope of add(), which is declared on line 5
+            2. add() was called by print(), which was declared on line 9
+            3. print() itself was called on line 12.
+
+Common Types of Errors 
+
+    Syntax Error
+        code not written correctly (grammatical rules of JS)
+
+    Reference Error
+        variable does not exist, variable undefined (within current scope)
+        or variable spelt incorrectly
+
+    Type Error
+        thrown when:
+            - operand/argument is not of the same type as expected by the operator/function 
+            - modifying a value that CANNOT be changed (const)
+            - attempting to use a value in an appropriate way
+
+        note: always consider the data type! 
+
+Tips for Resolving Errors
+    1. read error carefully 
+    2. google the error 
+    3. use debugger (js tools breakpts)
+    4. make use of console.log()    
+        other console object methods:
+            https://www.w3schools.com/jsref/obj_console.asp
+    
+
+Errors Vs. Warnings
+
+    Errors 
+        stop the execution of your program
+        red
+
+    Warnings
+        continues execution but provide insights for potential problems 
+        informational
+        yellow
+
+
+Types of Error (MDN WEB DOCS)
+
+    Syntax Errors
+        spelling errors of code syntax
+
+    Logic Errors
+        correct syntax, running code, but INCORRECT results 
