@@ -177,3 +177,90 @@ Functions (additional notes from javascript.info)
         function pow(x,n) {
             return (x ** n); 
         }
+
+Function expressions (javascript.info) - Additional notes 
+    Function Declaration:
+        function functionName(parameter) {
+            code to run here
+        }
+
+    Function Expression
+        declared in the middle of any expression 
+        do not forget the semi colon at the end (recommended only)
+
+        let variableName = function(parameter) {
+            code to run here
+        }
+
+        note: omiting a functionName is allowed for function expression (anonymous functions)
+
+    Function is a value
+        function is always a value no matter how it is declared 
+
+        say we do this: (without the ())
+
+            alert ( functionName ) 
+
+            it will return the exact code (string representation) of that functionName. it will not execute it because it does not have () to indicate that it is a function. therefore, it is a value here
+
+        by doing this, we can transfer a code of function into another variable which can also make it a function! 
+
+    Callback Functions 
+        'calling back later if necessary' 
+        functions are used as values 
+
+    Function Expression vs Function Declaration
+        Function Declaration
+            declared as separate statement
+
+            can be used earlier than it is defined! 
+            even if you declare a function after the code where you called them, it will still work
+
+            due to internal algorithms, JS looks for function declarations first (initialization stage )
+
+            In strict mode, when a Function Declaration is within a code block, it’s visible everywhere inside that block. But not outside of it.
+            (parang local variables since function is also a value)
+
+            to solve this problem, assign a global variable (initialize), then use a function expression inside the code block you are working so that you can access the variable with the function expression outside that codeblock 
+                eg. 
+                    let age = prompt("What is your age?", 18);
+
+                    let welcome;
+
+                    if (age < 18) {
+
+                    welcome = function() {
+                        alert("Hello!");
+                    };
+
+                    } else {
+
+                    welcome = function() {
+                        alert("Greetings!");
+                    };
+
+                    }
+
+                    welcome(); // ok now
+            
+        Function Expression
+            created inside an expression or inside another syntax construct 
+            right side of the assignment expression (=)
+
+            only available when the execution reaches it and usable only from that moment
+
+        When to choose? 
+            1st consideration: Function Declaration (for initialization stage, and more eye-catching)
+
+            but if we need a conditional declaration (see example before this), use function expression (function declaration inside a code block not working globally)
+
+    again: 
+        Functions are values. They can be assigned, copied or declared in any place of the code.
+
+        If the function is declared as a separate statement in the main code flow, that’s called a “Function Declaration”.
+
+        If the function is created as a part of an expression, it’s called a “Function Expression”.
+
+        Function Declarations are processed before the code block is executed. They are visible everywhere in the block.
+
+        Function Expressions are created when the execution flow reaches them.
