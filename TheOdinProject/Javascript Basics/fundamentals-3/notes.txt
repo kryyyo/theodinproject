@@ -93,4 +93,87 @@ Parameters and Arguments
     Arguments 
         the actual values we decide to pass to the function
     
+Functions (additional notes from javascript.info)
+    local variables 
+        variables inside a function
 
+    outer variables (global)
+        outside a function, can be used anywhere
+
+    if there is a local variable same as the outer variable, the local variable will be the one to be used inside the function not the outer one
+        also called as shadowing
+    
+    good practice to minimize the use of global variables
+
+    Parameter - function declaration (declaration time term)
+    Argument - value when function is called (call time term)
+
+    default value
+        parameter = <default value here>
+
+        it is presented when there are no arguments when a function is called 
+
+        <default value> can also be a FUNCTION
+    
+    Alternative default parameters 
+        1. comparing it with undefined 
+                parameter === undefined
+
+        2. using || operator (first truthy)
+                parameter = parameter || 'default value'
+        
+        3. using nullish coalescing operator ??
+                null and undefined lang ang falsy 
+
+    Returning a value 
+        when execution reaches it, the function will STOP
+
+        returning without a value will just stop the function 
+            A function with an empty return or without it returns UNDEFINED
+
+        NOTE: Never add a new line after return
+                just use () if you have a long line of return 
+
+    Naming a function 
+        should start with a VERBAL prefix (usually)
+            eg: 
+                "get…" – return a value,
+                "calc…" – calculate something,
+                "create…" – create something,
+                "check…" – check something and return a boolean, etc.
+        
+    RULE: One function - one action 
+        function should do exactly what you name them 
+
+        Ultrashort function names
+            functions that are used very often sometimes have ultashort names 
+
+            eg. jQuery - $
+                Lodash - _
+
+                (these are exceptions)
+            
+    Function == Comments 
+        So, functions can be created even if we don’t intend to reuse them. They structure the code and make it readable
+
+
+    TASKS 
+        let checkAge = (age > 18) ? true : confirm('Did parents allow you?')
+        
+        function checkAge(age) {
+            return Boolean(age > 18) || confirm('Did parents allow you?')
+        }
+
+    Function min(a,b)
+        function min(a,b) {
+            if (a > b) {
+                return b
+            } else {
+                return a
+            }
+        }
+
+    Function pow(x,n)
+        function pow(x,n) {
+            return (x ** n); 
+        }
