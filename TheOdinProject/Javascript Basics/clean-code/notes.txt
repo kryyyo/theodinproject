@@ -1,0 +1,64 @@
+Rules of Thumb 
+    1. Indentation  - u choose
+    2. Semicolons - optional but get used to adding semi colons 
+    3. Line Length - limit/break lines about 80 characters
+                    - when breaking: indent 2 line levels in the second line
+                    - break immediately after an operator or comma 
+    4. Naming Things - descriptive
+                    - camelCase
+                    - variables prefix : noun / adjective
+                    - functions prefix: verb
+                    - use only single characters in the context of loop or callback function (eg. i) but not elsewhere 
+
+10 Principles for Keeping Your Programming Code Clean (onextrapixel.com)
+
+1. Revise Your Logic Before Coding
+        -flow diagrams or written pseudo-code
+
+2. Clearly Expose the Structure of the Page
+        -main containers with a representative ID
+
+3. Use the Correct Indentation
+
+4. Write Explanatory Comments
+
+5. Avoid Abusing Comments
+        DO NOT: 
+            -write explanatory notes to self
+                eg. //will finish this later 
+
+            -blame stuff on other people
+                eg. //John coded this. Ask him
+
+            -write vague statemets 
+                eg. //this is another function
+
+            -erasing chunks of code
+                delete!
+            
+        Good Comments: 
+            -Authoring specifications
+                eg. //Coded by John, Nov 13, 2020
+            -Detailed statemets on the functionality or procedure
+                eg. //This function validates the login form with the aid of the e-mail check function 
+            -Quick notifications or labels that state where a recent change was made 
+                eg. //Added e-mail validation procedure
+
+6. Avoid Extremely Large Functions
+        -break up large functions (repetitive language)
+
+7. Use Naming Standards for Functions and Variables
+        - depends on your team what naming standards are you going to use 
+
+8. Treat Changes with Caution
+        -keep the correct indentations 
+        -commenting on the modification made
+        -respecting standards 
+
+9. Avoid Indiscriminate Mixing of Coding Languages
+        -better use external sources
+
+10. Summarize your imports 
+        -lesser external sources the better 
+    
+
