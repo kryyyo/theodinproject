@@ -264,3 +264,31 @@ Function expressions (javascript.info) - Additional notes
         Function Declarations are processed before the code block is executed. They are visible everywhere in the block.
 
         Function Expressions are created when the execution flow reaches them.
+
+ARROW functions (from javascript.info)
+
+    let func = (par1, par2, ..., parN) => expression;   
+
+    when using a multiline arrow function, implicit return is not usable. we use a normal return
+
+    let func = (par1, par2, ..., parN) => {
+        multiline expression
+        return 
+        };
+
+    eg.
+        let sum = (a, b) => {  // the curly brace opens a multiline function
+            let result = a + b;
+            return result; // if we use curly braces, then we need an explicit "return"
+        };
+
+        alert( sum(1, 2) ); // 3
+
+    particularly, it is commonly used in FUNCTION Expression
+
+    tasks:
+        ask (
+            'Do you agree?',
+            () => alert('You agreed'),
+            () => alert('You canceled the execution')
+        )
