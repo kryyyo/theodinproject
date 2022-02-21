@@ -72,3 +72,14 @@ You should always write your code as if comments didn't exist.
 Rely on CODE to tell the story, not on COMMENTS
 
 if your feel your code is too complex to understand without comments, your code is probably just bad
+
+Code as Documentation (martinfowler.com)
+    first step is to accept that CODE IS DOCUMENTATION  
+    second step is to have it reviewed by other people (like proofreading if they can understand it)
+
+Airbnb style guide:
+    https://github.com/airbnb/javascript
+
+Self Documenting Code
+    http://wiki.c2.com/?SelfDocumentingCode
+
