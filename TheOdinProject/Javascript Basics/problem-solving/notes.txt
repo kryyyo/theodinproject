@@ -1,0 +1,74 @@
+UNDERSTAND THE PROBLEM
+    first step in solving a problem 
+
+    write down, reword in plain English, draw diagram if it helps
+
+PLAN
+    questions you need to answer at this stage:
+
+        1. Does your program have a user interface? What will it look like? What functionality will the interface have? Sketch this out on paper.
+
+        2. What inputs will your program have? Will the user enter data or will you get input from somewhere else?
+
+        3. What’s the desired output?
+
+        4. Given your inputs, what are the steps necessary to return the desired output?
+            -writing an algorithm (like a recipe)
+
+PSEUDOCODE
+    writing out the logic in natural language 
+
+    eg. 
+
+        When the user inputs a number
+        Initialize a counter variable and set its value to zero
+        While counter is smaller than user inputted number increment the counter by one
+        Print the value of the counter variable
+
+DIVIDE AND CONQUER
+    picking smallest or simplest one and start there with coding
+
+    decomposing problems into smaller and easier to solve subproblems is a much better approach 
+
+SOLVING FIZZ BUZZ
+    Understanding the problem
+        write a program that will print the numbers from one to the number the user entered. multiples of 3 will be printed as 'Fizz', multiples of 5 will be printed as 'Buzz', and multiples of 3 and 5 will be printed as 'FizzBuzz'
+    
+    Plan 
+        1. Does your program have a user interface? What will it look like? What functionality will the interface have? Sketch this out on paper.
+
+            -command-line only. no gui
+
+        2. What inputs will your program have? Will the user enter data or will you get input from somewhere else?
+
+            -number where the fizzbuzz program will end. from the user (command line)
+
+        3. What’s the desired output?
+            
+            -list numbers from 1 to the user entered. multiples of 3 will be fizz. multiples of 5 will be buzz. mulitples of 3 and 5 will be fizzbuzz
+
+        4. Given your inputs, what are the steps necessary to return the desired output?
+            -writing an algorithm (like a recipe)
+
+        PSEUDOCODE
+            1. prompt the user for an ending number 
+            2. loop from 1 to the entered number (or increment)
+            3. if current number is divisible by 3, replace current number with 'fizz'
+            4. if current number is divisible by 5, replace current number with 'buzz'
+            5. if current number is divisible by 3 and 5, replace current number with 'fizzbuzz'
+            6. if not in the given conditions, print the number
+
+    Divide and Conquer 
+        let endingNumber = parseInt(prompt('Please enter your number'));
+
+        for (let i = 1; i <= endingNumber; i++) {
+            if (i % 3 === 0) {
+                console.log('fizz')
+            } else if (i % 5 === 0) {
+                console.log('buzz')
+            } else if (i % 3 === 0 && i % 5 === 0) {
+                console.log('fizzbuzz')
+            } else 
+                console.log(i)
+        }
+        
