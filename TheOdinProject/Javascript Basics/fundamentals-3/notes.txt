@@ -292,3 +292,46 @@ ARROW functions (from javascript.info)
             () => alert('You agreed'),
             () => alert('You canceled the execution')
         )
+
+INTRODUCTION TO JAVASCRIPT CALL STACK (javascripttutorial.net)
+    call stack
+        -JS engine to manage execution contexts
+            2 contexts:
+                Global Execution
+                Function Execution 
+        -LIFO 
+            last in first out
+
+        1. execute script > js engine creates glocal execution context > push on top of call stack 
+
+        2. function called > js engine creates function execution context > push on top of call stack
+
+        3. function called another function > js engine creates function execution context for the function called > push on top of call stack
+
+        4. when current function completes > js engine pops it off the call stack > continue code execution
+
+        5. stop script when call stack is empty
+
+    Stack overflow
+        if a number of the execution contexts exceeds the size of the call stack, a stack overflow error will occur
+
+        eg: 
+            function fn() {
+                fn();
+            }
+
+            fn(); // stack overflow
+
+            (paulit ulit na cinocall ang fn(), walang return statement kaya di mastop yung code)
+            (parang inception)
+
+    Asynchronous JavaScript 
+        -JS is a single-threaded programming language
+                -JS engine only has 1 call stack, it can only do ONE THING at a time
+
+        When executing a script
+            -JS executes from top to bottom, line by line (synchronous)
+        
+        Asynchronous means JS engine can execute other tasks while waiting for another task to complete
+
+        
