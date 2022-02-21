@@ -62,3 +62,13 @@ Rules of Thumb
         -lesser external sources the better 
     
 
+blog.codinghorror.com Additional Notes
+
+we need comments to tells us WHY it works, NOT HOW because we already have the code to tell us that
+        -concentrate on explaining to a human what we want a computer to do
+
+You should always write your code as if comments didn't exist. 
+
+Rely on CODE to tell the story, not on COMMENTS
+
+if your feel your code is too complex to understand without comments, your code is probably just bad
