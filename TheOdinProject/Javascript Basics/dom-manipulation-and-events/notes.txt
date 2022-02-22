@@ -1,0 +1,34 @@
+DOM
+    Document Object Model 
+    tree-like representation of the contents of a webpage
+    a tree of 'nodes'
+
+'selectors'
+    used to target the nodes you want to work with
+    
+    CSS style selectors and relationship properties to target the nodes you want
+        eg.  <div class="display"></div>
+                    div.display
+                    .display
+                    #container > .display
+                    div#container > div.display
+
+    relational selectors 
+        firstElementChild or lastElementChild etc. 
+    
+        eg. container.firstElementChild
+
+DOM Methods 
+    use to manipulate our webpage with Javascript
+
+    Query Selectors 
+        -element.querySelector(selector) returns a reference to the first match of selector
+
+        -element.querySelectorAll(selectors) returns a “nodelist” containing references to all of the matches of the selectors
+            -return value of this is NOT AN ARRAY even though it may look like an array
+            -return value is a 'nodelist'
+            -big difference is array methods are not all available in a nodelist 
+                -a solution for this is to convert the nodelist into an array
+
+                    syntax:
+                        Array.form() 
