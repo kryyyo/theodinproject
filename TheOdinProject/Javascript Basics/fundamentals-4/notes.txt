@@ -348,4 +348,143 @@ Javascript Arrays(w3schools)
 
         note: all JS objects have a toString() method
 
+Loops (MDN Web Docs)
+    Looping through a collection
+
+        the for...of loop
+
+        const arrayName = [value1, value2, value3]
+
+        for (const varName of arrayName) {
+            console.log(varName);
+        }
+
+    map() and filter()  
+        often used with FUNCTION EXPRESSIONS    
+
+        .map() method
+            do something to EACH item in a collection then create a NEW collection containing the changed items
+
+            does not affect the original array 
+            
+            Syntax: 
+
+                arrayName.map(value)
+
+                values can also be functions! 
+
+            eg. 
+
+                function toUpper(string) {
+                    return string.toUpperCase();
+                }
+
+                const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+                const upperCats = cats.map(toUpper);
+
+                console.log(upperCats);
+                // [ "LEOPARD", "SERVAL", "JAGUAR", "TIGER", "CARACAL", "LION" ]
+
+        .filter() method
+            testing each item, and creating a new collection containing only those items 
+
+            syntax:
+
+                arrayName.filter(value)
+
+                values can also be functions
+
+            eg. 
+
+            function lCat(cat) {
+                return cat.startsWith('L');
+            }
+
+            const cats = ['Leopard', 'Serval', 'Jaguar', 'Tiger', 'Caracal', 'Lion'];
+
+            const filtered = cats.filter(lCat);
+
+            console.log(filtered);
+            // [ "Leopard", "Lion" ]
+                        
+    The standard for loop 
+        Syntax: 
+            for (initializer; condition; final-expression) {
+                // code to run
+            }
+
+        
+            initializer 
+                usually a variable set to a number which is incremented to count the number of times the loop has run 
+
+                also called as 'counter variable' as it serves as a counter
+            
+            condition
+                defines when the loop should stop looping 
+                'exit condition'
+            
+            final-expression 
+                evaluated after a loop has done 1 full iteration
+
+                usually serves to increment/decrement the counter variable 
     
+    Looping through collection with a for loop 
+        Rewriting for of loop
+            const arrayName = [value1, value2, value3]
+
+            for (let i = 0; i < arrayName.length; i++) {
+                console.log(arrayName[i]);
+            }
+    
+    Exiting loops with break 
+            add break in a loop to not continue its iteration even if conditions are not yet met
+        
+            eg. (just an example)
+                const arrayName = [value1, value2, value3]
+
+                for (let i = 0; i < arrayName.length; i++) {
+                    if (something === some) {
+                        console.log(arrayName[i];
+                    } else {
+                        break
+                    }
+                }; 
+    
+    Skipping iterations with continue 
+            instead of breaking the loop entirely, it skips to the next iteration of the loop 
+
+            for example, if you want to skip even numbers indexes, you can have a conditional statement like this: 
+
+             const arrayName = [value1, value2, value3]
+
+                for (let i = 0; i < arrayName.length; i++) {
+                    if (i % 2 === 0) {
+                        continue
+                    } else {
+                        console.log(arrayName[i])
+                    }
+                }; 
+
+    While and Do While 
+        While loop (test muna bago gawin)
+            Syntax:
+                initializer
+                while (condition) {
+                    // code to run
+
+                    final-expression
+                }
+
+        Do While Loop ( gawin muna ng isa then itest kung tama pa condition)
+            Syntax:
+                initializer
+                do {
+                    // code to run
+
+                    final-expression
+                } while (condition)
+
+        note: make sure that the initializer is correct and eventually become false
+            it will result to not stopping or an INFINITE Loop 
+            
