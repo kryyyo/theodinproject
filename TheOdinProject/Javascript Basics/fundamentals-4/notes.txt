@@ -691,3 +691,7 @@ Loops (javascript.info) (additional notes)
                 }
 
             parang naghanap siya ng divisor sa mga mas mababa sa kanya (which is true naman sa mas mababa lang sakanya ang mga divisor)
+
+TDD
+    Test Driven Development
+        writing automated tests
