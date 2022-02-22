@@ -487,4 +487,207 @@ Loops (MDN Web Docs)
 
         note: make sure that the initializer is correct and eventually become false
             it will result to not stopping or an INFINITE Loop 
+
+Loops (javascript.info) (additional notes)
+    single execution of loop is called an 'iteration'
+
+    @for loops
+        initializer can be inline variable declaration (let i = 0;) or we can also access global variables (i = 0)
+
+    Skipping parts of the for loop 
+
+         for (initializer; condition; final-expression) {
+                // code to run
+            }
+
+
+        skipping initializer 
+            you can skip initializer if you declared a global variable for counter
+
+            eg.
+                let i = 0 
+                for (; i < 5; i++){
+                    //code to run 
+                }
+        
+        skipping step part
+            you can skip step part if you are going to increment/decrement counter in the code to run
+
+            eg. 
+                eg.
+                let i = 0 
+                for (; i < 5;) {
+                    i++
+                }
+
+        skipping everything 
+            for creating infinite loop
+
+            for (;;) {
+                //code to run
+            }
+
+    break - stop the whole iteration 
+    continue - stops the current iteration, then continue to the next iteration
+
+    we cannot use break and continue in TERNARY operators 
+
+    Labels for break/continue 
+        -break out from multiple nested loops at once
+
+        eg. 
+            for (let i = 0; i < 3; i++) {
+
+                for (let j = 0; j < 3; j++) {
+
+                    let input = prompt(`Value at coords (${i},${j})`, '');
+
+                    // what if we want to exit from here to Done (below)?
+                }
+            }
+
+            alert('Done!');
+
+        break/continue will only stop the INNER loop, 
+        use label to stop the WHOLE nested loop 
+
+        syntax: 
+            labelName: for (...) {
+                ...
+            }
+
+            break labelName 
+            continue labelName
+
+        para syang 'go to' 
+
+        eg. 
+            outer: for (let i = 0; i < 3; i++) {
+
+                for (let j = 0; j < 3; j++) {
+
+                    let input = prompt(`Value at coords (${i},${j})`, '');
+
+                    // if an empty string or canceled, then break out of both loops
+                    if (!input) break outer; // (*)
+
+                    // do something with the value...
+                }
+            }
+            alert('Done!');
+
+        important note: 
+            Labels do not allow to 'jump' anywhere
+
+            eg.
+                IMPOSSIBLE:
+                    break label; // jump to the label below (doesn't work)
+
+                    label: for (...)
+
+            break must be inside a code block (even if not in loops. eg. switch)
+
+                WORKING:
+                    label: {
+                        break label;
+                    }
             
+            continue is only possible inside Loops
+
+    infinite loop using while: use while(true)
+
+    Tasks 
+        which values does the while loop show? 
+            let i = 0;
+            while (++i < 5) alert( i );
+
+                1
+                2
+                3
+                4
+            
+            let i = 0;
+            while (i++ < 5) alert( i );
+
+                1
+                2
+                3
+                4
+                5
+
+        Which values get shown by the "for" loop?
+            for (let i = 0; i < 5; i++) alert( i );
+
+                0
+                1
+                2
+                3
+                4
+
+            for (let i = 0; i < 5; ++i) alert( i );
+
+                0
+                1
+                2
+                3
+                4
+        
+        Output even numbers in the loop 
+
+            for (let i = 2; i <= 10; i++) {
+                if (i % 2 == 0) {
+                    alert (i)
+                } else {
+                    continue
+                }
+            }
+
+        Replace 'for' with 'while'
+
+            for (let i = 0; i < 3; i++) {
+                alert( `number ${i}!` );
+            }
+
+            let i = 0;
+            while (i < 3) {
+                alert( `number ${i}!` );
+                i++
+            }
+
+        Repeat until the input is correct
+
+            let answer = prompt('enter a number') 
+
+            for (answer; answer <= 100;) {
+                if (answer === undefined || answer === null) {
+                    break
+                } else {
+                      answer = prompt('enter a number');
+                }
+            }
+
+            optimized answer: 
+                let num;
+
+                do {
+                    num = prompt("Enter a number greater than 100?", 0);
+                } while (num <= 100 && num);
+
+                    The check && num is false when num is null or an empty string. Then the while loop stops too
+        
+        Output prime numbers 
+            
+            optimize solution:
+                let n = 10;
+
+                nextPrime:
+                for (let i = 2; i <= n; i++) { // for each i...
+
+                    for (let j = 2; j < i; j++) { // look for a divisor..
+                        if (i % j == 0) continue nextPrime; // not a prime, go next i
+                    }
+
+                alert( i ); // a prime
+                }
+
+            parang naghanap siya ng divisor sa mga mas mababa sa kanya (which is true naman sa mas mababa lang sakanya ang mga divisor)
