@@ -1,0 +1,351 @@
+Array
+    ordered collection of items(strings, numbers, or other things)
+
+Javascript Arrays(w3schools)
+    Creating an Array
+        Array Literal
+            Syntax: 
+                const array_name = [item1, item2, ....];
+                
+        Using Array Elements (index)
+            const arrayName = [];
+            
+            arrayName[0] = value0;
+            arrayName[1] = value1;
+            arrayName[2] = value2;
+        
+        Using constructors (not recommended/not needed)
+            const arrayName = new Array(value0, value1, value2);
+    
+    Accessing an Array 
+        refer to the index number
+            starts with 0
+        
+    Changing an Array Element
+        const arrayName = [value0, value1, value2];
+
+        arrayName[0] = newValue0;
+
+    Access the Full Array
+        refer or call out the array name
+        
+    Arrays are Objects 
+        special type of objects
+
+        typeof array = object
+
+        Difference: 
+            arrays use numbers(index) in accessing elements
+                arrayName[0] = value0
+
+            objects use names to access its members 
+                objectName.propertyName = value
+    
+    Array Elements Can be Objects
+        you can have objects in an array, or even functions in an array
+
+        eg. arrayName = [
+            {propertyName: value},
+            functionName
+        ]
+
+    Array Properties and Methods 
+        built-in array properties and methods 
+
+    The .length property
+        returns the total length of an array (no. of items in an array) 
+        
+        eg. arrayName.length
+
+    Accessing the First Array Element 
+        arrayName[0]
+
+    Accessing the Last Array Element
+        arrayName[arrayName.length - 1]
+
+        or arrayName[-1]
+
+    Looping Array Elements 
+        
+        const arrayName = [value0, value1, value3]
+
+        for (let i = 0; i < arrayName.length; i++) {
+            newArray += arrayName[i]
+        }
+
+    you can also use array.forEach() function (looping through all array elements)
+
+        const arrayName = [value0, value1, value3]
+
+        arrayName.forEach(myFunction)
+        
+        function myFunction(i) {
+            newArray += arrayName[i]
+        }
+    
+    Adding Array Elements 
+        
+            arrayName.push(value)
+
+        or using length (since length is +1 of the last index) 
+        --parang kanina yung adding on empty elements 
+
+            arrayName[arrayName.length] = value         
+
+        Warning on using indices: 
+            adding elements with higher indices than the length can create UNDEFINED values for the skipped indices
+
+            eg. arrayName = [value0, value1, value2];
+
+                arrayName[6] = value6
+
+                arrayName = [value0,value1,value2,undefined,undefined,undefined,value6]
+        
+    Associative Arrays  
+        JS do not support associative arrays!
+            (arrays with named indexes)
+            if you declare this in an array, it will become an object 
+                eg. arrayName['name'] = 'value'
+                
+                    arrayName = {name = 'value'}
+                    (WRONG TYPE!)
+
+                    arrayName[0] will produced undefined since it is now an object which the accessing should be objectName.propertyName
+        
+        JS only supports NUMBERED arrays
+            arrays always use numbers as index
+            
+    When to use arrays. When to use objects
+        objects if element names to be strings or different properties 
+        arrays if element names to be numbers and with same properties/description 
+
+    Avoid using constructor for array
+        const arrayName = new Array(value0)
+
+            1 value only array will result to unexpected results
+
+            result: ,,,,,,,,,,,,,,,,,,,,,,,
+
+        use array literal instead
+            const arrayName = [value0]
+
+            result: [value0]
+        
+        difference:
+            // Create an array with one element (number 40 element):
+                const points = [40];
+
+            // Create an array with 40 UNDEFINED elements:
+                const points = new Array(40);  
+    
+    How to Recognize Array since Array is an object?
+
+        Solution 1: 
+            use Array.isArray() method
+
+            eg. Array.isArray(arrayName)
+
+        Solution 2: 
+            use instanceof operator
+                used to know if an object is created using constructors! 
+
+            eg. arrayName instanceof Array; 
+
+    complete JS reference for arrays: 
+    https://www.w3schools.com/jsref/jsref_obj_array.asp
+
+    JavaScript Array Methods
+        Converting Arrays to String
+            .toString() method 
+            comma separated
+
+            eg. arrayName = [value0, value1, value2]; 
+
+                arrayName.toString();
+
+                result:
+                value0,value1,value2
+
+            .join(separator) method
+                default separator: ,
+
+            eg. arrayName = [value0, value1, value2]; 
+
+                arrayName.join();
+                arrayName.join("")
+                rrayName.join(" ")
+
+                result:
+                value0,value1,value2
+                value0value1value2
+                value0 value1 value2
+
+    Popping and Pushing
+        popping - out, pushing - in
+        
+        .pop() method
+            removes last element from an array
+            
+            arrayName = [value0, value1, value2]; 
+
+            arrayName.pop()
+            arrayName = [value0, value1]; 
+
+            arrayName.pop() returns the VALUE that was popped out
+
+        .push(value) method 
+            adds a new element (at the end) 
+
+            arrayName = [value0, value1, value2]; 
+
+            length = arrayName.push(value3)
+
+            arrayName = [value0, value1, value2, value3]; 
+
+            push() returns the NEW ARRAY LENGTH
+
+    Shifting Elements 
+        like popping, but working on the FIRST element 
+
+        .shift() method
+            removes the first array element and "shifts" all other elements to a lower index
+
+            arrayName = [value0, value1, value2]; 
+
+            arrayName.shift()
+            arrayName = [value1, value2]; 
+
+            arrayName.shift() returns the VALUE that was shifted out
+
+        
+        .unshift()
+            adds a new element to an array (at the beginning), and "unshifts" older elements
+
+            arrayName = [value0, value1, value2]; 
+
+            length = arrayName.unshift(value3)
+
+            arrayName = [value3, value0, value1, value2]; 
+
+            .unshift() returns the NEW ARRAY LENGTH
+
+    Changing Elements 
+        access using their index number 
+
+        const arrayName = [value0, value1, value3];
+
+        arrayName[0] = value4;
+
+        arrayName = [value4, value1, value3]
+
+    Javascript Array length 
+
+        arrayName.length
+    
+    JavaScript Array delete
+        using this leaves UNDEFINED holes in the Array
+
+        use pop() or shift() instead 
+
+        eg. 
+            
+            const arrayName = [value0, value1, value3];
+            
+            delete arrayName[0]
+
+            arrayName = [undefined, value1, value3]
+
+    Merging (concatenating Arrays)
+        creates a newArray by merging existing arrays
+            (COPY AND PASTE)
+        it does not change the original array. it always returns to a new array
+
+        array1.concat(array2, array3, ....)
+        
+        Merging 2 Arrays
+            const array1 = [value1, value2];
+            const array2 = [value3, value4, value5];
+
+            const newArray = array1.concat(array2)
+
+            results: newArray = [value1, value2, value3, value4, value5]
+
+        Merging 3 Arrays 
+            const array1 = [value1, value2];
+            const array2 = [value3, value4, value5];
+            const array3 = [value6, value7]
+
+            const newArray = array1.concat(array2, array3)
+
+            results: newArray = [value1, value2, value3, value4, value5, value6, value7]
+
+        Merging Arrays with Values (like adding a value/push)
+            const array1 = [value1, value2];
+
+            const newArray = array1.concat(value3)
+
+            results: newArray = [value1, value2, value3]
+
+    Splicing and Slicing Arrays
+        splice() - add new items to an array (it affects the original array)
+        slice() - slices out a piece of an array
+        
+        .splice() method (CUT AND PASTE)
+        syntax:
+            arrayName.splice(position to start, number of elements to be removed, items to be added,...,...)
+
+        
+            eg. 
+                const arrayName = [value0, value1, value2, value3]
+                arrayName.splice(2, 2, value6, value7)         //return value: value2,value3
+
+                result:
+                    arrayName = [value0, value1, value6, value7]
+
+
+                adding only:
+                
+                const arrayName = [value0, value1, value2, value3]
+                arrayName.splice(2, 0, value6, value7)         //return value: none
+
+                result:
+                    arrayName = [value0, value1, value6, value7, value2, value3]
+
+        Using splice() to remove elements
+            without leaving "holes" in the array
+            
+            eg.
+                const arrayName = [value1, value2, value3];
+                arrayName.splice(0,1);              //return value: value1
+
+                result: 
+                    arrayName = [value2, value3]
+
+        .slice() method
+            slices out a piece of an array into a NEW ARRAY
+                (COPY AND PASTING)
+            does not remove any elements from the source array
+
+            syntax:
+
+                arrayName.slice(position to start)
+                    slice from the position given then all to the right
+
+                arrayName.slice(position to start, no. of elements to be sliced)
+                    slice from the position given up to the no of elements to be sliced 
+                
+    Automatic toString()
+        when a primitive value is expected, displaying an array will result as text (separated by commas) 
+
+
+        eg.
+            const arrayName = [value1, value2, value3]
+
+            let display = arrayName 
+            console.log(display) 
+
+            result: value1,value2,value3
+
+        note: all JS objects have a toString() method
+
+    
