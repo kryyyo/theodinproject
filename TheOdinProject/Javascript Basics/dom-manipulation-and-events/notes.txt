@@ -31,4 +31,168 @@ DOM Methods
                 -a solution for this is to convert the nodelist into an array
 
                     syntax:
-                        Array.form() 
+                        Array.from()
+
+                -or a spread operator
+                        (...arrayName)
+
+    Element Creation
+        Syntax:
+            document.createElement(tagName, [options])
+        
+        creates a new element of tag type tagName
+        [options] means you can add some optional parameters to the function
+
+        eg. 
+            const div = document.createElement('div');
+
+        this does not put your new element into the DOM 
+        creates only, store in the memory
+        so you can manipulate first the element before placing it on the page
+            adding styles,classes, ids, text, etc
+        
+    Append Elements
+       method for placing the element you created and manipulated 
+
+        parentNode.appendChild(childNode)
+            appends childNode as the last child of parentNode
+        
+        parentNode.insertBefore(newNode, referenceNode)
+            inserts newNode into parentNode before the referenceNode
+
+    Remove Elements
+        parentNode.removeChild(child)
+            removes the child from the parentNode on the DOM and returns a reference to child
+
+    Altering Elements
+        containing a created element in a variable so we can alter/manipulate it easier
+            const div = document.createElement('div')
+
+        Adding inline style
+            eg.
+                //using JS property
+                div.style.color = 'blue'
+
+                //using CSS property
+                div.style.cssText = 'color: blue; background: white';
+
+                //using CSS property
+                div.setAttribute('style', 'color: blue; background: white');
+
+                //using CSS property
+                div.style['background-color']  
+
+        We can remove inline style by setting the value to an empty string
+            eg. 
+                div.style.color = '';
+                div.style.cssText = '';
+                div.setAttribute('');   
+
+        Property names here does not contain the usual kebab case in CSS. and because we are in Javascript, we convert the kebab to a camelCase. just remove hyphens and apply camelCase
+            in the case that a property name is a Javascript keyword (reserved words), the property name is prefixed with css
+                eg. cssText, cssFloat
+
+        Shorthand properties are also available
+        
+        Do not forget units! 
+
+        Full list of CSS Property to Javascript Property
+        http://domenlightenment.com/#6.2
+
+
+        Other methods for adding and removing
+
+            we can also use .setProperty(property, value) for adding
+                where property is in the syntax of CSS (kebab-style)
+
+                eg. divStyle.setProperty('background-color', 'red')
+
+            .getPropertyValue(property) for reading
+                getting the current value of the property
+                
+                eg. divStyle.getPropertyValue('background-color')
+
+            .removeProperty(property) for deleting 
+
+                eg. divStyle.removeProperty('background-color')
+
+            Other methods so we can use css property syntax:
+            https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration
+
+    Editing Attributes
+        .setAttribute('property', 'value')
+            if property already exists, it updates its value
+            if it still does not exists, it creates the property with the corresponding value 
+            value is always a string even if it is a measurement
+
+        .getAttribute('property')
+            reads the value of the specified property
+
+        .removeAttribute('property')
+            remove the property 
+        
+        IDL Attribute
+            Interface Definition Language Attribute
+            Javascript properties
+            not always strings 
+
+            eg. input.maxLength = numberValue (expects a number)
+
+            when you put a string eg "200", it will convert it into number (JS conversion)
+
+        Boolean Attribute 
+            eg. required, readonly, disabled 
+            
+            if a boolean attribute is present, its value is true 
+            if it is not present, its value is false 
+
+            to be clear, boolean attributes dont need values to be indicated
+
+            eg:
+                <input checked></input>             //checked is true
+                <input></input>                     //checked is false 
+                <input checked="false"></input>     //checked is true since it is indicated! 
+
+Working with classes 
+    div.classList.add(className)
+        adds class to your div 
+
+    div.classList.remote(className)
+        remove the class from div 
+
+    div.classList.toggle(className)
+        if your div doesnt have this className specified, it will add it
+        if your div has it, it will remove it
+
+    note: it is often the standard (and cleaner) to use toggle because it uses both functions already
+
+Adding text content 
+    div.textContent = ''
+        create a text node containing the message, and insert it in the div 
+
+Adding HTML content
+    div.innerHTML = '<span>Message</span>'
+        renders the HTML inside div
+        nag aadd sa pinakaHTML! it can modify the main HTML!
+        it can inject JS on a page! some scripts can get sensitive information using this innerHTML! 
+
+        just change it .innerText
+
+        if you will use this innerHTML, make sure that no user input can make it through without being sanitized
+
+important note: textContent is preferable because adding HTML content can create security risks if misused.
+
+Keep in mind: JS does not alter your HTML (original file), but the DOM only! 
+
+Where to put the JS External File linking? 
+    put it before the closing tag of the body so that all the HTML will load first thus creating the DOM
+
+    if we put it in the head tag, JS is read first, thus no manipulation will be done in the DOM since it is not created/loaded yet 
+
+    there is an easy fix if there is an instance that a js file is in the head tag
+        include a defer attribute in the script tag
+            <script src='./js-file.js defer></script>
+
+            defer makes the js file load after the HTML is parsed and DOM is created
+
+            
