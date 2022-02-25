@@ -195,4 +195,88 @@ Where to put the JS External File linking?
 
             defer makes the js file load after the HTML is parsed and DOM is created
 
-            
+Events 
+    actions that occur on your webpage
+    JS can make our webpage listen and react to events
+
+
+3 ways
+    Method 1
+        direct attaching of functions to the HTML Elements 
+
+        <button onclick="alert('Hello World')">Click Me</button>
+
+        less ideal because we're cluttering our HTML
+        we can only have 1 'onclick' event per element 
+
+    Method 2
+        setting on_event_ property on the DOM object in your JavaScript
+
+        <!-- the HTML file -->
+        <button id="btn">Click Me</button>
+
+        // the JavaScript file
+        const btn = document.querySelector('#btn');
+        btn.onclick = () => alert("Hello World");
+
+        problem again, we can only have 1 'onclick' event per element
+
+    Method 3
+        <!-- the HTML file -->
+        <button id="btn">Click Me Too</button>  
+
+        // the JavaScript file
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+        alert("Hello World");
+        });
+
+        we have separation of html and JS file 
+        we also have allowed multiple event listeners
+
+    Note: all three methods can be used with named functions
+
+    <!-- the HTML file -->
+    <!-- METHOD 1 -->
+    <button onclick="alertFunction()">CLICK ME BABY</button>
+
+    //JS FILE 
+    function alertFunction() {
+    alert("YAY! YOU DID IT!");
+    }
+
+    // METHOD 2
+    btn.onclick = alertFunction;
+
+    // METHOD 3
+    btn.addEventListener('click', alertFunction);
+
+    RECOMMENDED! using named function can clean up your code
+    especially if you are reusing the function
+
+Accessing more information about the event: 
+eg. 
+    btn.addEventListener('click', function (e) {
+    console.log(e);
+    });
+
+    parameter e in the function is an object that references to the event itself
+
+    e.target
+        provide information for the target DOM node that was clicked(event)
+
+    you can manipulate the DOM of the target (self) using this
+        e.target.style.background = "blue"
+
+Attaching listeners to the groups of node
+    use querySelectorAll('selector')
+    then treat the nodelist as an array 
+
+    const buttons = document.querySelectorAll('button')
+
+    buttons.forEach( (button) => {
+        button.addEventListener('click', ()=> alert(button.id))
+    }
+
+    HTML DOM Event Object Reference
+    https://www.w3schools.com/jsref/dom_obj_event.asp
