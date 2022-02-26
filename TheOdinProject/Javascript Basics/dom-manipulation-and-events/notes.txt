@@ -120,7 +120,7 @@ DOM Methods
             https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration
 
     Editing Attributes
-        .setAttribute('property', 'value')
+        .setAttribute('attribute', 'value')
             if property already exists, it updates its value
             if it still does not exists, it creates the property with the corresponding value 
             value is always a string even if it is a measurement
@@ -157,7 +157,7 @@ Working with classes
     div.classList.add(className)
         adds class to your div 
 
-    div.classList.remote(className)
+    div.classList.remove(className)
         remove the class from div 
 
     div.classList.toggle(className)
