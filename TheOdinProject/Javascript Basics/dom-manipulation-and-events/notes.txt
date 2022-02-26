@@ -284,3 +284,10 @@ Attaching listeners to the groups of node
 to make up an attribute name put it here so html will still read it 
 
     data-madeUpAttribute = ''
+
+Bubbling
+    triggering a nested element will trigger all its parent up to the root element 
+
+    because it captures all events from the parent up to the nested child element, then it triggers/bubble up from the child to the parents 
+
+    
