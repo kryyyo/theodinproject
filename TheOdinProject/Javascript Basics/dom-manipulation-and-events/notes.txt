@@ -359,3 +359,287 @@ Positioning and Animating
         lets browsers know that we are done for now and it can go ahead and do the things that browsers fo
 
     note: using numbers without units will result in the style being ignored. (except if your number is 0)
+
+
+EVENT HANDLERS
+    .addEventListener('event', functionToBeDoneAfterEvent)
+
+EVENTS AND DOM NODES
+    .removeEventListener('event', functionOfAddEventListener)
+
+    parameters of add event and remove event should be the same! 
+
+    so it is best to have a named function for the second parameter of .addEventListener so that we can easily remove the event lister of an object
+
+EVENT OBJECT
+    this is like the keydown property (where we have many unicode numbers associated per key) 
+
+    eg.
+    <button>Click me any way you want</button>
+    <script>
+    let button = document.querySelector("button");
+    button.addEventListener("mousedown", event => {
+        if (event.button == 0) {
+        console.log("Left button");
+        } else if (event.button == 1) {
+        console.log("Middle button");
+        } else if (event.button == 2) {
+        console.log("Right button");
+        }
+    });
+    </script>
+
+PROPAGATION
+    (this is like bubbling)
+    from the node where it happened to that node’s parent node and on to the root of the document
+
+    .stopPropagation() method
+        this is to prevent propagating up/bubbling up
+
+    using target property
+        use target property if there are instances where there are many similar elements that needs a stopPropagation. listen from the parentNode then target the childNodes of the same element
+
+        eg. 
+
+            <button>A</button>
+            <button>B</button>
+            <button>C</button>
+            <script>
+            document.body.addEventListener("click", event => {
+                if (event.target.nodeName == "BUTTON") {
+                console.log("Clicked", event.target.textContent);
+                }
+            });
+            </script>
+
+DEFAULT ACTIONS
+    eg: pressing down arrow will scroll page, right-clicking can get context menu, clicking a link will redirect you
+
+
+    .preventDefault() method
+
+        if the handler doesn't want to call before the default behavior takes place, use this
+
+        to implement own keyboard shortcutes, context menus...
+
+        to interfere with the behavior that users expect 
+
+    eg. Preventing redirection of a link
+
+        <a href="https://developer.mozilla.org/">MDN</a>
+        <script>
+        let link = document.querySelector("a");
+        link.addEventListener("click", event => {
+            console.log("Nope.");
+            event.preventDefault();
+        });
+        </script>
+
+    Depending on the browser, some default actions cannot be prevented like ctrl+w for chrome
+
+KEY EVENTS
+    'keydown' event - pressed
+    'keyup' event - released 
+
+    take note of this: for key holding, it is keydown event that is repeating! 
+
+    for combination of keys: 
+        .shiftKey
+        .ctrlKey
+        .altKey
+        .metaKey (for mac) 
+
+        && event.shiftKey 
+
+    tabindex property   
+        for focusing of DOM nodes
+        just like in visual basic 
+
+POINTER EVENTS 
+    2 ways to point at things in the screen
+        1. mice (mouse, touchpads and trackballs)
+        2. touchscreens 
+
+    MOUSE CLICK 
+        'mousedown', 'mouseup' same as keydown and keyup
+        DOM nodes that are immediately below the mouse pointer when the event occurs 
+
+        after mouseup event, a click event happens:
+            get most speciic node that contained both the press and the release of mouse
+            
+            eg. mouse down on one paragraph, mouse up on another paragraph, both paragraph will trigger click event
+    
+        'dblclick' - double click event 
+            two clicks happen close together 
+
+        clientX and clientY
+            to locate where the mouse event happened 
+            in pixels
+            origin: top left corner of screen 
+
+        pageX and pageY
+            origin: top left corner of the WHOLE document
+        
+        eg. (parang etch-a-sketch to)
+
+        <style>
+        body {
+            height: 200px;
+            background: beige;
+        }
+        .dot {
+            height: 8px; width: 8px;
+            border-radius: 4px; /* rounds corners */
+            background: blue;
+            position: absolute;
+        }
+        </style>
+        <script>
+        window.addEventListener("click", event => {
+            let dot = document.createElement("div");
+            dot.className = "dot";
+            dot.style.left = (event.pageX - 4) + "px";
+            dot.style.top = (event.pageY - 4) + "px";
+            document.body.appendChild(dot);
+        });
+        </script>
+
+MOUSE MOTION 
+    'mousemove' - everytime mouse pointer moves 
+
+    used to track position of mouse
+    useful for mouse dragging functionality 
+
+    .buttons property
+        tells us if buttons are currently held down
+            0 - not held down
+            1 - left button held down 
+            2 - right button held down 
+            3 - both left and right held down 
+            4 - middle held 
+
+    .button property
+        tells us the button doing the event
+            0 - left button
+            1 - middle button 
+            2 - right button 
+
+TOUCH EVENTS 
+    'touchstart' event 
+        finger touch screen 
+
+    'touchmove'
+        move while touching (hold)
+
+    'touchend' 
+        stops touching the screen
+
+    touches Property    
+        array-like object of points since event objects doesnt have a single set of coordinates with them (multiple fingers touching whereas there is only one mouse pointer)
+
+        each array-like object has clientX, clientY, pageX, and pageY properties
+
+        we can loop through each event.touches so we can simulate every touching finger
+
+        note: preventDefault override the browser's default behavior like:
+            scrolling the page on swiping
+            prevent mouse events from bei
+            
+SCROLL EVENTS 
+    'scroll' event
+        uses:
+            where the user is currently looking at
+
+            showing indications of progress
+
+    event handler is only called after the scrolling takes place that's why preventDefault does not prevent the scrolling from happening
+
+FOCUS EVENTS 
+    'focus' event  
+        gains focus 
+
+    'blur'
+        loose focus
+
+    these two events do not propagate! 
+
+LOAD EVENT 
+    'load' event
+        when a page finishes from loading
+        actions that require the whole document to be built 
+        when the references/external files were loaded 
+
+    loading events do not propagate! 
+
+    'beforeunload' event 
+        page is closed or navigated away from 
+        main use is to prevent the user from accidentally losing work by closing a document 
+
+        preventDefault and returnValue set to string
+            this will show a user dialog like this: 
+
+            eg. "are you sure you want to follow this link?" 
+
+EVENTS AND THE EVENT LOOP 
+    web workers 
+        JS process that runs alongside the main script on its own timeline 
+        does not hinder the page loading process 
+
+        do not share their global scope with the main script
+
+        eg 
+            let squareWorker = new Worker("code/squareworker.js");
+            squareWorker.addEventListener("message", event => {
+            console.log("The worker responded:", event.data);
+            });
+            squareWorker.postMessage(10);
+            squareWorker.postMessage(24);
+
+        only values that can be represented as JSON can be sent as message (so parang strings)
+        
+        copy lang marereceive nung other side, not the real value
+
+TIMERS 
+    'setTimeout' function
+        schedules another function to be called later after given a number of milliseconds 
+
+    canceling a function you have scheduled:
+
+        storing the value returned by setTimeout
+        calling clearTimeout on it 
+
+        eg. 
+            let bombTimer = setTimeout(() => {
+            console.log("BOOM!");
+            }, 500);
+
+            if (Math.random() < 0.5) { // 50% chance
+            console.log("Defused.");
+            clearTimeout(bombTimer);
+            }
+
+
+    'cancelAnimationFrame' works the same as clearTimeout 
+        you need to store first the value returned by requestAnimationFrame, then call cancelAnimationFrame
+
+    'setInterval' and 'clearInterval' 
+        works the same too 
+
+DEBOUNCING
+    this is like setting a timeout for the firing the event 
+
+    eg. someone is typing too fast, you do not want to record every keypress of it, because it will fire too many events. instead, you fire a keypress event after sometime the user has paused typing 
+
+    eg. 
+
+        <textarea>Type something here...</textarea>
+        <script>
+        let textarea = document.querySelector("textarea");
+        let timeout;
+        textarea.addEventListener("input", () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => console.log("Typed!"), 500);
+        });
+        </script>
+
+    
