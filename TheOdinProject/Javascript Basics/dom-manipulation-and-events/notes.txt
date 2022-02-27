@@ -292,6 +292,9 @@ Bubbling
 
 Eloquentjavascript.net
 
+talksAbout function
+    talksAbout(target, query)
+
 Finding Elements 
 
 .getElementByTagName('tagname')[index]
@@ -300,3 +303,59 @@ Finding Elements
     no index since isa lang ang id name 
 
 .getElementByClassName('class name')[index]
+
+
+Changing the Document 
+
+document.parentNode.appendChild(childNode)
+
+document.parentNode.insertBefore(newChildNode, siblingNode)
+    works best for arrays or nodelists 
+
+document.parentNode.replaceChild(newChildNode, siblingNode)
+
+Creating Nodes 
+
+    Text Nodes
+        document.createTextNode
+
+    Array.from(nodelistName) 
+        to create a real array and use all methods of an array
+
+Attributes 
+    .setAttribute('attribute','value')
+    .getAttribute('attribute')
+
+    prefix 'data-' for all made up attributes so that it will not conflict with predefined attributes 
+
+Layout
+    offsetWidth and offsetHeight
+        gives you the space the element takes up in pixels
+    
+    clientWidth and clientHeight
+        gives you the size of the space inside the element ignoring the border width 
+
+    getBoundingClientRect
+        returns an object with top, bottom, left, and right properties
+        pixel positions of the sides of the element relative to the top left of the screen 
+
+        for relative to the whole document, you must add the current scroll position 
+            pageXOffset and pageYOffset
+
+Positioning and Animating 
+    Positions
+        static
+            -sits in a normal place
+        relative
+            -top and left style properties can be used to move it relative to that normal place
+        absolute
+            -element is removed from the normal flow
+            -does not take up space and may overlap with other elements 
+            -top and left properties can be used to absolutely position it relative to the top-keft corner of the nearest enclosing element whose position property isnt static
+
+    requestAnimationFrame
+        schedule the animate function to run whenever the browser is ready to repaint the screen
+        
+        lets browsers know that we are done for now and it can go ahead and do the things that browsers fo
+
+    note: using numbers without units will result in the style being ignored. (except if your number is 0)
