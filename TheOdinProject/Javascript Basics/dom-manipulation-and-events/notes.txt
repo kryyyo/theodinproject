@@ -290,4 +290,13 @@ Bubbling
 
     because it captures all events from the parent up to the nested child element, then it triggers/bubble up from the child to the parents 
 
-    
+Eloquentjavascript.net
+
+Finding Elements 
+
+.getElementByTagName('tagname')[index]
+
+.getElementById('id name')
+    no index since isa lang ang id name 
+
+.getElementByClassName('class name')[index]
