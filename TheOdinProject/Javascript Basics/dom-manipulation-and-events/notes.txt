@@ -642,4 +642,1106 @@ DEBOUNCING
         });
         </script>
 
+DOM Enlightenment
+
+CHAPTER 1 Node Overview 
+    1.1 
+        DOM
+            hierarchy/tree of Javascript node objects 
+        
+        scripting 
+            removing, adding, replacing, eventing, modifying
+
+        Note:
+            DOM was originially an api for XML documents that has been extended for use in HTML documents
     
+    1.2
+        Node Object Types
+            MOST COMMON TYPES OF NODES
+                -DOCUMENT_NODE (eg. window.document)
+
+                -ELEMENT_NODE (eg. <body>, <a> ...)
+
+                -ATTRIBUTE_NODE (eg. class="funEdges")
+
+                -TEXT_NODE (eg. text characters in an html 
+                including carriage returns and whitespace)
+
+                -DOCUMENT_FRAGMENT_NODE (eg. document.createDocumentFragment())
+
+                -DOCUMENT_TYPE_NODE (eg. <!DOCTYPE html>)
+
+            These are the properties for the Node object! 
+            Node.DOCUMENT_NODE .... 
+
+            The node properties are constant values that are used to store numeric code values for each type of node object 
+
+            Extensive list:
+                ELEMENT_NODE  = 1
+                ATTRIBUTE_NODE  = 2
+                TEXT_NODE  = 3
+                CDATA_SECTION_NODE  = 4
+                ENTITY_REFERENCE_NODE  = 5
+                ENTITY_NODE  = 6
+                PROCESSING_INSTRUCTION_NODE  = 7
+                COMMENT_NODE  = 8
+                DOCUMENT_NODE  = 9
+                DOCUMENT_TYPE_NODE  = 10
+                DOCUMENT_FRAGMENT_NODE  = 11
+                NOTATION_NODE  = 12
+                DOCUMENT_POSITION_DISCONNECTED  = 1
+                DOCUMENT_POSITION_PRECEDING  = 2
+                DOCUMENT_POSITION_FOLLOWING  = 4
+                DOCUMENT_POSITION_CONTAINS  = 8
+                DOCUMENT_POSITION_CONTAINED_BY  = 16
+                DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC  = 32
+            
+            Most Common when scripting: 
+                HTML*Element (eg. HTMLBodyElement)
+                    -1 ELEMENT_NODE
+                Text 
+                    -3 TEXT_NODE
+                Attr
+                    -2 ATTRIBUTE_NODE 
+                HTMLDocument 
+                    -9 DOCUMENT_NODE
+                DocumentFragment
+                    -11 DOCUMENT_FRAGMENT_NODE
+                DocumentType
+                    -10 DOCUMENT_TYPE_NODE
+
+        NOTES: 
+            ATTRIBUTE_NODE 
+                not necessarily part of the tree but listed for historical reasons 
+
+                these are like subnodes for element nodes 
+            
+            COMMENT_NODE
+                are TEXT_NODE 
+            
+    1.3 Sub-node objects inherit from the NODE object
+        all node types inherit from NODE
+
+
+        Inheritance model: 
+            Object < Node < Element < HTMLElement < HTML*Element
+
+            Object < Node < Attr (deprecated in DOM 4)
+
+            Object < Node < CharacterData < Text
+
+            Object < Node < Document < HTMLDocument 
+
+            Object < Node < DocumentFragment
+
+    1.4 Properties and methods for working nodes 
+
+        Node Properties
+            -childNodes
+            -firstChild
+            -lastChild
+            -nextSibling
+            -nodeName
+            -nodeType
+            -nodeValue 
+            -parentNode
+            -previousSibling 
+
+        Node Methods
+            -appendChild()
+            -cloneNode()
+            -compareDocumentPosition()
+            -contains()
+            -hasChildNodes()
+            -insertBefore()
+            -isEqualNode()
+            -removeChild()
+            -replaceChild()
+        
+        Document Methods
+            -document.createElement()
+            -document.createTextNode()
+
+        HTML*Element Properties 
+            -innerHTML 
+            -outerHTML
+            -textContent
+            -innerText
+            -outerText
+            -firstElementChild
+            -lastElementChild
+            -nextElementChild 
+            -previousElementChild
+            -children 
+
+        HTML element Methods 
+            -insertAdjacentHTML()
+
+    1.5 Identifying the type and name of a node 
+
+        every node has a nodeType and nodeName property that is inherited from Node
+
+        Eg. 
+            Text nodes
+                nodeType code = 3
+                nodeName = '#text'
+
+
+        .nodeType and .nodeName property
+
+            eg:
+                document.doctype.nodeName //html 
+                document.doctype.nodeType //10
+
+                document.nodeName // '#document'
+                document.nodeType // 9
+
+                document.createDocumentFragment().nodeName, //'#document-fragment'
+	            document.createDocumentFragment().nodeType // 11
+
+                document.querySelector('a').nodeName, //'A'
+	            document.querySelector('a').nodeType //1
+
+                document.querySelector('a').firstChild.nodeName, //'#text'
+	            document.querySelector('a').firstChild.nodeType //3
+
+        It is importatnt to determine the type of node that you might be scripting so you can see the properties and methods that are available to script the node 
+
+    1.6 Getting a nodes value
+
+        .nodeValue Property
+            returns null for most of node types except Text and Comment Nodes 
+
+            use for extracting text and comment nodes 
+
+        eg. 
+
+        //logs null for DOCUMENT_TYPE_NODE, DOCUMENT_NODE, DOCUMENT_FRAGMENT_NODE, ELEMENT_NODE below
+        console.log(document.doctype.nodeValue);
+        console.log(document.nodeValue);
+        console.log(document.createDocumentFragment().nodeValue);
+        console.log(document.querySelector('a').nodeVale);
+
+        //logs string of text
+        console.log(document.querySelector('a').firstChild.nodeValue); //logs 'Hi'
+
+        text or comment node values is overwritten (not added) if you place a new value for it
+
+        eg. 
+
+        document.body.firstElementChild.nodeValue = 'hello'
+
+
+
+    1.7 Creating element and text nodes using Javascript methods 
+
+        2 Methods :
+
+            1. .createElement()
+                    1 parameter = string of what you will create as an <element>
+
+            2. .createTextNode()
+
+        Other methods but not used: 
+            1. .createAttribute()
+                    depricated and should not be used 
+
+            2. .createComment()
+
+    1.8 Creating and adding element and text nodes to the DOM using JavaScript strings 
+
+        .innerHTML, .outerHTML, .textContent and insertAdjacentHTML() 
+        
+        .innerHTML
+            -put literally inside the target HTML <element>
+            -actual DOM nodes 
+
+            eg. 
+
+            <div id="A"></div>
+            
+            document.getElementById('A').innerHTML = '<strong>Hi</strong>';
+
+            // <div id="A"><strong>Hi</strong></div>
+
+        .outerHTML
+            -put literally @ the target HTML <element> and replace
+            -if there are no target HTML <element>, add 
+
+            <span id="B"></span>
+
+            document.getElementById('B').outerHTML = '<div id="B" class="new">Whats Shaking</div>'
+
+            //<div id="B" class="new">Whats Shaking</div>
+
+        .textContent
+            -create text node and update the text node of the target HTML <element> (replace the text node value)
+            -text nodes only (even if you pass an element like string)
+
+
+            <div id="C"></div>
+
+            document.getElementById('C').textContent = 'dude';
+
+            //<span id="C">dude</span>
+
+
+        (NON STANDARD EXTENSIONS)
+        .innerText
+            -create text node and update text node (parang textContent)
+
+            <div id="D"></div>
+
+            document.getElementById('D').innerText = 'Keep it';
+
+            //<div id="D">Keep it</div>
+
+        .outerText 
+            -create text node and replace target element/text 
+
+            <div id="E"></div>
+
+            document.getElementById('E').outerText = 'real!';
+
+            //real!
+
+        Note! basta pag mga outer, nagrereplace/remove siya! 
+
+        target.insertAdjacentHTML('position', 'inserted')
+            only works for element nodes and is a good deal and more precise way!
+
+            literally ilalagay mo sa katabi nya
+            (not replacing/removing anything)
+
+            2 parameters 
+                position: 
+                    'beforebegin' - before opening tag of target
+                    'afterbegin' - after opening tag of target
+                    'beforeend' - before closing tag of target
+                    'afterend' - after closing tag of target
+
+                inserted:
+                    enclose in a string what you want to insert
+
+
+        Notes: 
+
+        document.write() can also be used to create and add nodes but not typically used anymore unless required by 3rd party scripting tasks
+            basically:
+                write() 
+                    will stall/block the parsing of the html document being loaded 
+
+        'beforebegin' and 'afterend'
+            will only work if the target node has a parent node and is in the DOM tree (not a text node)
+
+        outerHTML
+            not available in firefox natively until version 11
+            polyfill is available 
+
+        textContent vs innerText 
+            textContent gets the content of all elements including <script> and <style> 
+
+            innerText does not 
+
+            innerText is aware of the style and will not return the text of hidden elements, whereas textContent will
+
+            parang yung textContent ay kung ano talaga yung nasa html file, while yung innerText ay kung ano yung pinarse na sa DOM (just my own analogy)
+
+        @ Firefox: 
+            insertAdjacentElement()
+            insertAdjacentText()
+
+    1.9 Extracting parts of the DOM tree as JavaScript strings 
+
+        same properties that we use to create and add nodes are for extracting as a JavaScript String 
+
+        eg. 
+
+        <div id="A"><i>Hi</i></div>
+        <div id="B">Dude<strong> !</strong></div>
+
+        <script>
+
+        console.log(document.getElementById('A').innerHTML); //logs '<i>Hi</i>'
+
+        console.log(document.getElementById('A').outerHTML); //logs <div id="A">Hi</div>
+
+        //notice that all text is returned even if its in child element nodes (i.e. <strong> !</strong>) 
+        console.log(document.getElementById('B').textContent); //logs 'Dude !'
+
+        //NON standard extensions below i.e. innerText & outerText
+
+        console.log(document.getElementById('B').innerText); //logs 'Dude !'
+
+        console.log(document.getElementById('B').outerText); //logs 'Dude !'​​
+
+        Notes: 
+            textContent, innerText, outerText 
+                return all of the children text nodes! 
+
+    1.10 Adding node objects to the DOM using appendChild() & insertBefore() 
+
+        appendChild()
+            append a node to the END of the child node(s) of the node the method is called on 
+
+        insertBefore(nodeToBeInserted, referenceNode)
+            inserting a node before the selected referenceNode 
+
+            if referenceNode === null 
+                it functions as appendChild()
+
+    1.11 Removing and replacing nodes using removeChild() and replaceChild()
+
+        .removeChild(childNode)
+            1. select node you want to remove 
+            2. access its parentNode
+            3. then .removeChild
+
+        //remove element node
+        var divA = document.getElementById('A');
+        divA.parentNode.removeChild(divA);
+
+        //remove text node
+        var divB = document.getElementById('B').firstChild;
+        divB.parentNode.removeChild(divB);
+
+        //log the new DOM updates, which should only show the remaining empty div#B
+        console.log(document.body.innerHTML);
+
+        .replaceChild(newNode, referenceNode) 
+            1. select node you want to remove 
+            2. access its parentNode 
+            3. .replaceChild(newChild, oldChild)
+
+        Notes:
+            innerHTML, outerHTML, and textContent with an empty string is easier and faster than these methods (but prone to memory leaks)
+
+            both replaceChild() and removeChild() return the replaced or removed node
+                basically it's not gone, you still have a reference to it in memory 
+
+    1.12 Cloning nodes using cloneNode()
+        duplicate a single node or a node and all its children node 
+
+        single node only: .cloneNode()
+
+            <ul>
+            <li>Hi</li>
+            <li>there</li>
+            </ul>
+
+            <script>
+
+            var cloneUL = document.querySelector('ul').cloneNode();
+
+            console.log(cloneUL.constructor); //logs HTMLUListElement()
+            console.log(cloneUL.innerHTML); //logs (an empty string) as only the ul was cloned
+
+            </script>
+
+        node and its children: .cloneNode(true)
+
+            <ul>
+            <li>Hi</li>
+            <li>there</li>
+            </ul>
+
+            <script>
+
+            var cloneUL = document.querySelector('ul').cloneNode(true);
+
+            console.log(cloneUL.constructor); //logs HTMLUListElement()
+            console.log(cloneUL.innerHTML); //logs <li>Hi</li><li>there</li>
+
+            </script>
+
+        note:
+            all attributes and values are also cloned
+            only attributes are copied! 
+            everything else like event handlers is lost when cloning 
+
+            cloneNode(true) does not return a NodeList
+
+            cloneNode() may lead to duplicate element IDs (it does not query if there is an existing id already)
+                copy lang ng copy 
+
+    1.13 Grokking node collection
+
+        ie. NodeList
+            (document.querySelectorAll(*))
+
+            HTMLCollection
+            (document.scripts)
+
+        Array-like objects 
+
+        Characteristics:
+            -collection can either be live or static 
+                -nodes in a collection are either literally part of the live document or a snapshot of the live document 
+
+            -nodes are sorted inside of the collection by tree order 
+
+            -collections have a length properrty that reflects the number of elements in the list (elementNodes not textNodes)
+
+    1.14 Getting a list/collection of all immediate child nodes 
+        .childNodes Property
+            produces an array like list of the IMMEDIATE child nodes 
+        
+        note: 
+            childnodes contain also immediate text and comment nodes 
+
+            [].forEach pwede na gamitin 
+
+    1.15 Convert a NodeList or HTMLCollection to JavaScript Array 
+        confirming if it is an array:
+            use Array.isArray(nodelist/htmlcollection)
+                -will return false 
+
+        Advantages of converting a nodelist/collection into an array:
+            1. create a snapshot of the list that is not tied to the live DOM (nodelist and htmlcollection are live lists) 
+            2. gives access to methods of an Array object 
+
+        .call(nodelist/collection) or apply(nodelist/collection)
+
+            eg.
+                console.log(Array.isArray(Array.prototype.slice.call(document.links))); //returns true
+
+                console.log(Array.isArray(Array.prototype.slice.call(document.querySelectorAll('a')))); //returns true
+        
+        note: ES6 we already have an Array.from() for converting into array
+
+    1.16 Traversing nodes in the DOM 
+        from a node reference, traverse through the DOM by these properties: 
+
+            -parentNode
+            -firstChild
+            -lastChild
+            -nextSibling
+            -previousSibling
+
+        eg.
+            <!DOCTYPE html>
+            <html lang="en">
+            <body><ul><!-- comment -->
+            <li id="A"></li>
+            <li id="B"></li>
+            <!-- comment -->
+            </ul>
+
+            <script>
+
+            //cache selection of the ul
+            var ul = document.querySelector('ul');
+
+            //What is the parentNode of the ul?
+            console.log(ul.parentNode.nodeName); //logs body
+
+            //What is the first child of the ul?
+            console.log(ul.firstChild.nodeName); //logs comment
+
+            //What is the last child of the ul?
+            console.log(ul.lastChild.nodeName); //logs text not comment, because there is a line break
+
+            //What is the nextSibling of the first li?
+            console.log(ul.querySelector('#A').nextSibling.nodeName); //logs text
+
+            //What is the previousSibling of the last li?
+            console.log(ul.querySelector('#B').previousSibling.nodeName); //logs text
+
+            </script>
+            </body>
+            </html>
+
+        from a node reference, traverse through the DOM ignoring TEXT and COMMENT nodes (element traversing methods)
+            -firstElementChild
+            -lastElementChild
+            -nextElementChild
+            -previousElementChild
+            -children - //HTMLcollection, all child nodes including text nodes
+
+        note: 
+            childElementCount 
+                calculating number of child elements a node contains 
+
+    1.17 Verify a node position in the DOM tree with contains() & compareDocumentPosition()
+    
+        .contains()
+            elementNode.contains(containedNode)
+
+            <script>
+
+            // is <body> inside <html lang="en"> ?
+            var inside = document.querySelector('html').contains(document.querySelector('body'));
+
+            console.log(inside); //logs true
+
+            </script>
+
+        .compareDocumentPosition()
+            same parameters 
+
+            returns: 
+                0 - elements are identical
+
+                1 - DOCUMENT_POSITION_DISCONNECTED
+                    selected and passed in node are not in the same document 
+
+                2 - DOCUMENT_POSITION_PRECEDING
+                    passed in node is preceding selected node
+
+                3 - DOCUMENT_POSITION_FOLLOWING
+                    passed in node is following selected node
+
+                8 - DOCUMENT_POSITION_CONTAINS
+                    passed in node is an ancestor of selected node
+
+                16, 10 - DOCUMENT_POSITION_CONTAINED_BY (16, 10 in hexadecimal)
+                    passed in node is a descendant of selected node 
+                
+        notes: 
+            contains() will return true if identital 
+
+            compareDocumentPosition() can rather be confusing because it is possible for a node to have more than one type of relationship with another node. additive yung nagiging sagot/return value kapag dalawang position
+
+                eg. preceding and contains 
+                    return value: 10 
+    
+    1.18 How to determine if two nodes are identical
+        if and only if:
+            1. two nodes are of the same type 
+            2. following string attributes are equal:
+                    -nodeName 
+                    -localName
+                    -namespaceURI 
+                    -prefix
+                    -nodeValue
+
+                that is: they are both null, have the same length, and are character for character identical 
+
+            3. attributes NamedNodeMaps are equal
+                - both null 
+                - have the same length 
+                - for each node that exists in one map there is a node that exists in the other map and is equal even not the same index 
+
+            4. childNodes NodeLists are equal 
+                -both null
+                -have the same length 
+                -contain equal nodes at the same index 
+                -nodes should be normalized before being compared 
+
+        selectedNode.isEqualNode(comparedNode)
+
+            eg.
+
+                <input type="text">
+                <input type="text">
+
+                <textarea>foo</textarea>
+                <textarea>bar</textarea>
+
+                <script>
+
+                //logs true, because they are exactly idential
+                var input = document.querySelectorAll('input');
+                console.log(input[0].isEqualNode(input[1]));
+
+                //logs false, because the child text node is not the same
+                var textarea = document.querySelectorAll('textarea');
+                console.log(textarea[0].isEqualNode(textarea[1]));
+
+                </script>
+
+        note: you can use === operator for identical but not exactly equal 
+
+CHAPTER 2 - DOCUMENT NODES 
+
+    2.1 document node overview 
+            DOCUMENT_NODE (i.e. window.document)
+
+        notes: 
+            document.implementation.createHTMLDocument() 
+                possible to create your own HTML Document outside of the one currently loaded into the browser 
+
+            .createDocument()
+                create a document object
+    
+    2.2 HTMLDocument properties and methods (including inherited) 
+        noteworthy properties and methods 
+            doctype
+            documentElement
+            implementation.*
+            activeElement
+            body
+            head
+            title
+            lastModified
+            referrer
+            URL
+            defaultview
+            compatMode
+            ownerDocument
+            hasFocus()
+    
+    2.3 Getting general HTML document information (title, url, referrer, lastModified, compatMode)
+        document.title
+        document.url
+        document.referrer
+        document.lastModified
+        document.compatMode (compatibility) 
+            BackCompat (Quirks Mode) 
+            CSS1Compat (Strict Mode)
+
+    2.4 document child Nodes
+            one DocumentType node, one Element node 
+
+            <!DOCTYPE html>
+            <html lang = "en">
+
+            sila lang dalawa!
+
+        note: this is not the window.document object! 
+            window.document is the starting point for the DOM Interface
+
+        if a comment node is outside <html lang = "en">, it will be a child node of window.document not document
+
+        however, comment nodes outside of the html tag can cause some buggy results and a violation of the DOM specification 
+
+    2.5 document provides shortcuts to <!DOCTYPE>, <html lang="en">,<head>, and <body> 
+
+            properties for shortcut references: 
+
+                -document.doctype (<!DOCTYPE>)
+                -document.documentElement (<html lang="en">)
+                -document.head (<head>)
+                -document.body (<body>)
+
+        in Safari, Chrome, and Opera, .doctype is not in childnodes list! only .documentElement
+ 
+    2.6 Detecting DOM specifications/feautures using
+    
+        document.implementation.hasFeature()
+
+            what feature and level the browser has implemented/supports 
+
+            eg. 
+                console.log(document.implementation.hasFeature('Core','2.0'));
+                console.log(document.implementation.hasFeature('Core','3.0')); 
+
+        other parameters: (feature, version)
+        Core	1.0, 2.0, 3.0
+        XML	1.0, 2.0, 3.0
+        HTML	1.0, 2.0
+        Views	2.0
+        StyleSheets	2.0
+        CSS	2.0
+        CSS2	2.0
+        Events	2.0, 3.0
+        UIEvents	2.0, 3.0
+        MouseEvents	2.0, 3.0
+        MutationEvents	2.0, 3.0
+        HTMLEvents	2.0
+        Range	2.0
+        Traversal	2.0
+        LS (Loading and saving between files and DOM trees synchronously)	3.0
+        LS-Asnc (Loading and saving between files and DOM trees asynchronously)	3.0
+        Validation	3.0
+
+        notes:
+            use also capability detection in addition to hasFeature() 
+
+            isSupported() is for a specific/selected node only 
+                eg. element.isSupported(feature, version)
+
+    2.7 Get a reference to the focus/active node in the document 
+
+        document.activeElement
+        
+        eg. 
+
+            <textarea></textarea>
+
+            <script>
+
+            //set focus to <textarea>
+            document.querySelector('textarea').focus();
+
+            ​//get reference to element that is focused/active in the document
+            console.log(document.activeElement); //logs <textarea>
+
+            </script>
+
+    2.8 Determining if the document or any node inside of the document has focus 
+
+        document.hasFocus()
+
+            eg. 
+                <script>
+
+                //If you keep focus on the window/tab that has the document loaded its true. If not it's false.
+                setTimeout(function(){console.log(document.hasFocus())},5000);
+
+                </script>
+    
+    2.9 document.defaultview is a shortcut to the head/global object 
+            console.log(document.defaultView) //reference, head JS object. Would be window object in a browser.
+
+            if you are dealing with a DOM that is headless or a JS environment that is not running in a web browser (node.js) this property can get you access to the head object scope
+
+    2.10 Getting a reference to the Document from an element using ownerDocument
+
+            .ownerDocument
+                returns a reference to the Document the node is contained within
+                
+            if ownerDocument is called on the Document node, the value is null
+
+CHAPTER 3 - Element nodes
+    3.1 HTML*Element object overview 
+        
+        // grab <a> element node from DOM and ask for the name of the constructor that constructed it
+        console.log(document.querySelector('a').constructor);
+        //logs function HTMLAnchorElement() { [native code] }
+
+        list of interfaces/constructors used to create HTML elements:
+            HTMLHtmlElement
+            HTMLHeadElement
+            HTMLLinkElement
+            HTMLTitleElement
+            HTMLMetaElement
+            HTMLBaseElement
+            HTMLIsIndexElement
+            HTMLStyleElement
+            HTMLBodyElement
+            HTMLFormElement
+            HTMLSelectElement
+            HTMLOptGroupElement
+            HTMLOptionElement
+            HTMLInputElement
+            HTMLTextAreaElement
+            HTMLButtonElement
+            HTMLLabelElement
+            HTMLFieldSetElement
+            HTMLLegendElement
+            HTMLUListElement
+            HTMLOListElement
+            HTMLDListElement
+            HTMLDirectoryElement
+            HTMLMenuElement
+            HTMLLIElement
+            HTMLDivElement
+            HTMLParagraphElement
+            HTMLHeadingElement
+            HTMLQuoteElement
+            HTMLPreElement
+            HTMLBRElement
+            HTMLBaseFontElement
+            HTMLFontElement
+            HTMLHRElement
+            HTMLModElement
+            HTMLAnchorElement
+            HTMLImageElement
+            HTMLObjectElement
+            HTMLParamElement
+            HTMLAppletElement
+            HTMLMapElement
+            HTMLAreaElement
+            HTMLScriptElement
+            HTMLTableElement
+            HTMLTableCaptionElement
+            HTMLTableColElement
+            HTMLTableSectionElement
+            HTMLTableRowElement
+            HTMLTableCellElement
+            HTMLFrameSetElement
+            HTMLFrameElement
+            HTMLIFrameElement
+
+        each of this HTML*Element inherits property from HTMLElement, Element, Node, Object
+    
+    3.2 HTML*Element object properties and methods (including inherited)
+
+        noteworthy:
+            createElement()
+            tagName
+            children
+            getAttribute()
+            setAttribute()
+            hasAttribute()
+            removeAttribute()
+            classList()
+            dataset
+            attributes
+
+    3.3 Creating Elements 
+
+            document.createElement('tagName')
+
+            note: value passed to createElement is changed to a lower-case string before the element is created 
+
+    3.4 Get the tag name of an element 
+
+            .tagName Property
+                returns the same value as .nodeName 
+
+            eg. 
+                <a href="#">Hi</a>
+
+                <script>
+
+                console.log(document.querySelector('a').tagName); //logs A
+
+                //the nodeName property returns the same value
+                console.log(document.querySelector('a').nodeName); //logs A
+
+                </script>
+
+    3.5 Getting a list/collection of element attributes and values 
+
+            .attributes 
+                collection of attr nodes 
+                returns a list called NameNodeMap
+
+            note: 
+                array returned is considered live (can be changed anytime)
+
+                array inherits from NameNodeMap which can use the ff methods:
+                    -getNamedItem()
+                    -setNamedItem()
+                    -removeNamedItem()
+
+                    secondary to using: 
+                        -getAttribute()
+                        -setAttribute()
+                        -hasAttribute()
+                        -removeAttribute()
+
+                attributes property is an array-like collection, and has a readonly length property
+
+                Boolean attributes show up in attributes list but no value unless you provide one 
+
+    3.6 Getting, Setting, & Removing an element's attribute value 
+            .getAttribute('attribName')
+            .setAttribute('attribName', 'value')
+            .removeAttribute('attribName')
+
+        note:
+            use .removeAttribute instead of setting the value parameter of .setAttribute to null 
+
+            some attributes can be accesed as object properties. please avoid these and use the methods above 
+
+
+    3.7 Verifying an element has a specific attribute 
+
+        .hasAttribute('specificAttribute')
+
+            return value:
+                true - if the attribute is present even with the value of false or null 
+                false - not present
+
+    3.8 Getting a list of class attribute values 
+
+            .classList
+                return value: 
+                    all of the classes with their index
+
+                eg. 
+                    console.log(elm.classList); //big brown bear {0="big", 1="brown", 2="bear", length=3, ...}
+
+            .className (not recommended)
+                return value:
+                    exactly the value including spaces 
+
+                eg. 
+                    console.log(elm.className); //logs 'big brown bear'
+
+                not recommended because sometimes we want to target big only, or brown only....
+
+            note: 
+                classList - array-like, read-only length property 
+
+                classList - can be modified using the ff:
+                    .add()
+                    .remove()
+                    .contains()
+                    .toggle()
+
+                IE9 does not support classlist 
+                
+    3.9 Adding and Removing sub-values to a class attribute 
+
+        classList.add('className')
+        classList.remove('className')
+    
+    3.10 Togging a class attribute value 
+
+        classList.toggle('className')
+            add a class if there is none, remove a class if there is already
+
+    3.11 Determining if a class attribute value contains a specific value 
+
+        classList.contains('value')
+
+    3.12 Getting and Setting data-* attributes 
+
+        dataset Property
+            provides an object containing all the attributes of an element starting with data-*
+
+        eg. 
+
+            <div data-foo-foo="foo" data-bar-bar="bar"></div>​
+
+            <script>
+
+            var elm = document.querySelector('div');
+
+            //get
+            console.log(elm.dataset.fooFoo); //logs 'foo'
+            console.log(elm.dataset.barBar); //logs 'bar'
+
+            //set
+            elm.dataset.gooGoo = 'goo';
+            console.log(elm.dataset); //logs DOMStringMap {fooFoo="foo", barBar="bar", gooGoo="goo"}
+
+            //what the element looks like in the DOM 
+            console.log(elm); //logs <div data-foo-foo="foo" data-bar-bar="bar" data-goo-goo="goo">
+
+            </script>
+        
+        notes:
+            dataset (JS) contains camelCase. JS to HTML will convert the camelCase to kebab case
+
+            removing a dataset:
+                delete dataset.*        (js so camelCase)
+
+            not supported in IE9 
+                you can always use get/set/remove/hasAttribute('data-*') this is more recommended 
+
+CHAPTER 4 - Element Node Selecting 
+    4.1 Selecting a specific element node 
+
+            most common: 
+                .querySelector('selector')
+                .getElementById('idname')
+
+            where selector can be a CSS Selector syntax 
+            idname is as is. no #
+
+            notes: 
+                querySelector() will return the first node element found
+
+    4.2 Selecting/creating a list (aka Nodelist) of element nodes 
+
+            most common:
+
+                .querySelectorAll('selector')
+                .getElementByTagName('tagName')
+                .getElementsByClassName('className')
+
+            notes: 
+                NodeLists from getElementsByTagName() and getElementsByClassName() are live and will always reflect the state of the document even if the document is updated 
+
+                querySelectorAll() static, not live
+
+                querySelectorAll(), getElementsByTagName(), and getElementsByClassName are also defined on element nodes. This allows for the method to limit its results to specific vein(s) of the DOM tree (e.g. document.getElementById('header').getElementsByClassName('a'))
+
+                getElementsByName() method is not recommended because many elements can have the same name attribute value (groupings) eg. form, img, frame, radio 
+
+                if the parameter for querySelectorAll() and getElementByTagName() is *, it will return ALL elements of the DOCUMENT 
+
+    4.3 Selecting all immediate child element nodes 
+
+                .children Property
+                    immediate only
+
+                eg. 
+
+                    <ul>
+                    <li><strong>Hi</strong></li>
+                    <li>there</li>
+                    </ul>
+
+                    <script>
+
+                    var ulElement = document.querySelector('ul').children;
+
+                    //logs a list/array of all immediate child element nodes
+                    console.log(ulElement); //logs [<li>, <li>]
+
+                    </script>
+            
+            notes: 
+                HTMLCollection contains elements in document order, and placed in an array (which means you can access the indexes of each)
+
+                HTMLCollection are live 
+
+    4.4 Contextual element selecting
+            you can use querySelector(), querySelectorAll(), getElementsByTagName(), and getElementsByClassName() also on element nodes 
+
+            eg. 
+                var div = document.querySelector('div');
+
+                console.log(div.querySelector('ul'));
+                console.log(div.querySelectorAll('li'));
+                console.log(div.getElementsByTagName('li'));
+                console.log(div.getElementsByClassName('liClass'));
+
+            works only for their children 
+
+            also works for programatic DOM structures
+
+    4.5 Pre-configured selections/lists of element nodes 
+
+            legacy, preconfigured arrays-like-list other than the above mentioned earlier 
+
+                noteworthy:
+
+                    document.all - all elements in HTML document
+                    document.forms - all <form> elements in HTML document
+                    document.images - all <img> elements in HTML document
+                    document.links - all <a> elements in HTML document
+                    document.scripts - all <script> elements in HTML document
+                    document.styleSheets - all <link> or <style> objects in HTML document
+
+
+            notes:
+                document.styleSheets uses StyleSheetList not HTML Collection 
+
+                document.all is constructed from an HTMLAllCollection. not supported in Firefox 
+
+    4.6 Verify an element will be selected using matchesSelector() 
+
+            .matchesSelector('selector') 
+                determine if an element will match a selector string
+
+                do not forget the prefixes so it will not return false
+                    moz - Firefox 
+                    o - Opera
+                    ms - Internet Explorer
+                    webkit - Chrome, Safari
+
+            note: 
+                not recommended because its usage depends on browser 
+
+                it will be renamed as matches() in the future
+
+CHAPTER 5 - Element Node Geometry & Scrolling Geometry 
+    5.1 Element node size, offsets, and scrolling overview 
+            most of the properties (excluding scrollLeft and scrollTop) are read only and calculated each time they are accessed 
+            values are live 
+
+    5.2 Getting an elements offsetTop and offsetLeft values relative to the offsetParent
+            .offsetLeft - returns pixel value 
+            .offsetTop - returns pixel value 
+
+            .offsetParent - this is the reference node
+
+            in other words:
+                gives us the distance in pixels from an elements outside top and left border to the inside top and left border of the offsetParent
+
+            value of offsetParent is determined by searching the nearest ancestor elements for an element that has a CSS position value not equal to static. 
+
+            if none are found, <body> or document is returned as offsetParent value 
+
+
+        notes:
+            many browsers break the outside border to inside border measurement when the offsetParent is the <body> and the <body> or <html> element has a visible margin, padding, or border value
+
+            offsetParent, offsetTop, and offsetLeft are extensions to the HTMLelement object
