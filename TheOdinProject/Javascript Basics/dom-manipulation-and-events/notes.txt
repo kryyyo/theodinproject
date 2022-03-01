@@ -1745,3 +1745,1071 @@ CHAPTER 5 - Element Node Geometry & Scrolling Geometry
             many browsers break the outside border to inside border measurement when the offsetParent is the <body> and the <body> or <html> element has a visible margin, padding, or border value
 
             offsetParent, offsetTop, and offsetLeft are extensions to the HTMLelement object
+
+    5.3 Getting an elements top, right, bottom and left border edge offset relative to the viewport using getBoundingClientRect()
+
+        .getBoundingClientRect()
+            will get the distances of the BOUNDING EDGE (border) from the viewport starting with the TOP LEFT edge
+
+            it will add the properties:
+                .top
+                .right
+                .bottom
+                .left
+
+    5.4 Getting an elements size (border + padding + content) in the viewport
+        .getBoundingClientRect()
+            also returns a height and width property
+                .height
+                .width
+            
+            box sizing! 
+
+    5.5 Getting an elements size (padding + content) in the viewport excluding borders
+
+        return (padding + content)
+        .clientHeight
+        .clientWidth
+
+    5.6 Getting topmost element in viewport at a specific point using elementFromPoint()
+
+        starting from the top and left of viewport 
+
+        .elementFromPoint(px from top, px from left)
+
+        return the TOPMOST element (z over x priority)
+
+    5.7 Getting the size of the element being scrolled using scrollHeight and scrollWidth 
+
+        .scrollHeight
+        .scrollWidth
+
+        gives you the height and width of the node being scrolled 
+
+        note: the element itself ang minemeasure nito hindi yung content na nasa loob nya lalo na kapag smaller sa kanya 
+
+    5.8 Getting and Setting pixels scrolled from the top and left using scrollTop and scrollLeft 
+
+        .scrollTop
+        .scrollLeft 
+
+        parang setting the length of the scroll (kung gano kalaki yung pede pang iscroll) 
+
+    5.9 Scrolling an element into view using scrollIntoView()
+
+        pag iniscroll mo siya yung mavview
+            select the element inside the scrollable node, 
+            then .scrollIntoView(true)
+
+            true is optional because it is the default parameter
+
+            if false is the parameter, it will scroll to the bottom element
+
+CHAPTER 6 - Element Node Inline Styles 
+
+    6.1 Style Attribute (aka element inline CSS properties) Overview 
+
+        .style Property
+            returns a CSSStyleDeclaration (array-like), so different styles are indexed
+
+            inline element styles only ang nandito, di kasama ang internal at external styles 
+
+    6.2 Getting, setting, and removing individual inline CSS properties
+
+        <script>
+
+        var divStyle = document.querySelector('div').style;
+
+        //set
+        divStyle.backgroundColor = 'red';
+        divStyle.border = '1px solid black';
+        divStyle.width = '100px';
+        divStyle.height = '100px';
+
+        //get
+        console.log(divStyle.backgroundColor);
+        console.log(divStyle.border);
+        console.log(divStyle.width);
+        console.log(divStyle.height);
+
+        /*remove
+        divStyle.backgroundColor = '';
+        divStyle.border = '';
+        divStyle.width = '';
+        divStyle.height = '';
+        */
+
+        </script>
+
+    
+        setProperty, getProperty, removeProperty
+
+            <script>
+
+            var divStyle = document.querySelector('div').style;
+
+            //set
+            divStyle.setProperty('background-color','red');
+            divStyle.setProperty('border','1px solid black');
+            divStyle.setProperty('width','100px');
+            divStyle.setProperty('height','100px');
+
+            //get
+            console.log(divStyle.getPropertyValue('background-color'));
+            console.log(divStyle.getPropertyValue('border','1px solid black'));
+            console.log(divStyle.getPropertyValue('width','100px'));
+            console.log(divStyle.getPropertyValue('height','100px'));
+
+            /*remove
+            divStyle.removeProperty('background-color');
+            divStyle.removeProperty('border');
+            divStyle.removeProperty('width');
+            divStyle.removeProperty('height');
+            */
+
+            </script>
+
+    6.3 Getting, setting & removing all inline CSS properties 
+
+        using .cssText 
+            
+            //set using cssText
+            divStyle.cssText = 'background-color:red;border:1px solid black;height:100px;width:100px;';
+            
+            //get using cssText
+            console.log(divStyle.cssText);
+           
+            //remove
+            divStyle.cssText = '';
+
+        using .setAttribute, .getAttribute & .removeAttribute
+
+            //set using setAttribute
+            div.setAttribute('style','background-color:red;border:1px solid black;height:100px;width:100px;');
+            
+            //get using getAttribute
+            console.log(div.getAttribute('style'));
+            
+            //remove
+            div.removeAttribute('style');
+
+    6.4 Getting an elements computed style (ie. actual styles including any from the cascade) using getComputedStyle()
+
+        eto pwede na pati internal at external 
+        return CSSStyleDeclaration rin (read-only)
+
+        eg. 
+            //logs rgb(0, 128, 0) or green, this is an inline element style
+            console.log(window.getComputedStyle(div).backgroundColor);
+
+            //logs 1px solid rgb(128, 0, 128) or 1px solid purple, this is an inline element style
+            console.log(window.getComputedStyle(div).border);
+
+            //logs 100px, note this is not an inline element style
+            console.log(window.getComputedStyle(div).height);
+
+            //logs 100px, note this is not an inline element style
+            console.log(window.getComputedStyle(div).width);
+
+        getComputedStyle() honors CSS Specificity Hierarchy 
+       
+        returns rgb colors! kahit ano pang way of declaration niya (eg. hsl, ... )
+
+        shorthand properties are NOT COMPUTED
+    
+    6.5 Apply and remove css properties on an element using class & id attributes 
+
+        .setAttribute(id/class name, value)
+        .removeAttribute(id/classname)
+
+        .classList.add(className)
+        .classList.remove(className)
+
+CHAPTER 7 - Text Nodes 
+
+    7.1 Text object overview 
+
+        text in an html document is an instance of the Text() constructors
+
+    7.2 Text object & properties 
+
+        noteworthy properties:
+            textContent
+            splitText()
+            appendData()
+            deleteData()
+            insertData()
+            replaceData()
+            subStringData()
+            normalize()
+            data
+            document.createTextNode() (not a property or inherited property of text nodes but discussed in this chapter)
+
+    7.3 White space creates Text nodes
+
+        may text nodes sa whitespaces like returns, spaces, tabs
+
+        eg. 
+            <p id="p1"></p>
+            <p id="p2"> </p>
+
+            <script>
+
+            console.log(document.querySelector('#p1').firstChild) //logs null
+            console.log(document.querySelector('#p2').firstChild.nodeName) //logs #text
+
+            </script>
+
+    7.4 Creating and Injecting Text Nodes 
+
+        document.createTextNode('text'); 
+
+        (like createElement)
+
+        then append
+
+        we can also create text node programatically (without appending yet) 
+
+    7.5 Getting a Text node value with .data or nodeValue 
+
+        eg: 
+            <p>Hi, <strong>cody</strong></p><body>
+
+            <script>
+
+            console.log(document.querySelector('p').firstChild.data); //logs 'Hi,'
+            console.log(document.querySelector('p').firstChild.nodeValue); //logs 'Hi,'
+
+            </script>
+
+        note: 
+            getting the length, just add .length after
+    
+    7.6 Manipulating Text nodes with appendData(), deleteData(), insertData(), replaceData(), subStringData()
+
+        methods of CharacterData (where Text nodes inherit)
+            appendData('text')
+            deleteData(indexStart, numberOfElementsToBeRemoved)
+            insertData(indexStart, 'text')
+            replaceData(indexStart, numberOfElementsToBeRemoved, 'textReplacement')
+            subStringData(indexStart, numberOfElementsToBeExtracted)
+
+        same methods can beused by comment nodes 
+    
+    7.7 When multiple sibling Text nodes occur 
+
+
+            <p>Hi, <strong>cody</strong> welcome!</p>
+
+            element, text, element, text, text 
+
+            if programatically done: 
+
+                creating two text nodes even if it is like connecting to each other, will result to TWO text nodes (in this example: 'Hi Cody')
+
+                var pElementNode = document.createElement('p');
+                var textNodeHi = document.createTextNode('Hi ');
+                var textNodeCody = document.createTextNode('Cody');
+
+                pElementNode.appendChild(textNodeHi);
+                pElementNode.appendChild(textNodeCody);
+
+                document.querySelector('div').appendChild(pElementNode);
+
+                console.log(document.querySelector('div p').childNodes.length); //logs 2​
+
+    7.8 Remove markup and return all child Text nodes using textContent
+                 
+            .textContent
+                return all child text nodes even if they are not sunod-sunod 
+                return will be a concatenated string of all text nodes
+
+
+            modifying .textContent = 'text' 
+                will remove all the child nodes (including element nodes) 
+                then replacing it with a single text node of 'text'
+
+        note: 
+            textContent returns null when used in document or doctype node
+
+            textContent returns contents from <script> and <style> elements 
+
+    7.9 Difference between textContent & innerText 
+
+        innerText is aware of CSS. styles are applied including the hidden. it will not return the hidden text
+
+        innerText will trigger a reflow or recalculation based on CSS 
+
+        innerText ignores text nodes in <style> and <script>
+
+        innerText will normalize the text that is returned 
+        textContent return exactly what is in the document (including whitespaces, carriage returns and line breaks)
+
+        innerText is non-standard and browser specific (not suitable for Firefox)
+
+    7.10 Combine sibling Text nodes into one text node using normalize()
+
+        creating two text nodes programatically can result to different child text nodes after appending. to concatenate two text nodes (without element nodes in between), we use parentNode.normalize(). then it will result to one text node nalang 
+
+    7.11 Splitting a text node using splitText()
+            kung ang normalize ay combining text nodes, eto naman ay splitting text nodes into two
+
+                .splitText(startIndex) (kasama siya)
+
+                eg.
+
+                    <p>Hey Yo!</p>
+
+                    <script>
+
+                    //returns a new text node, taken from the DOM
+                    console.log(document.querySelector('p').firstChild.splitText(4).data); //logs Yo!
+
+                    //What remains in the DOM...
+                    console.log(document.querySelector('p').firstChild.textContent); //logs Hey
+
+                    </script>
+
+CHAPTER 8 - DocumentFragment Nodes 
+
+    8.1 DocumentFragment object overview 
+            provides a light weight document DOM that is external to the live DOM tree 
+
+            empty document template acting like the live DOM tree, but only lives in memory and its child nodes can easily be manipulated then appending to the live DOM
+
+            parang other version without working on the original version
+
+    8.2 Creating DocumentFragment's using createDocumentFragment()
+            
+            document.createDocumentFragment();
+
+            eg.
+                <script>
+
+                var docFrag = document.createDocumentFragment();
+
+                ["blue", "green", "red", "blue", "pink"].forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.textContent = e;
+                    docFrag.appendChild(li);
+                });
+
+                console.log(docFrag.textContent); //logs bluegreenredbluepink
+
+                </script>
+
+            using documentFragment is efficient when it comes to inject the documentFragment into live node structures 
+
+            difference between documentFragment and createElement
+
+                document fragment may contain any kind of node
+
+                document fragment itself is not added to the DOM when you append a fragment. the contents of the nodes are. in createElement, the element itself is part of the appending
+
+                after transfering to the DOM, document fragment is no longer in memory in the place you created it. whereas in createElement, it is. 
+
+    8.3 Adding a DocumentFragment to the live DOM 
+
+            .appendChild(documentFragment)
+            .insertBefore(documentFragment, referenceNode)
+
+            eg.
+
+                <ul></ul>
+
+                <script>
+
+                var ulElm = document.queryselector('ul');
+                var docFrag = document.createDocumentFragment();
+
+                ["blue", "green", "red", "blue", "pink"].forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.textContent = e;
+                    docFrag.appendChild(li);
+                });
+
+                ulElm.appendChild(docFrag);
+
+                //logs <ul><li>blue</li><li>green</li><li>red</li><li>blue</li><li>pink</li></ul>
+                console.log(document.body.innerHTML);
+
+            basta ang nilalagay nya lang ay yung contents nya! (pinakacontent kasa mga tags)
+
+    8.4 Using innerHTML on a documentFragment 
+
+        you cannot use directly an innerHTML property in docFrag because it is a document like node
+
+            eg.
+
+                <script>
+
+                //create a <div> and document fragment
+                var divElm = document.createElement('div');
+                var docFrag = document.createDocumentFragment();
+
+                //append div to document fragment
+                docFrag.appendChild(divElm);
+
+                //create a DOM structure from a string
+                docFrag.querySelector('div').innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+
+                //the string becomes a DOM structure I can call methods on like querySelectorAll()
+                //Just don't forget the DOM structure is wrapped in a <div>
+                console.log(docFrag.querySelectorAll('li').length); //logs 2
+
+                </script>
+
+        when appending a DOM structure using documentFragment and <div>, you'll want to append the structure skipping the injection of the <div> 
+
+            eg.
+                <script>
+
+                //create a <div> and document fragment
+                var divElm = document.createElement('div');
+                var docFrag = document.createDocumentFragment();
+
+                //append div to document fragment
+                docFrag.appendChild(divElm);
+
+                //create a DOM structure from a string
+                docFrag.querySelector('div').innerHTML = '<ul><li>foo</li><li>bar</li></ul>';
+
+                //append, starting with the first child node contained inside of the <div>
+                document.querySelector('div').appendChild(docFrag.querySelector('div').firstChild);
+
+                //logs <ul><li>foo</li><li>bar</li></ul>
+                console.log(document.querySelector('div').innerHTML);
+
+                </script>
+
+        note:
+            DOMParser
+                parse HTML stored in a string into a DOM Document
+                supported only in OPERA and FIREFOX
+            
+            domify 
+                if you want a stand along HTML to DOM 
+
+    8.5 Leaving a fragments containing nodes in memory by cloning
+            .cloneNode(true)
+
+            eg. 
+
+                <script>
+
+                //create ul element and document fragment
+                var ulElm = document.querySelector('ul');
+                var docFrag = document.createDocumentFragment();
+
+                //append li's to document fragment
+                ["blue", "green", "red", "blue", "pink"].forEach(function(e) {
+                    var li = document.createElement("li");
+                    li.textContent = e;
+                    docFrag.appendChild(li);
+                });
+
+                //append cloned document fragment to ul in live DOM
+                ulElm.appendChild(docFrag.cloneNode(true));
+
+                //logs <li>blue</li><li>green</li><li>red</li><li>blue</li><li>pink</li>
+                console.log(document.querySelector('ul').innerHTML);
+
+                //logs [li,li,li,li,li] 
+                console.log(docFrag.childNodes);
+
+                </script>
+
+CHAPTER 9 - CSS Style Sheets & CSS rules 
+
+    9.1 Overview 
+
+        style sheet 
+            added either by:
+                HTMLLinkElement node (external link)
+                HTMLStyleElement node (internal style)
+
+    9.2 Accessing all style sheets (i.e. CSSStylesheet objects) in DOM 
+
+            document.styleSheets
+                returns an arraylike collection (CSSStyleSheet) where stylesheets are indexed 
+
+                indexes are based on top down declaring of stylesheet 
+
+                eg.
+                    <link href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css" rel="stylesheet" type="text/css">
+
+                    <style>
+                    body{background-color:red;}
+                    </style>
+
+                    </head>
+                    <body>
+
+                    <script>
+
+                    console.log(document.styleSheets.length); //logs 2
+                    console.log(document.styleSheets[0]); // the <link>
+                    console.log(document.styleSheets[1]); // the <style>
+
+
+            .sheet Property
+                same as accessing the stylesheets using indexes 
+
+            eg. 
+                //get CSSStylesheeet object for <link>
+                console.log(document.querySelector('#linkElement').sheet); //same as document.styleSheets[0] 
+
+                //get CSSSstylesheet object for <style>
+                console.log(document.querySelector('#styleElement').sheet); //same as document.styleSheets[1]
+
+    9.3 CSSStyleSheet properties and methods 
+
+            properties and methods available:
+
+                disabled
+                href
+                media
+                ownerNode
+                parentStylesheet
+                title
+                type
+                cssRules
+                ownerRule
+                deleteRule
+                inserRule
+
+            note: 
+                href, media, ownerNode, parentStylesheet, title, and type are read only properties. you cant set its value using these properties 
+
+    9.4 CSSStyleRule overview 
+
+            represents each CSS rule contained in a style sheet 
+            interface to the CSS properties and values attached to a selector
+
+            also an array-like collection 
+
+            eg.
+
+                <style id="styleElement">
+                body{background-color:#fff;margin:20px;} /*this is a css rule*/
+                p{line-height:1.4em; color:blue;} /*this is a css rule*/
+                </style>
+
+                </head>
+                <body>
+
+                <script>
+
+                var sSheet = document.querySelector('#styleElement');
+
+                console.log(sSheet.cssRules[0].cssText); //logs "body { background-color: red; margin: 20px; }"
+
+                console.log(sSheet.cssRules[1].cssText); //logs "p { line-height: 1.4em; color: blue; }"
+
+                </script>
+
+    9.5 CSSStyleRule properties and methods
+
+            properties and methods available:
+
+                cssText
+                parentRule
+                parentStylesSheet
+                selectorText
+                style
+                type
+
+    9.6 Getting a list of CSS Rules in a style sheet using CSSRules 
+
+            provides all CSSRules in a SPECIFIC stylesheet
+                meaning you first select the stylesheet (external or internal) then you count the CSSRules inside it. you cannot count the total rules combining external and internal
+
+                eg. 
+
+                    <script>
+                    
+                    //selecting internal stylesheet
+                    var sSheet = document.querySelector('#styleElement').sheet;
+
+                    //array like list containing all of the CSSrule objects repreesenting each CSS rule in the style sheet
+                    console.log(sSheet.cssRules);
+
+                    console.log(sSheet.cssRules.length); //logs 2
+
+                    //rules are index in a CSSRules list starting at a 0 index
+                    console.log(sSheet.cssRules[0]); //logs first rule
+                    console.log(sSheet.cssRules[1]); //logs second rule
+
+                    </script>
+
+    9.7 Inserting & deleting CSS rules in a stylesheet using .insertRule() and .deleteRule() 
+
+        programatically manipulate CSS rules in a stylesheet (same as pushing in an array)
+
+        .insertRule('rule', index)
+        .deleteRule(index)
+
+    
+        note: 
+            inserting and deleting rule is hard and not a common practice. it is much simpler working on the ORIGINAL CSS AND HTML file before they are serve to a client
+
+            classes can be used in modifying styles (has already predefined rules)
+
+    9.8 Editing the value of a CSSStyleRule using the .style Property
+
+            1. select the rule using indexes
+            2. add .style.rule = 'value';
+        
+        eg. 
+            <script>
+
+            var styleSheet = document.querySelector('#styleElement').sheet;
+
+            //Set css rules in stylesheet
+            styleSheet.cssRules[0].style.color = 'red';
+            styleSheet.cssRules[1].style.color = 'purple';
+
+            //Get css rules
+            console.log(styleSheet.cssRules[0].style.color); //logs 'red'
+            console.log(styleSheet.cssRules[1].style.color); //logs 'purple'
+
+            </script>
+
+        
+    9.9 Creating a new internal CSS style sheets 
+
+            1. create an element style 
+            2. create an innerHTML on style Element3
+            3. append inside <head>
+
+    9.10 Programatically adding external style sheets to an HTML document 
+
+            1. create element link 
+            2. setAttributes of rel, type, href, and id 
+            3. append inside <head> 
+
+    9.11 Disabling/Enabling style sheets using disabled property 
+
+            1. select stylesheet 
+            2. add .disabled = true
+
+        note: you cannot add disabled as an attribute to link or style. html document will fail 
+
+CHAPTER 10 - JavaScript in the DOM 
+
+    10.1 Inserting and executing Javascript overview 
+            internal JS (<script>) and external JS (<script src='.js'>)
+        
+        note: 
+            not considered a modern practice but doable:
+                -set attribute of JS event handler
+                -set attribute href with a value of 'javascript: code to execute'
+
+            if external JS and internal JS is on the same <script> tag, internal JS will be ignored 
+
+            do not do self closing scripts 
+
+            <script> optional attributes 
+                async
+                charset
+                defer
+                src
+                type 
+
+            Internal JS produces text nodes which can be extracted using innerHTML and textContent. However, appending a new text node made up of JS codes after DOM has already loaded, will not execute the code. It simply replaces the text (so parang as comment lang siya)
+
+            if JS code contains string '</script>' you need to escape / so that the parser does not think this is the real closing tag. 
+
+            <\/script>
+
+    10.2 JavaScript is parsed synchronously by default
+
+            js script can block the parsing of DOM so its best to add script tag before the closing tag of body (after DOM has parsed)
+
+    10.3 Defering the downloading and execution of external JavaScript using defer
+
+            adding defer attribute to script tag so it will not block the downloading of DOM / parsing of the whole HTML 
+
+            javascript will be parsed after
+
+        note: 
+            defer is Boolean
+
+            using defer, document.write() is not being used in the JS that will be defered 
+    
+    10.4 Asynchronously downloading and executing external JavaScript files using async 
+
+            async attribute
+                override the sequential blocking nature of <script> 
+                JS files are loaded in parallel (simultaneously) with DOM 
+
+            note: 
+                IE9 has no support for this 
+
+                major drawback: JS files potentially get parsed out of the order they are included in the DOM 
+
+                async is Boolean 
+
+                using async, document.write() is not being used in the JS that will be defered 
+
+                async will trump defer if both are used in the same script element 
+
+    10.5 Forcing asynchronous downloading and parsing of external JavaScript using dynamic <script> 
+
+            eg. 
+                <script>
+                var underscoreScript = document.createElement("script"); 
+                underscoreScript.src = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"; 
+                document.body.appendChild(underscoreScript);
+                </script>
+
+            note:
+                major drawback: files potentially get parsed out of order 
+
+    10.6 Using the onload call back for asynchronous <script>'s so we know when it's loaded
+
+        .onload 
+            load event handler that will execute once an external JS file has been loaded and executed 
+
+
+        note:
+            using onload event is only the tip of the iceberg. you also have use of onerror, load, and error 
+
+    10.7 Be mindful of <script>'s placement in HTML for DOM manipulation
+
+            place before closing tag of body 
+
+    10.8 Getting a list of <script>'s in the DOM 
+
+            document.scripts
+                provides a list (array-like again) of all the scripts currently in the DOM 
+
+CHAPTER 11 - DOM Events 
+
+    11.1 DOM events overview 
+            Event 
+                pre-defined or custom moment in time that occurs in relationship with an element in the DOM, the document object or the window object
+
+                these moments can be initiated by that state of the UI, state of the environment that is running the JS program, or the state of the program itself 
+
+            Setting up events. 3 methods:
+                1. inline attribute event handlers 
+                2. property event handlers 
+                3. addEventListener() method 
+
+                eg. 
+
+                    <!-- inline attribure event handler pattern -->
+                    <body onclick="console.log('fire/trigger attribure event handler')">
+
+                    <div>click me</div>
+
+                    <script>
+                    var elementDiv = document.querySelector('div');
+
+                    // property event handler pattern
+                    elementDiv.onclick = function(){console.log('fire/trigger property event handler')};
+
+                    //addEventListener method pattern
+                    elementDiv.addEventListener('click',function(){console.log('fire/trigger addEventListener')}, false);
+                    </script> 
+
+                downside of property event handlers: 
+                    eg. 
+
+                        // property event handler 
+                        elementDiv.onclick = function(){console.log('I\'m first, but I get overidden/replace')};
+
+                        //overrides/replaces the prior value
+                        elementDiv.onclick = function(){console.log('I win')};
+
+        Notes: 
+            Element nodes & window object support inline, property event handlers, and addEventListener() method 
+
+            Document node supports property handlers, and addEventListener()
+
+    11.2 DOM event types 
+            http://domenlightenment.com/#11.2 
+            check event types here 
+
+            UI events
+                load
+                unload
+                abort
+                error
+                resize
+                scroll
+                contextmenu
+
+            Focus events 
+                blur
+                focus
+                focusin
+                focusout 
+
+            Form events 
+                change
+                reset
+                submit
+                select 
+
+            Mouse events 
+                click
+                    mousedown>mouseup>click
+                dblclick
+                mousedown
+                mouseenter
+                    parang hover but it does not bubble 
+                mouseleave
+                    hover out and does not bubble
+                mousemove
+                mouseout 
+                    like mouseleave but bubbles and cancellable
+                mouseup
+                mouseover 
+                    like mouseenter but bubbles and cancellable
+
+            Wheel Events
+                wheel (or mousewheel)
+                    any axis rotation
+
+            Keyboard Event
+                keydown
+                    sent for any key
+                keypress 
+                    like keydown but the key normally produces a character value
+                keyup 
+                    always follows keydown and keypress 
+
+            Touch Events 
+                touchstart
+                    user touch a surface
+                touchend 
+                    removes a touch point or touch point leave the surface of the screen (touch drag out)
+                touchmove 
+                    moves a touch point along the touch surface (dragging)
+                touchenter 
+                    touch point MOVES into an interactive area 
+                touchleave
+                    touch point MOVES OFF into an interactive area 
+                touchcancel
+                    disrupted touch point 
+
+            note: supported on IOS, Android, Blackberry or browsers that can switch on touch 
+
+            Window, <body>, and frame specific events 
+                afterprint 
+                beforeprint
+                beforeunload
+                hashchange
+                    changes to the portion of URL that follows a number sign #
+                message
+                    user sends a cross-document message
+                    message sent from a Worker with postMessage
+                offline
+                online
+                pagehide
+                pageshow
+            
+            Document specific events
+                readystatechange
+                DOMContentLoaded
+                    webpage has been parsed but before resources have been fully downloaded 
+                
+            Drag events 
+                drag 
+                    continously dragging (on process) (sourceobject)
+                dragstart
+                    starts to drag (before drag) (sourceobject)
+                dragend
+                    releases the mouse after drag (sourceobject)
+                dragenter
+                    user drags the object to a valid drop target (targetelement)
+                dragleave
+                    user moves the mouse out of a valid drop target during drag operation (targetobject)
+                dragover
+                    like drag but target element 
+                drop 
+                    mouse button released during a drag-and-drop operation 
+                
+        Note: these are the common types, there are more types in HTML5 like media events for <video> and <audio>
+
+        copy,cut, and textinput event are not defined by DOM 3 events or HTML5
+
+        Use mouseenter and mouseleave instead of mouseover and mouseout. Firefox, Chrome and Safari haven't added mouseover and mouseout yet. 
+
+    11.3 The event flow 
+
+            capture phase
+                parent to child (in)
+            bubbling phase 
+                child to parent (out)
+            or both 
+
+        Typically, events are assumed to be invoked during the bubbling phase because capture phase is unreliable back then
+
+        notes:
+            modern browsers DO support the use of the capture phase. one could intercept an event before it occurs on the event target 
+
+            eventPhase property
+                which phase an event is invoked in
+                1 - capture phase
+                2 - target phase
+                3 - bubbling phase
+
+    11.4 Adding event listeners to Element nodes, window object, and Document object
+
+            .addEventListener('event type', 'function to be invoked', 'boolean')
+
+                event type do not contain the prefix on-, unlike in property event handlers 
+
+                boolean parameter indicates if the event should be fired during the capture phase or bubbling phase of the event flow 
+                    true - capture
+                    false - bubbling
+
+            Note:
+                typically, a developer wants to fire during the bubbling phase. so the third parameter is always false. we can also leave the third parameter as its default is false 
+
+                addEventListener() method can be used on the XMLHttpRequest object
+
+    11.5 Removing event listeners
+
+            .removeEventListener('event type', 'function invoked', 'boolean') 
+                remove event listeners if the original listener was not added using an ANONYMOUS function.
+
+                function invoked can't be an anonymous function!!! 
+                it's important to use named functions
+                parameters of .remove must be exactly the same as what you passed in .add 
+
+    11.6 Getting event properties from the event object 
+
+            event object also provides these methods:
+                .stopPropagation()
+                .stopImmediatePropagation()
+                .preventDefault()
+
+    11.7 The value of this when using addEventListener()
+
+        this Property
+            reference to the node or object the event is attached to.
+            kung san lang nakakabit yung event, kahit pumindot ka pa ng child element nya, sya parin ang lalabas 
+
+        event.currentTarget
+            reference to the node or object the event is attached to. same as this property lang 
+
+    11.8 Referencing the target of an event and not the node or object the event is invoked on 
+
+        event.target 
+            reference to the node or object that the event ORIGINATED. not the event is attached per se. 
+
+            document.body.addEventListener('click',function(event){
+            //when the <div> is clicked logs '<div>' because the <div> was the target in the event flow not the <body>
+            console.log(event.target); 
+            },false);
+
+    11.9 Cancelling default browser event using preventDefault()
+
+            .preventDefault()
+                prevents the default event of an element. eg anchors navigating to url, checkboxes having ticks when clicked, text field typing text but the event will STILL FLOW. it will not stop 
+
+            
+        Notes:
+            preventDefault() methods does not stop events from propagating (i.e. bubbling or capture phases)
+
+            return false
+                provide at the end of the body of the event listener to call preventDefault() 
+            
+            cancelable Property
+                event listener functions boolean property
+                respond to preventDefault() and cancelling default behavior 
+                sila lang pwedeng lagyan ng preventDefault()
+
+            defaultPrevented 
+                event lister function property 
+                return true if preventDefault() has been invoked in bubbling phase 
+
+    11.10 Stopping the event flow using stopPropagation()
+
+            .stopPropagation() 
+                stop the capture and bubble event flow but any events directly attached to the node or object will still be invoked. 
+
+                does not prevent default events 
+    
+    11.11 Stopping the event flow as well as other like events on the same target using stopImmediatePropagation()
+
+            .stopImmediatePropagation()
+                stop the event flow as well as any other like events attached to the event target 
+
+            eg.
+                //first event attached
+                document.querySelector('div').addEventListener('click',function(){
+                console.log('I get invoked because I was attached first');
+                },false);
+
+                //seond event attached
+                document.querySelector('div').addEventListener('click',function(event){
+                console.log('I get invoked, but stop any other click events on this target');
+                event.stopImmediatePropagation();
+                },false);
+
+                //third event attached, but because stopImmediatePropagation() was called above this event does not get invoked
+                document.querySelector('div').addEventListener('click',function(){
+                console.log('I get stopped from the previous click event listener');
+                },false);
+
+                //notice that the event flow is also cancelled as if stopPropagation was called too
+                document.body.addEventListener('click',function(){
+                console.log('What, denied from being invoked!');
+                },false);
+
+            does not prevent default events 
+    
+    11.12 Custom Events 
+        creating:
+            document.createEvent('customEvent')
+
+        setup the details:
+            .initCustomEvent('event', bubble?, cancellable?, pass values to event.detail)
+
+        invoking custom event
+            .dispatchEvent('event') 
+
+        IE9 requires the 4th parameter on initCustomEvent
+
+    11.13 Simulating/Triggering mouse events 
+
+            eg. 
+                var divElement = document.querySelector('div');
+
+                //setup click event that will be simulated
+                divElement.addEventListener('click',function(event){
+                    console.log(Object.keys(event));
+                },false);
+
+                //create simulated mouse event 'click'
+                var simulateDivClick = document.createEvent('MouseEvents');
+
+                /*setup simulated mouse 'click'
+                initMouseEvent(type,bubbles,cancelable,view,detail,screenx,screeny,clientx,clienty,ctrlKey,altKey,shiftKey,metaKey,button,relatedTarget)*
+                simulateDivClick.initMouseEvent('click',true,true,document.defaultView,0,0,0,0,0,false,false,false,0,null,null);
+
+                //invoke simulated clicked event
+                divElement.dispatchEvent(simulateDivClick);
+
+    11.14 Event Delegation 
+
+            programmatic act of leveraging the event flow and a single event listener to deal with multiple event targets
+
+            side-effect: kahit wala pa DOM nag rerespond na sa events 
+
+            note: event delegation is ideal when dealing with a click, mousedown, mouseup, keydown, keyup, and keypress 
+
+Chapter 12 - Creating dom.js - a wishful jQuery inspired DOM library for modern browsers
+    12.1 dom.js overview 
+
+            jQuery like DOM library (custom made)
+
+    I will skip this chapter. Balik nalang tayo next time. 
+
+    
+
