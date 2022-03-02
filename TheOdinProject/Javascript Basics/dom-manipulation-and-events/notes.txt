@@ -1720,7 +1720,7 @@ CHAPTER 4 - Element Node Selecting
             note: 
                 not recommended because its usage depends on browser 
 
-                it will be renamed as matches() in the future
+                it will be renamed as .matches() in the future
 
 CHAPTER 5 - Element Node Geometry & Scrolling Geometry 
     5.1 Element node size, offsets, and scrolling overview 
@@ -2812,4 +2812,23 @@ Chapter 12 - Creating dom.js - a wishful jQuery inspired DOM library for modern 
     I will skip this chapter. Balik nalang tayo next time. 
 
     
+
+PLAIN JS - additional notes
+
+    for looping on getElementsByClassName() 
+        updating a class means deleting the current class then adding the new class. that will leave us to original length - 1, then go back to original length
+
+        but querySelectorAll() is much more viable
+    
+    referenceElement.closest('findElement')
+        get the first element that matches the selector by testing the element itself and travsersing up through its ancestors in the DOM tree 
+    
+    Unwrap a DOM element
+        move all children out of the parent element (use .insertBefore) 
+        then remove parentNode 
+
+    Empty element's content
+        parentNode.innerHTML = ''
+
+    .insertBefore, .insertAfter, .insertAdjacentHTML
 
