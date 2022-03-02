@@ -2832,3 +2832,48 @@ PLAIN JS - additional notes
 
     .insertBefore, .insertAfter, .insertAdjacentHTML
 
+w3schools - additonal notes 
+
+     this is for clearer syntax (with parameters):
+     https://www.w3schools.com/js/js_htmldom_document.asp
+
+
+    3 different parts of W3C DOM standard 
+        -Core DOM - standard model for all document types 
+        -XML DOM - standard model for XML documents 
+        -HTML DOM - standard model for HTML documents 
+    
+    property - value 
+    method - action 
+
+    Date() - returns the date
+
+    document.write(content) - use to write directly where you put the <script>
+                            - never use after document has loaded because it may overwrite the document 
+
+    JS Form Validation 
+        we can use .value property and test it
+        
+        then add an event submit with your named function validateForm()
+
+        required attribute 
+            if field is empty, prevents form from submitting 
+
+    2 Types of Data Validation
+        Server side Validation
+            perform by web server, after input has been sent to the server 
+        
+        Client side validation 
+            perform by web browser, before input is sent to a web server 
+
+    Constraint Validation HTML input attributes: 
+        https://www.w3schools.com/html/html_form_attributes.asp
+
+    Constraint Validation CSS Pseudo Selectors 
+        https://www.w3schools.com/css/css_pseudo_classes.asp
+
+    addEventListener(event, function, useCapture);
+        useCapture values:
+            true - capturing 
+            default/false - bubbling 
+        
