@@ -2909,3 +2909,26 @@ JS DOM Crash Course from Traversy Media
     .firstElementChild
     .nextElementSibling
     .previousElementSibling
+
+    Events
+        .value
+
+        .clientX - position of the event from the LEFT window browser as origin
+        .clientY - position of the event from the TOP window browser as origin
+        .offsetX, .offsetY - same as clientX and Y but reference from the actual target element
+
+        .altKey - if your holding down the alt key or not when initiating the event
+        .ctrlKey - if your holding down the ctrl key or not when initiating the event
+        .shiftKey - if your holding down the shift key or not when initiating the event
+
+        .mouseover, mouseout - bubbling and capturing
+        .mouseenter, mouseleave - no bubbling and capturing
+        
+        for forms: 
+        cut
+        paste
+        input - anything you do with the input
+        submit
+
+        for select: 
+        change
