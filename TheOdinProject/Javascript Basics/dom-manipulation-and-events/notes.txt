@@ -2932,3 +2932,9 @@ JS DOM Crash Course from Traversy Media
 
         for select: 
         change
+
+    good method for filtering:
+    https://www.youtube.com/watch?v=i37KVt_IcXw&list=PLillGF-RfqbYE6Ik_EuXA2iZFcE082B3s&index=5
+
+    using indexOf, with the value of != -1 
+    para lahat makikita nya hindi lang yung exact word 
