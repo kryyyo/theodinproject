@@ -2876,4 +2876,22 @@ w3schools - additonal notes
         useCapture values:
             true - capturing 
             default/false - bubbling 
-        
+
+JS DOM Crash Course from Traversy Media
+    console.dir(target)
+        lists as directory. you can see all what you can access from the target 
+
+    console.log(target.all)
+        you can see the array(HTML Collection) of nodes of the target. complete with their index
+
+    document.forms - return array of all forms 
+    document.links - return array of all links 
+    document.images - return array of all images 
+
+    tip: console.log or dir every target so you can access the collection of properties/items/indexes under them
+
+    additional CSS selectors (pseudoclasses)
+        :last-child
+        :nth-child(indexNum)
+        :nth-child(odd)
+        :nth-child(even)
