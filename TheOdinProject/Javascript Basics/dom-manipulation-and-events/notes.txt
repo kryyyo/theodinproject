@@ -2895,3 +2895,17 @@ JS DOM Crash Course from Traversy Media
         :nth-child(indexNum)
         :nth-child(odd)
         :nth-child(even)
+
+
+
+    mga kasama text nodes na whitespace, carriage return 
+    .childNodes
+    .firstChild
+    .nextSibling
+    .previousSibling
+
+    puro elements only
+    .children 
+    .firstElementChild
+    .nextElementSibling
+    .previousElementSibling
