@@ -298,3 +298,40 @@ OBJECTS - Javascript.info
                     menu[key] *= 2;
                 }
             }
+
+OBJECTS (Additional notes from MDN Web Docs)
+
+    values can also contain functions
+
+        let obj = {
+            key : function(),
+        }
+
+        to access: obj.key() or obj[key()]
+
+    Associative arrays
+        map strings to values in the same way that arrays map numbers to values 
+
+    What is "this"? 
+        Refers to the current object the code is being written inside 
+    
+    Constructors 
+        Create more than one object from a single object definition 
+
+        Define the "shape" of an object. More like of a blueprint 
+
+        Is a function called using the "new" keyword 
+
+        By convention, start with a capital letter and are named for the type of object they create 
+
+        eg. 
+            CONSTRUCTOR
+            function Person(name) {
+                this.name = name;
+                this.introduceSelf = function() {
+                    console.log(`Hi! I'm ${this.name}.`);
+                }
+            }
+
+            MAKING A NEW OBJECT FROM THE CONSTRUCTOR
+            const collene = new Person('Collene')
