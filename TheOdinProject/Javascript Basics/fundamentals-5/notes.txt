@@ -1,0 +1,300 @@
+OBJECTS - Javascript.info
+    {key: value}
+
+    key - also called as property name 
+        - must be a string 
+
+    value - can be anything
+
+    Creating an empty object:
+        1. Object constructor syntax:
+            let object = new Object(); 
+
+        2. Object literal syntax: (usual)
+            let user = {};
+    
+    Literals and Properties
+
+        Accessing property values using dot notation 
+            objectName.propertyName === value
+
+        Remove a property
+            delete objectName.propertyName
+
+        Multiword property names
+            "property name": value
+
+        Last property
+            the last property in the object may end in a comma
+            this is called 'trailing' or 'hanging' comma
+
+            eg: 
+            let user = {
+                name: "John",
+                age: 30,
+            }
+
+    Square Brackets
+
+        Accessing property values for Multiword Properties
+            "dot notation" not applicable 
+            use square brackets 
+
+            objectName["property name"] === value
+
+        Also provide a way to obtain the property name as the result of any expression:
+
+            let variableName = "property name"
+
+            objectName[variableName] === value
+
+        From here, we can calculate a variable key that can depend from a function. For this example, accessing a  key value pair that depends on the input of the user: 
+
+            let user = {
+                name: "John",
+                age: 30
+            };
+
+            let key = prompt("What do you want to know about the user?", "name");
+
+            // access by variable
+            alert( user[key] ); // John (if enter "name")
+
+        The dot notation cannot use varying properties: 
+
+            let user = {
+                name: "John",
+                age: 30
+            };
+
+            let key = "name";
+            alert( user.key ) // undefined
+
+        Computed Properties
+
+            [variable]
+                called "computed properties"
+
+            This can also be added even on an empty object: 
+                eg. 
+                    let fruit = prompt("Which fruit to buy?", "apple");
+                    let bag = {};
+
+                    // take property name from the fruit variable
+                    bag[fruit] = 5;
+
+            [string expression]
+                we can also use an expression which will return a string
+
+                eg. 
+                    let fruit = 'apple';
+                    let bag = {
+                    [fruit + 'Computers']: 5
+                    
+                    // bag.appleComputers = 5
+                    };
+
+    Property value shorthand
+        This can be used if the parameter for the value and its property name are the same 
+
+        eg. 
+
+            LONG HAND
+            function makeUser(name, age) {
+                return {
+                    name: name,
+                    age: age,
+                }
+            }
+
+            SHORT HAND
+            function makeUser(name, age) {
+                return {
+                    name,
+                    age,
+                }
+            }
+
+            LONG AND SHORT SIMULTANEOUSLY
+            function makeUser(name, age) {
+                return {
+                    name,
+                    age: age
+                }
+            }
+
+    Property names limitations
+        THERE ARE NO LIMITATIONS
+            you can use language-reserved words as long as it is a string or a symbol (special tye for identifiers)
+
+            other types are automatically converted into strings 
+                eg.
+                    let obj = {
+                        0: "test" // same as "0": "test"
+                    };
+
+                    // both alerts access the same property (the number 0 is converted to string "0")
+                    alert( obj["0"] ); // test
+                    alert( obj[0] ); // test (same property)
+
+        Special property: __proto__
+            we cannot set it to a non-object value (primitive)
+
+            let obj = {};
+            obj.__proto__ = 5; // assign a number
+            alert(obj.__proto__); // [object Object] - the value is an object, didn't work as intended
+
+    Property existence test, "in" operator
+        NO ERROR if you access a property that doesn't exist
+        instead, it will return an UNDEFINED value 
+
+        Special Operator: "in" - returns boolean
+            "key" in object 
+
+            eg.
+                let user = { name: "John", age: 30 };
+
+                alert( "age" in user ); // true, user.age exists
+                alert( "blabla" in user ); // false, user.blabla doesn't exist
+
+            note: "key" should always be a string
+                    if you remove quotes ("key" to key), key should be a variable containing strings 
+
+                    eg.
+                        let user = { age: 30 };
+
+                        let key = "age";
+                        alert( key in user ); // true, property "age" exists
+
+        Better use the "in" operator: 
+            eg. 
+                let obj = {
+                    test: undefined
+                };
+
+                alert( obj.test ); // it's undefined, so - no such property?
+
+                alert( "test" in obj ); // true, the property does exist!
+
+            in here, test technically exists but with an undefined value so we cannot conclude that there is no test property in obj 
+
+    The "for...in" loop 
+        syntax:
+            for (let key in object) {
+                // executes the body for each key among object properties
+            }
+
+            where: 
+                key - is a parameter/variable only you set
+                object - is the object name itself
+
+            for (let prop in obj) - also widely used 
+
+        eg:
+
+            let user = {
+                name: "John",
+                age: 30,
+                isAdmin: true
+            };
+
+            for (let key in user) {
+                
+                // keys
+                alert( key );  // name, age, isAdmin
+                
+                // values for the keys
+                alert( user[key] ); // John, 30, true
+            }
+
+
+        Ordered like an object
+            objects are "ordered in a special fashion”: integer properties are sorted (ONLY INTEGERS)
+
+            ascending sorted order 
+
+            eg. 
+                let codes = {
+                    "49": "Germany",
+                    "41": "Switzerland",
+                    "44": "Great Britain",
+                    // ..,
+                    "1": "USA"
+                };
+
+                for (let code in codes) {
+                    alert(code); // 1, 41, 44, 49
+                }
+
+            Integer Properties
+                only numbers that can be converted to-and-from an integer without a change
+
+                eg. "49" ---> "49"
+
+                but not: "+49" ---> "49" and "1.2" ---> "1" 
+
+            So if you do not want your properties to be sorted in ascending order if they are integer properties, add a plus sign before each code
+
+                eg. 
+
+                    let codes = {
+                        "+49": "Germany",
+                        "+41": "Switzerland",
+                        "+44": "Great Britain",
+                        // ..,
+                        "+1": "USA"
+                    };
+
+                    for (let code in codes) {
+                        alert( +code ); // 49, 41, 44, 1
+                    }
+
+    Other kinds of object in JavaScript along with the plain Object:
+        Array - store orded data collections 
+        Date - store information about the date and time 
+        Error - store the information about an error
+        and so on...
+
+    Tasks 
+        Hello, Object 
+
+            let user = {}; 
+
+            user.name = John
+            user.surname = Smith
+
+            user.name = Pete 
+
+            delete user.name
+
+        Check for emptiness
+
+            function isEmpty(obj) {
+
+                for (let key in obj) {
+                    return false
+                }
+
+                return true
+            }
+
+        Sum object properties 
+            let sum; 
+
+
+            if (isEmpty(salaries)) {
+                sum = 0;
+            } else {
+                for (let key in obj) {
+                    sum += obj[key]
+                }
+            }
+                
+
+        Multiply numeric property values by 2
+
+            for (let key in menu) {
+                if (typeof key === Number) {
+                    menu[key] *= 2;
+                }
+            }
