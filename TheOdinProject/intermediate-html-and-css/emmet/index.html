@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Emmet for CSS */
+    .class {
+        position: relative;
+        background: #000;
+        background-color: #fff;
+        width: 10em;
+        height: 10em;
+    }
+</style>
+<body>
+    <!-- Keyboard Shortcuts (Cumulatative)-->
+    <!-- For classes: element.class-name
+         For id: element#id-name
+         For attribute: element[attribute = value] or 
+                        element[attribute] then input your value
+         for div: even if we do not have any "div" anymore
+
+
+         
+         multiplying your element for the number of element you want to put "*"
+
+         MAIN ALGORITHM: USE CSS SELECTORS 
+    -->
+
+    <!-- making a child use ">" eg. header>nav>ul-->
+    <header>
+        <nav>
+            <ul></ul>
+        </nav>
+    </header>
+
+    <!-- multiplying elements for multiple results "*" 
+            eg. header>nav>ul>li*3
+    -->
+    <header>
+        <nav>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Adding text nodes: {text here} eg. header>nav>ul>li*3{asd}-->
+    <header>
+        <nav>
+            <ul>
+                <li>asd</li>
+                <li>asd</li>
+                <li>asd</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Adding varying number $, $$ with 2 digit
+        eg: header>nav>ul>li*3.class-${List Item $$}
+    -->
+    <header>
+        <nav>
+            <ul>
+                <li class="class-1">List Item 01</li>
+                <li class="class-2">List Item 02</li>
+                <li class="class-3">List Item 03</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Creating siblings "+" 
+    
+        eg. header+main+footer
+    -->
+    <header></header>
+    <main></main>
+    <footer></footer>
+
+    <!-- Climbing up after appending child "^" 
+    
+        eg. header>nav^main+footer
+    -->
+    <header>
+        <nav></nav>
+    </header>
+    <main></main>
+    <footer></footer>
+
+    <!-- Or just regroup it (much better) 
+    
+        eg. (header>nav)+main+footer
+    -->
+    <header>
+        <nav></nav>
+    </header>
+    <main></main>
+    <footer></footer>
+
+    <!-- Activity -->
+    <!-- (header>h2{Heading}+nav>ol>li*5>a{Link $})+main+footer -->
+    <header>
+        <h2>Heading</h2>
+        <nav>
+            <ol>
+                <li><a href="">Link 1</a></li>
+                <li><a href="">Link 2</a></li>
+                <li><a href="">Link 3</a></li>
+                <li><a href="">Link 4</a></li>
+                <li><a href="">Link 5</a></li>
+            </ol>
+        </nav>
+    </header>
+    <main></main>
+    <footer></footer>
+
+    <!-- form:post>.group>input:text -->
+    <form action="" method="post">
+        <div class="group"><input type="text" name="" id=""></div>
+    </form>
+
+    <!-- form:post>(.group>label+input:text)+(.group>label+input:number) -->
+
+
+    
+</body>
+</html>
