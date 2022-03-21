@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- 
+        
+        Form Element 2 Essential attributes
+        1. action attribute
+            takes the URL value that tells the form where it should send its data to be processed
+
+        2. method attribute 
+            tells the browser which HTTP request method it should use to submit the form
+            eg. GET, POST
+
+    -->
+
+    <!-- Mark-up for creating a form element:  -->
+    <form action="example.com/path" method="post">
+
+    </form>
+
+    <!-- Form Controls
+        all the elements users will interact with on the form eg: 
+            1. textboxes
+            2. dropdowns
+            3. checkboxes
+            4. buttons
+
+        Input Element
+            most versatile of all the form control elements
+            accepts the type attribute
+                type attribute - tells the browser what type of data it should expect and how it should render the input element 
+
+    eg. -->
+
+    <form action="example.com/path" method="post">
+        <input type="text">
+    </form>
+
+    <!-- 
+        Labels
+            inform users what type of data they are expected to enter
+
+            accept a for attribute which associates it with a particular input
+            the input must have an id with the same value of for
+
+            when a label is clicked, cursor will focus on the input with the id 
+    -->
+
+    <form action="example.com/path" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName">
+    </form>
+
+    <!-- 
+        Placeholder Attribute
+            guide
+
+            how text should be entered and formatted
+    -->
+
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" placeholder="Bob...">
+
+    <!-- 
+        Name Attribute 
+            let the backend know where we send out data or what each piece of data represents 
+
+            reference to the data inputted into a form control after submitting it
+
+            you can think of it as a variable/property name for the input
+    -->
+
+    <form action="http://httpbin.org/post" method="post">
+        <div>
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name">
+        </div>
+        
+        <div>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name">
+        </div>
+        
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age">
+        </div>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    <!--
+        Result: 
+        "form": {
+            "age": "33",
+            "first_name": "John",
+            "last_name": "Doe"
+        }
+    -->
+
+    <!-- 
+        Email Input 
+            just for email addresses 
+            type = "email"
+    -->
+    <label for="user_email">Email Address:</label>
+    <input type="email" id="user_email" name="email" placeholder="you@example.com">
+
+    <!--
+        Password Input
+            mask input data with asterisks(*)
+            type = "password"
+    -->
+    <label for="user_password">Password:</label>
+    <input type="password" id="user_password" name="password">
+
+    <!-- 
+        Number Input
+            accepts numbers only 
+            type = "number"
+    -->
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount">
+
+    <!-- 
+        Date Input
+            render a simple date picker calendar
+            type = "date"
+    -->
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
+
+    <!-- 
+        Text Area 
+            text that spans multiple lines like user comments and reviews
+
+            resizeable by clicking and dragging
+    -->
+
+    <textarea></textarea>
+
+    <!-- With initial content -->
+    <textarea>Some initial content</textarea>
+
+    <!-- With rows and cols attribute -->
+    <textarea rows="20" cols="60"></textarea>
+
+    <!-- 
+        Selection Elements
+            select a value from a predefined list 
+
+        Select Dropdown 
+            dropdown list where users can select an option
+
+            similar markup to ul 
+
+            all option elements must have a value attribute which will be sent to the server when the form is submitted
+
+            use "selected" attribute for setting one of the options as default
+
+    -->
+    <select name="Car">
+        <option value="mercedes">Mercedes</option>
+        <option value="tesla">Tesla</option>
+        <option value="volvo" selected>Volvo</option>
+        <option value="bmw">BMW</option>
+        <option value="mini">Mini</option>
+        <option value="ford">Ford</option>
+    </select>
+
+    <!-- You can also group options and add label to it -->
+    <select name="fashion">
+        <optgroup label="Clothing">
+          <option value="t_shirt">T-Shirts</option>
+          <option value="sweater">Sweaters</option>
+          <option value="coats">Coats</option>
+        </optgroup>
+        <optgroup label="Foot Wear">
+          <option value="sneakers">Sneakers</option>
+          <option value="boots">Boots</option>
+          <option value="sandals">Sandals</option>
+        </optgroup>
+    </select>
+
+    <!-- 
+        Radio buttons 
+            for smaller list of 5 or fewer
+            input type = "radio"
+
+            same "name" attribute allows the radio buttons to select only one
+
+            setting default: add "checked" attribute
+
+
+    -->
+
+    <h1>Ticket Type</h1>
+        <div>
+        <input type="radio" id="child" name="ticket_type" value="child">
+        <label for="child">Child</label>
+        </div>
+
+        <div>
+        <input type="radio" id="adult" name="ticket_type" value="adult" checked>
+        <label for="adult">Adult</label>
+        </div>
+
+        <div>
+        <input type="radio" id="senior" name="ticket_type" value="senior">
+        <label for="senior">Senior</label>
+    </div>
+
+    <!-- 
+        Checkboxes 
+            similar to radio buttons but allow multiple choices selection
+
+            input type = "checkbox"
+
+            setting default: add "checked" attribute
+    -->
+
+    <h1>Pizza Toppings</h1>
+
+    <div>
+    <input type="checkbox" id="sausage" name="topping" value="sausage" checked>
+    <label for="sausage">Sausage</label>
+    </div>
+    
+    <div>
+    <input type="checkbox" id="onions" name="topping" value="onions">
+    <label for="onions">Onions</label>
+    </div>
+    
+    <div>
+    <input type="checkbox" id="pepperoni" name="topping" value="pepperoni">
+    <label for="pepperoni">Pepperoni</label>
+    </div>
+    
+    <div>
+    <input type="checkbox" id="mushrooms" name="topping" value="mushrooms">
+    <label for="mushrooms">Mushrooms</label>
+    </div>
+
+    <!-- 
+        Buttons
+            clickable buttons to submit forms and trigger other actions
+    -->
+    <button>Click Me</button>
+
+    <!-- 3 type Attributes for Button -->
+    <!-- 
+        Submit Button 
+            submit the form it is contained within
+            this is the default type of button (if type not specified or value of type is invalid)
+    -->
+    <button type="submit">Submit</button>
+
+    <!-- 
+        Reset Button
+            clears all data the user has entered into the form
+
+            sets all inputs in the form back to they were initially
+    -->
+    <button type="reset">Reset</button>
+
+    <!-- 
+        Generic Button 
+            creating interactive UIs with JS
+    -->
+    <button type="button">Click to Toggle</button>
+
+    <!-- Note: always specify type to avoid unnecessary submitting -->
+
+    <!-- Organizing Form Elements -->
+    <!-- 
+        Fieldset Element
+            group related form inputs into one logical unit
+    -->
+    <fieldset>
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name">
+      
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name">
+    </fieldset>
+
+    <!-- 
+        Legend Element 
+            give field sets a heading or caption
+    -->
+    <fieldset>
+        <legend>Contact Details</legend>
+      
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+      
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number">
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+    </fieldset>
+      
+    <fieldset>
+        <legend>Delivery Details</legend>
+      
+        <label for="street_address">Street Address:</label>
+        <input type="text" id="street_address" name="street_address">
+      
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+      
+        <label for="zip_code">Zip Code:</label>
+        <input type="text" id="zip_code" name="zip_code">
+    </fieldset>
+
+    <fieldset>
+        <legend>What would you like to drink?</legend>
+      
+        <div>
+          <input type="radio" name="drink" id="coffee" value="coffee">
+          <label for="coffee">Coffee</label>
+        </div>
+      
+        <div>
+          <input type="radio" name="drink" id="tea" value="tea">
+          <label for="tea">Tea</label>
+        </div>
+      
+        <div>
+          <input type="radio" name="drink" id="soda" value="soda">
+          <label for="soda">Soda</label>
+        </div>
+      
+    </fieldset>
+
+    <!-- A Note on Styling Forms -->
+    <!-- 
+        Default Browser Styles 
+            different browsers, different default visually
+            
+            solution: override default styles!
+    -->
+
+    <!-- 
+        Tricky and downright impossible to style form controls 
+            tricky: radio buttons and checkboxes
+
+            solution: 
+            guides: 
+            https://moderncss.dev/pure-css-custom-checkbox-style/
+
+            and new CSS properties:
+            https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color
+
+            downright impossible:
+            calendar/date pickers
+
+            solution: build on JavaScript
+    -->
+
+    <!-- PURE CSS CUSTOM CHECKBOX STYLE -->
+    <!-- Checkbox HTML -->
+    <label class="form-control">
+        <input type="checkbox" name="checkbox" />
+        Checkbox
+      </label>
+      
+    <label class="form-control">
+        <input type="checkbox" name="checkbox-checked" checked />
+        Checkbox - checked
+    </label>
+
+    
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+.form-control {
+    font-family: system-ui, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+}
+
+/* Step 1: Hide the Native Checkbox Input */
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+
+    /* Step 2: Custom Unchecked Checkbox Styles */
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+
+    /* Step 3: Styling :checked vs Unchecked State */
+    display: grid;
+    place-content: center;
+}
+
+.form-control + .form-control {
+    margin-top: 1em;
+}
+
+/* Step 3: Styling :checked vs Unchecked State */
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+    
+    /* Clip path */
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+/* Step 4: The :focus state */
+input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+}
+
+/* Styles For :disabled Checkboxes */
+:root {
+    --form-control-disabled: #959495;
+}
+  
+input[type="checkbox"]:disabled {
+    --form-control-color: var(--form-control-disabled);
+
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
+
+.form-control--disabled {
+    color: var(--form-control-disabled);
+    cursor: not-allowed;
+}
+
+/* New CSS property */
+
+/* Accent Color */
+
+    /* Syntax: */
+    /* Keyword values */
+    /* accent-color: auto; */
+
+    /* <color> values */
+    /* accent-color: red;
+    accent-color: #5729e9;
+    accent-color: rgb(0, 200, 0);
+    accent-color: hsl(228, 4%, 24%); */
+
+    /* Global values */
+    /* accent-color: inherit;
+    accent-color: initial;
+    accent-color: revert;
+    accent-color: unset; */
+
+    /* 
+    Values
+        auto
+            UA-chosen color 
+            match the accent color of the platform
+
+        <color>
+            specifies the color 
+    
+    */
