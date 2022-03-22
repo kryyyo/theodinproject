@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Native Form Controls</title>
+</head>
+<body>
+    <!-- 
+        Text Input Fields
+            <input>
+                most basic form widgets
+            
+                Common behaviors 
+                    1. can be marked as readonly or disabled
+                    2. can have a placeholder
+                    3. can be constrained in size and maxlength
+                    4. spellcheck attribute (if browser supports it)
+    -->
+    <!--
+        Single Line Text Fields 
+            <input type="text"> or simple <input>
+                default value of input type is text
+                it is also the fallback value if the browser does not support the type 
+
+            One true constraint:
+                if you type text with line breaks, the browser removes those line breaks before sending the data to the server
+    -->
+    <input type="text" id="comment" name="comment" value="I'm a text field">
+
+    <!-- 
+        Password field 
+            No Constraint 
+
+            Obscure the value entered into the field
+
+            Only for UI so you really have to use JSON Web token
+    -->
+    <input type="password" id="pwd" name="pwd">
+
+    <!-- 
+        Hidden content 
+            type="hidden"
+
+            invisible to the user but is still sent to the server along with the rest of the form data once submitted 
+
+            eg. timestamp
+
+            screen readers will also not notice it
+            
+            required to set name and  value attribute
+            value attribute can be dynamically set via JavaScript 
+
+            should not have a label
+    -->
+    <input type="hidden" id="timestamp" name="timestamp" value="1286705410">
+
+    <!-- 
+        Checkable items 
+            1. radio button
+            2. checkbox
+
+            both used checked attribute
+
+            For most form widget, once form is submitted, all widgets that have a name attribute are send even if no value has been filled out
+
+            But in checkable items, if no value is checked, no submission will be done 
+
+            if something is checked but have no value, the name is sent with a value of on
+
+
+        Notes:
+            At Checkboxes, you can toggle on and off an option
+
+            At Radio buttons, if one button is checked, it is not possible to turn it off unless there is a page resetter 
+    -->
+    <fieldset>
+        <legend>Choose all the vegetables you like to eat</legend>
+        <ul>
+          <li>
+            <label for="carrots">Carrots</label>
+            <input type="checkbox" id="carrots" name="vegetable" value="carrots" checked>
+          </li>
+          <li>
+            <label for="peas">Peas</label>
+            <input type="checkbox" id="peas" name="vegetable" value="peas">
+          </li>
+          <li>
+            <label for="cabbage">Cabbage</label>
+            <input type="checkbox" id="cabbage" name="vegetable" value="cabbage">
+          </li>
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend>What is your favorite meal?</legend>
+        <ul>
+          <li>
+            <label for="soup">Soup</label>
+            <input type="radio" id="soup" name="meal" value="soup" checked>
+          </li>
+          <li>
+            <label for="curry">Curry</label>
+            <input type="radio" id="curry" name="meal" value="curry">
+          </li>
+          <li>
+            <label for="pizza">Pizza</label>
+            <input type="radio" id="pizza" name="meal" value="pizza">
+          </li>
+        </ul>
+    </fieldset>
+
+    <!-- 
+        Actual Buttons (see first form notes)
+            1. submit
+            2. reset 
+            3. button
+    -->
+    <!-- Submit buttons  -->
+    <button type="submit">
+        This is a <strong>submit button</strong>
+    </button>
+    
+    <input type="submit" value="This is a submit button">
+    
+    <!-- Reset buttons  -->
+    <button type="reset">
+        This is a <strong>reset button</strong>
+    </button>
+    
+    <input type="reset" value="This is a reset button">
+    
+    <!-- Button buttons -->
+    <button type="button">
+        This is an <strong>anonymous button</strong>
+    </button>
+    
+    <input type="button" value="This is an anonymous button">
+
+    <!-- 
+        Image button
+            behaves like a submit button
+
+            input type="image"
+
+            this control does not submit its value, it submits the X AND Y COORDINATES of the click event on the image
+
+            The X value key is the value of the name attribute followed by the string ".x".
+            The Y value key is the value of the name attribute followed by the string ".y".
+
+            submit via get method
+            eg. http://foo.com?pos.x=123&pos.y=456
+    -->
+    <input type="image" alt="Click me!" src="my-img.png" width="80" height="30">
+
+    <!-- 
+        File picker
+            input type ="image" 
+
+            send files to a server
+            choose one or more files to send
+
+            accept attribute 
+                defines the type of file that are accepted
+            
+            multiple attribute 
+                you want the user pick more than one file
+    -->
+    <input type="file" name="file" id="file" accept="image/*" multiple>
+
+    <!-- Access photos, videos, or audio captured directly by the device's camera (mobile) -->
+    <input type="file" accept="image/*;capture=camera">
+    <input type="file" accept="video/*;capture=camcorder">
+    <input type="file" accept="audio/*;capture=microphone">
+
+    <!-- 
+        Common Attributes to all form elements 
+            autofocus
+            disable 
+            form 
+            name 
+            value
+    -->
+</body>
+</html>
