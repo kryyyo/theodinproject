@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Input Types</title>
+</head>
+<body>
+    <!-- 
+        Email address
+            type="email"
+
+            multiple attribute
+                allow several email addresses to be entered
+
+            on some devices, input with types like this present a keyboard with an @ sign
+    -->
+    <input type="email" id="email" name="email" multiple>
+
+    <!-- 
+        Client-side validation
+            client-side error validation performed by the browser before sending the data to the server
+
+            it can save time so that it is not the server who validates it
+
+            but not an exhaustive security measure, so you must still perform security checks on the server-side (for more sensitive data)
+
+            pattern attribute 
+                reinforce the validation of inputs like email, error messages
+
+            Note: If the data entered is not an email address, the :invalid pseudo-class will match, and the validityState.typeMismatch property will return true
+    -->
+
+    <!--
+        Search Field 
+            create searchboxes 
+
+            rendered with round corners and sometimes display an X which clears the field of any value when clicked
+
+            on devices with dynamic keyboard, Enter key may read "search" or a magnifying icon
+
+            values of a search field can be automatically saved and re-used
+    -->
+    <input type="search" id="search" name="search">
+
+    <!--  
+        Phone Number Field 
+            type="tel"
+
+            on dynamic keyboard, numeric keypad will be displayed
+
+            due to wide variety of phone number formats, this type of field does not enforce any constraints but pattern attribute can be used
+    -->
+    <input type="tel" id="tel" name="tel">
+
+    <!--  
+        URL Field
+            type="url"
+
+            browser will report an error if no protocol is entered or URL is malformed
+
+            on dynamic keyboard: colon, period and forward slash as default keys
+    -->
+    <input type="url" id="url" name="url">
+
+    <!--  
+        Numeric Field 
+            type="number"
+
+            only allows floating pt numbers
+            dynamic keyboard: numeric keyboard
+
+            constrain: 
+                min attribute
+                max attribute
+
+                step attribute
+                    set increment or decrement by pressing spinner buttons
+
+                    to allow float integers use step="any"
+
+                    by default: step value is 1 (whole numbers)
+    -->
+    <input type="number" name="change" id="pennies" min="0" max="1" step="0.01">
+
+    <input type="number" name="age" id="age" min="1" max="10" step="2">
+
+    <!--  
+        Slider controls
+            used to pick a number whose precise value is not necessarily important
+
+            type="range"
+
+            moved via mouse/touch or arrows of the keypad
+
+            set min, max, and step attribute
+
+            do not offer any kind of visual feedback
+            solution: use <output> element with for attribute, and change the textContent using Vanilla JS
+
+                eg. 
+
+                const price = document.querySelector('#price');
+                const output = document.querySelector('.price-output');
+
+                output.textContent = price.value;
+
+                price.addEventListener('input', function() {
+                output.textContent = price.value;
+                });
+
+    -->
+    <label for="price">Choose a maximum house price: </label>
+    <input type="range" name="price" id="price" min="50000" max="500000" step="100" value="250000">
+    <output class="price-output" for="price"></output>
+
+    <!--  
+        Date and time pickers
+            usage of some of the types is quite complex espcially considering browser support, some falls back to <select> elements
+    -->
+    <!-- 
+        type="datetime-local" 
+
+        pick a date with time with no specific time zone information
+    -->
+    <input type="datetime-local" name="datetime" id="datetime">
+
+    <!--  
+        type="month"
+
+        display and pick a month with a year
+    -->
+    <input type="month" name="month" id="month">
+
+    <!--  
+        type="time"
+
+        display and pick a time value
+
+        display: 12-hr format 
+        return value: 24-hr format (server)
+
+    -->
+    <input type="time" name="time" id="time">
+
+    <!--  
+        type="week"
+
+        display and pick a week number and its year
+    -->
+    <input type="week" name="week" id="week">
+
+    <!--  
+        Constraining date/time values 
+            min and max attribute
+            step attribute
+    -->
+    <label for="myDate">When are you available this summer?</label>
+    <input type="date" name="myDate" min="2013-06-01" max="2013-08-31" step="7" id="myDate">
+
+    <!--  
+        Color picker control
+            type="color"
+
+            return value: 6 value hexadecimal lowercase
+    -->
+    <input type="color" name="color" id="color">
+
+
+
+
+
+
+</body>
+</html>
