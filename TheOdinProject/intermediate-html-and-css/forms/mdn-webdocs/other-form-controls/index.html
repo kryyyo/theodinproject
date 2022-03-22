@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Form Controls</title>
+</head>
+<body>
+    <!--  
+        Multi-line text fields 
+            <textarea> 
+                include hard line breaks in the data to be submitted
+
+                all rendered as if it was plain text content
+                solution for capturing HTML/rich content: 
+                    use: contenteditable on non-form controls 
+
+                3 attributes 
+                    1. cols 
+                        average char widths
+                        default: 20 
+                    2. rows 
+                        default: 2
+                    3. wrap
+                        default: soft 
+                            text submitted is not wrapped but the text rendered by the browser is wrapped; 
+
+                        hard (cols must be defined)
+                            both submitted and rendered are wrapped 
+                        
+                        off 
+                            stops the wrapping
+                
+                Controlling textare area resizability 
+                    CSS resize property:
+                        both
+                            default
+                            allows horizontal and vertical 
+                        
+                        horizontal
+                            horizontal only 
+
+                        vertical 
+                            vertical only 
+                        
+                        none 
+                            no resizing 
+                        
+                        block and inline 
+                            depending on text directionality 
+    -->
+    <textarea cols="30" rows="8"></textarea>
+
+    <!--  
+        Drop-down controls 
+            select from many options without taking up much space in the UI
+
+            2 forms 
+                1. select
+                2. autocomplete
+    -->
+    <!--  
+        Select Box
+            <select>
+                <option> as children for its values
+                    
+            default value can be set using selected attribute on the <option> element
+                
+                using <optgroup>
+                    nest <options> to create visually associated groups of values
+                    
+                    label attribute 
+                        displayed before the values of the nested options
+                        different level than the options
+            
+                size attribute 
+                    control over how many options are visible when the select does not have focus
+    -->
+    <select id="groups" name="groups">
+        <optgroup label="fruits">
+          <option>Banana</option>
+          <option selected>Cherry</option>
+          <option>Lemon</option>
+        </optgroup>
+        <optgroup label="vegetables">
+          <option>Carrot</option>
+          <option>Eggplant</option>
+          <option>Potato</option>
+        </optgroup>
+    </select>
+    <!--  
+        Using the value attribute
+            this is the value sent to the server 
+            if value attribute is not defined, the textContent of the option is sent to the server 
+
+            this is an optional attribute if you want a value that is shorter than the text content of the option element
+    -->
+    <select id="simple" name="simple">
+        <option value="banana">Big, beautiful yellow banana</option>
+        <option value="cherry">Succulent, juicy cherry</option>
+        <option value="lemon">Sharp, powerful lemon</option>
+    </select>
+      
+    <!--  
+        Multiple Choice Select Box 
+            multiple attribute in <select> 
+                allow users to select several values by using the default mechanism provided by OS 
+
+                eg. holding CTRL on windows/linux 
+
+            note: not anymore dropdown content (resize using size attribute)
+                    all browsers that support <select> also supports multiple
+
+    -->
+    <select id="multi" name="multi" multiple size="2">
+        <optgroup label="fruits">
+           <option>Banana</option>
+           <option selected>Cherry</option>
+           <option>Lemon</option>
+         </optgroup>
+         <optgroup label="vegetables">
+           <option>Carrot</option>
+           <option>Eggplant</option>
+           <option>Potato</option>
+         </optgroup>
+    </select>
+
+    <!--  
+        Autocomplete box 
+            <datalist> 
+                <option> as children
+
+                data list must have an id
+
+                bound to the <input> element using the list attribute (like email, text)
+    -->
+    <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+    <datalist id="mySuggestion">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Blackberry</option>
+        <option>Blueberry</option>
+        <option>Lemon</option>
+        <option>Lychee</option>
+        <option>Peach</option>
+        <option>Pear</option>
+    </datalist>
+
+    <!--  
+        Datalist support and fallbacks 
+            only IE below 10: 
+                provide a fall back (use select elements)
+    -->
+    <label for="myFruit">What is your favorite fruit? (With fallback)</label>
+    <input type="text" id="myFruit" name="fruit" list="fruitList">
+    
+    <datalist id="fruitList">
+      <label for="suggestion">or pick a fruit</label>
+      <select id="suggestion" name="altFruit">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Blackberry</option>
+        <option>Blueberry</option>
+        <option>Lemon</option>
+        <option>Lychee</option>
+        <option>Peach</option>
+        <option>Pear</option>
+      </select>
+    </datalist>
+
+    <!--  
+        Some non obvious uses of datalist: 
+            @type ranges: (tickmarks)
+            @type color: cusztomized palette of colors
+    -->
+    <input type="range" list="tickmarks">
+    <datalist id="tickmarks">
+        <option value="0"></option>
+        <option value="10"></option>
+        <option value="20"></option>
+        <option value="30"></option>
+        <option value="40"></option>
+        <option value="50"></option>
+        <option value="60"></option>
+        <option value="70"></option>
+        <option value="80"></option>
+        <option value="90"></option>
+        <option value="100"></option>
+    </datalist>
+    
+    <!--  
+        Meters and Progress bars
+            visual representation of numeric values
+    -->
+    <!--  
+        Progress
+            changes over time up to a max value specified by the max attribute
+
+            <progress>
+                for progress reporting such as percentage of files downloaded, number of questions filled .... 
+
+                the text content inside the progress bar is the fallback for other browsers and for screen readers 
+    -->
+    <progress max="100" value="75">75/100</progress>
+
+    <!--  
+        Meter
+            fixed value in a range delimited by max and min values 
+
+            compare the value to some other set values: 
+                low and high values
+                    1. lower part of the range is between the min and low value, inclusive 
+                    2. medium part of the range is between the low and high value, exclusive
+                    3. higher part of the range is between the high and max values, inclusive 
+
+                optimum value 
+                    defined optimum value for the meter element with the low and high value defined 
+
+                    1. if optimum value is in the lower part of the range
+                        lower range is preferred part
+                        medium range is average part 
+                        higher range is worst part 
+                        
+                    2. if optimum value is in the medium part of the range
+                        lower range is average 
+                        medium range preferred 
+                        higher range is average
+
+                    3. if optimum value is in the higher part of the range
+                        lower range is worst 
+                        medium range is average
+                        higher range is preferred 
+
+            all browsers that implement meter use those values to change the color of the meter bar
+                1. if current value @ preferred = green
+                2. if current value @ average = yellow
+                3. if current value @ worst = red 
+            
+        My note: can be used for determining strong passwords
+    -->
+    <!--  
+        content inside the <meter> element is a fallback for other browsers and for speech recognition
+
+        no support in IE! 
+    -->
+    <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter>
+</body>
+</html>
