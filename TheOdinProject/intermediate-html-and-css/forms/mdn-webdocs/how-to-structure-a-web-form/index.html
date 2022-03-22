@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Structure a Web Form</title>
+</head>
+<body>
+    <!-- 
+        Do not nest a form inside another form! 
+    -->
+
+    <!-- 
+        <fieldset>
+            create groups of widgets that share the same purpose for styling and semantic purposes 
+            
+            <legend> 
+                for labeling a fieldset
+
+            super helpful in assistive technology
+        
+        Note: try to listen how a screen reader interprets your form so you can hear if your form structure sounds good
+    -->
+    <form>
+        <fieldset>
+          <legend>Fruit juice size</legend>
+          <p>
+            <input type="radio" name="size" id="size_1" value="small">
+            <label for="size_1">Small</label>
+          </p>
+          <p>
+            <input type="radio" name="size" id="size_2" value="medium">
+            <label for="size_2">Medium</label>
+          </p>
+          <p>
+            <input type="radio" name="size" id="size_3" value="large">
+            <label for="size_3">Large</label>
+          </p>
+        </fieldset>
+    </form>
+
+    <!-- 
+        We can nest the <input> inside the <label> but make sure the label still has the for attribute
+    -->
+
+    <label for="name">
+        Name: <input type="text" id="name" name="user_name">
+    </label>
+
+    <!-- 
+        Labels with "for" are clickable 
+    -->
+
+    <form>
+        <p>
+            <input type="checkbox" id="taste_1" name="taste_cherry" value="cherry">
+            <label for="taste_1">I like cherry</label>
+        </p>
+        <p>
+            <input type="checkbox" id="taste_2" name="taste_banana" value="banana">
+            <label for="taste_2">I like banana</label>
+        </p>
+    </form>
+
+    <!-- 
+        Strictly speaking, multiple labels is not a good idea. Use this instead: 
+    -->
+    <p>Required fields are followed by <abbr title="required">*</abbr>.</p>
+
+    <div>
+        <label for="username">Name: <abbr title="required" aria-label="required">*</abbr></label>
+        <input id="username" type="text" name="username">
+    </div>
+</body>
+</html>
