@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your First Form</title>
+    <style>
+        form {
+            /* Center the form on the page */
+            margin: 0 auto;
+            width: 400px;
+            /* Form outline */
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        form li + li {
+            margin-top: 1em;
+        }
+
+        label {
+            /* Uniform size & alignment */
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+        }
+
+        input,
+        textarea {
+            /* To make sure that all text fields have the same font settings
+                By default, textareas have a monospace font */
+            font: 1em sans-serif;
+
+            /* Uniform text field size */
+            width: 300px;
+            box-sizing: border-box;
+
+            /* Match form field borders */
+            border: 1px solid #999;
+        }
+
+        input:focus,
+        textarea:focus {
+            /* Additional highlight for focused elements */
+            border-color: #000;
+        }
+
+        textarea {
+            /* Align multiline text fields with their labels */
+            vertical-align: top;
+
+            /* Provide space to type some text */
+            height: 5em;
+        }
+
+        .button {
+            /* Align buttons with the text fields */
+            padding-left: 90px; /* same size as the label elements */
+        }
+
+        button {
+            /* This extra margin represent roughly the same space as the space
+                between the labels and their text fields */
+            margin-left: .5em;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Web Forms 
+            -one of the main points of interaction
+            -made up of Form Controls (sometimes called Widgets)
+            -often reffered to as HMTL Forms 
+            -Form controls can be also programmed to enforce specific formats (form validation)
+
+        Designing your form
+            -design a quick mockup first
+            -from a UX POV, the bigger the form, the more you risk losing users 
+    -->
+
+    <section>
+        <!-- 
+            action - URL where the form's collected data should be sent 
+            method - HTTP Method to send the data with
+        -->         
+        <form action="/my-handling-form-page" method="post">
+            <ul>
+                <li>
+                    <label for="name">Name:</label>
+                    <input type="text" name="user_name" id="name">
+                </li>
+                <li>
+                    <label for="mail">E-mail:</label>
+                    <input type="email" name="user_email" id="mail">
+                </li>
+                <!-- 
+                    Defining default in input: 
+                        attribute: value="default here"
+                -->
+                <li>
+                    <label for="msg">Message:</label>
+                    <textarea name="user_message" id="msg"></textarea>
+                </li>
+                <!-- 
+                    Defining default in textarea: 
+                        put it in the textContent of textarea
+                -->
+                <li class="button">
+                    <button type="submit">Send your message</button>
+                </li>
+                <!-- 
+                    3 types:
+                        1. submit - default value 
+                            -send the form's data to the web page defined by the actions attribute 
+                        2. reset - resets all the form widgets to default value 
+                            -bad practice in UX
+                        3. button - does nothing 
+                            -for building custom buttons
+                -->
+            </ul>
+        </form>
+    </section>
+
+    
+    
+</body>
+</html>
