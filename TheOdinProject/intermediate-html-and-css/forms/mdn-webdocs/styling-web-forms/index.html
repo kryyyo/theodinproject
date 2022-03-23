@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styling Web Forms</title>
+
+    <style>
+        /* These form elements does not automatically inherit their parents style so we need to specify the following */
+        button, input, select, textarea {
+            font-family: inherit;
+            font-size: 100%;
+        }
+
+        /* This is because each widget has their own rules for border, padding and margin */
+        input, textarea, select, button {
+            width : 150px;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* 
+            Legend Placement - a bit tricky  
+                default: top left of the fieldset parent
+        */
+        fieldset {
+            /* fieldset should be positioned relative */
+            position: relative; 
+        }
+
+        legend {
+            /* so that legend will be positioned relative to the fieldset */
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--  
+        difficulties in styling web forms (3 categories)
+            the good 
+                1. form 
+                2. fieldset, legend
+                3. single-line text input except for type="search"
+                4. multi-line textarea 
+                5. buttons (input and button)
+                6. label
+                7. output
+            
+            the bad 
+                1. checkboxes and radio buttons 
+                2. input type="search"
+
+            the ugly
+                1. input type="color"
+                2. date-related controls (datetime-local)
+                3. input type range 
+                4. input type file
+                5. dropdown widgets (select, option, optgroup and datalist)
+                6. progress and meter 
+    -->
+</body>
+</html>
