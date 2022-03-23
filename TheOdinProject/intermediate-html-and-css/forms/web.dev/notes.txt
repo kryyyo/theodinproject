@@ -1,0 +1,7 @@
+Form controls and form fields
+    A form control is an element that enables user interaction and data entry or selection: an <input>, <select>, <textarea> or <button>.
+
+    Sometimes form field is used to refer to form controls, in particular elements for text entry: <input> and <textarea>.
+
+https://web.dev/learn/forms/
+please get back to this
