@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Form Styling</title>
+    <style>
+        input {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input[type="checkbox"] {
+            position: relative;
+            width: 1em;
+            height: 1em;
+            border: 1px solid gray;
+            /* Adjusts the position of the checkboxes on the text baseline */
+            vertical-align: -2px;
+            /* Set here so that Windows' High-Contrast Mode can override */
+            color: green;
+        }
+
+        input[type="checkbox"]::before {
+            content: "✔";
+            position: absolute;
+            font-size: 1.2em;
+            right: -1px;
+            top: -0.3em;
+            visibility: hidden;
+        }
+
+        input[type="checkbox"]:checked::before {
+            /* Use `visibility` instead of `display` to avoid recalculating layout */
+            visibility: visible;
+        }
+
+        input[type="checkbox"]:disabled {
+            border-color: black;
+            background: #ddd;
+            color: gray;
+        }
+
+        input[type="radio"] {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            border: 2px solid gray;
+            /* Adjusts the position of the checkboxes on the text baseline */
+            vertical-align: -2px;
+            outline: none;
+        }
+
+        input[type="radio"]::before {
+            display: block;
+            content: " ";
+            width: 10px;
+            height: 10px;
+            border-radius: 6px;
+            background-color: red;
+            font-size: 1.2em;
+            transform: translate(3px, 3px) scale(0);
+            transform-origin: center;
+            transition: all 0.3s ease-in;
+        }
+
+        input[type="radio"]:checked::before {
+            transform: translate(3px, 3px) scale(1);
+            transition: all 0.3s cubic-bezier(0.25, 0.25, 0.56, 2);
+        }       
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Flexbox fu to make the control and label line up */
+
+        li {
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+        }
+
+        /*
+            Size the label, and make the on and off parts sit on top
+            of one another using positioning
+        */
+
+        label {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            position: relative;
+        }
+
+        label span {
+            position: absolute;
+        }
+
+        /*
+            remove the default styling of the checkbox using appearance
+            and create the outer toggle area
+        */
+
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 44px;
+            height: 24px;
+            border-radius: 12px;
+            border: 2px solid black;
+            background: #eee;
+            transition: all 0.4s;
+        }
+
+        /*
+            style the ::before content to look like
+            the inner toggle switch - the bit that moves
+        */
+
+        input[type="checkbox"]::before {
+            width: 16px;
+            height: 16px;
+            border-radius: 9px;
+            background-color: black;
+            content: '';
+            position: absolute;
+            top: 7px;
+            left: 16%;
+            transition: all 0.4s;
+        }
+
+        /*
+            change the outer background color and move the inner toggle switch
+            when the checkbox is checked; use transitions for smooth animation
+        */
+
+        input[type="checkbox"]:checked {
+            background-color: #ffaa00;
+            transition: all 0.4s;
+        }
+
+        input[type="checkbox"]:checked::before {
+            left: 35%;
+            transition: all 0.4s;
+        }
+
+        /*
+            cause the On and Off parts of the label to be visible when the checkbox is
+            checked and unchecked, respectively
+        */
+
+        input[type="checkbox"] ~ label .on, input[type="checkbox"]:checked ~ label .off {
+            opacity: 0;
+        }
+
+        input[type="checkbox"] ~ label .off, input[type="checkbox"]:checked ~ label .on {
+            opacity: 1;
+        }
+
+        /*
+            make the focus outline a bit more subtle on Chrome, rather than the
+            default heavy blue outline
+        */
+
+        input:focus {
+            outline: 1px dotted black;
+        }
+        
+        select {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: "▼";
+            font-size: 1rem;
+            top: 6px;
+            right: 10px;
+            position: absolute;
+        }
+
+        /* changing the color of the track */
+        input[type="range"] {
+            appearance: none;
+            -webkit-appearance: none;
+            background: red;
+            height: 2px;
+            padding: 0;
+            outline: 1px solid transparent;
+        }
+
+        /* Removing the borders */
+        input[type="color"] {
+            border: 0;
+            padding: 0;
+        }
+
+        /* Hiding the input of file type (button) */
+        input[type="file"] {
+            height: 0;
+            padding: 0;
+            opacity: 0;
+        }
+
+        /* Designing the label of the input type file as a button */
+        label[for="file"] {
+            box-shadow: 1px 1px 3px #ccc;
+            background: linear-gradient(to bottom, #eee, #ccc);
+            border: 1px solid rgb(169, 169, 169);
+            border-radius: 5px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        label[for="file"]:hover {
+            background: linear-gradient(to bottom, #fff, #ddd);
+        }
+
+        label[for="file"]:active {
+            box-shadow: inset 1px 1px 3px #ccc;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <!--  
+        -webkit-appearance: none;   for compatibility
+        apperance: none;
+            set appearance to none so we can remove system-level styling and add our own styles
+    -->
+
+    <form>
+        <p>
+          <label for="search">search: </label>
+          <input id="search" name="search" type="search">
+        </p>
+        <p>
+          <label for="text">text: </label>
+          <input id="text" name="text" type="text">
+        </p>
+        <p>
+          <label for="date">date: </label>
+          <input id="date" name="date" type="datetime-local">
+        </p>
+        <p>
+          <label for="radio">radio: </label>
+          <input id="radio" name="radio" type="radio">
+        </p>
+        <p>
+          <label for="checkbox">checkbox: </label>
+          <input id="checkbox" name="checkbox" type="checkbox">
+        </p>
+        <p><input type="submit" value="submit"></p>
+        <p><input type="button" value="button"></p>
+    </form>
+
+    <!--  
+        Taming search boxes
+            you cant adjust their height or font-size freely
+
+            Aqua appearance by default 
+                some form controls are not scalable
+
+            fix by using apperance: none
+    -->
+    
+    <!--  
+        Styling checkboxes and radio buttons 
+            apply appearance:none because different browsers render differently the styles of these elements
+
+            pseduo-classes: 
+                :checked - checked state
+                :disabled - disabled state
+    -->
+    <form>
+        <fieldset>
+          <legend>Fruit preferences</legend>
+      
+          <p>
+            <label>
+              <input type="checkbox" name="fruit-1" value="cherry">
+              I like cherry
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="fruit-2" value="banana" disabled>
+              I can't like banana
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="fruit-3" value="strawberry">
+              I like strawberry
+            </label>
+          </p>
+        </fieldset>
+    </form>
+    <!-- 
+        Radio buttons example 
+            view-source:https://mdn.github.io/learning-area/html/forms/styling-examples/radios-styled.html
+    -->
+    <form>
+        <fieldset>
+          <legend>Choose your favourite fruit</legend>
+    
+          <p>
+            <label>
+              <input type="radio" name="fruit" value="cherry">
+              Cherry
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="radio" name="fruit" value="banana">
+              Banana
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="radio" name="fruit" value="strawberry">
+              Strawberry
+            </label>
+          </p>
+        </fieldset>
+    </form>
+    <!-- 
+        Toggle Button 
+            view-source:https://mdn.github.io/learning-area/html/forms/toggle-switch-example/
+    -->
+    <ul>
+        <li>
+          <input type="checkbox" name="power" id="power">
+          <label for="power"><span class="on">On</span> <span class="off">Off</span></label>
+        </li>
+    </ul>
+
+    <!-- 
+        Select Elements 
+            ::before and ::after does not work on select elements
+    -->
+    <div class="select-wrapper"><select id="select" name="select">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Lemon</option>
+    </select></div>
+    
+    <!--  
+        Date Input Types
+            internal controls not really stylable by CSS even with appearance:none
+    -->
+    <!--  
+        Range Input types
+            stylable on removing default slider track
+            super complex to style the drag handle! 
+    -->
+    <!--  
+        Color input types
+            not too bad
+            removing borders is the common styling
+    -->
+    <!--  
+        File Input Types 
+            only problem: the button provided by the input type
+            solution:
+                1. hide(visibility only not the display itself) the input itself and associate a label with it. 
+                2. the label (with the for attribute) will then have the ability to activate the input then style the label as if it was a button
+    -->
+    <form>
+        <label for="file">Choose a file to upload</label>
+        <input id="file" name="file" type="file" multiple>
+    </form>
+
+    <!-- 
+        Meters and Progress Bars 
+            apperance:none makes them worse
+
+            create custom solutions for these features 
+            such as progressbar.js
+    -->
+    
+    <!-- Useful libraries that can help you style your forms -->
+    <!--  
+        Uni-form
+        https://github.com/draganbabic/uni-form
+
+        Formalize
+        https://formalize.me/
+
+        Niceforms
+        https://www.emblematiq.com/lab/niceforms/
+
+        jQuery UI
+        https://jqueryui.com/
+
+        Bootstrap 
+        https://getbootstrap.com/docs/5.1/forms/overview/
+
+        WebShim
+        https://afarkas.github.io/webshim/demos/
+    -->
+    <!-- 
+        Note on using libraries: 
+            you must have a robust fallback HTML in case the script fails 
+    -->
+</body>
+</html>
