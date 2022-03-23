@@ -1,0 +1,17 @@
+Main points: 
+    1. show validation errors near inputs
+    2. dont disable submit button 
+    3. provide positive and negative feedback (after invalid and valid)
+    4. use human language in errors 
+    5. put exclamation point icon next to inputs 
+    6. dont hide error messages under icons 
+    7. show password rules right away
+    8. help users avoid mistakes 
+        a. provide masks
+        b. mark if optional or required 
+        c. use reasonable input widths
+        d. put reasonable dates
+
+When to Validate? 
+    Eager mode! 
+        It first validates when the user leaves the input, then if the input is invalid it will behave aggressively until the input is valid again and it will go back to being lazy.
