@@ -1,0 +1,19 @@
+Additional notes from INTERNETING IS HARD
+
+2 Aspects of a functional HTML form: 
+    frontend UI (form elements)
+    backend server (form processing)
+
+    The name attribute defines the name of this variable, and the value is whatever the user entered into the text field.
+
+    Every radio button group you create should:
+        Be wrapped in a <fieldset>, which is labeled with a <legend>.
+        Associate a <label> element with each radio button.
+        Use the same name attribute for each radio button in the group.
+        Use different value attributes for each radio button
+
+Generally speaking, there are two ways to process forms:
+
+    1. Use the action attribute to send the form data to a backend URL, which then redirects to a success or error page. We got a little glimpse of this in the previous section, and it doesn’t require any JavaScript.
+    
+    2. Use AJAX queries to submit the form without leaving the page. Success or error messages are displayed on the same page by manipulating the HTML with JavaScript.
