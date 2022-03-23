@@ -1,3 +1,28 @@
-h1 {
-    color:burlywood
+input:required {
+  border: 1px solid black;
+}
+
+input:optional {
+  border: 1px solid silver;
+}
+
+fieldset > div {
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+input + span {
+  position: relative;
+}
+
+input:required + span::after {
+  font-size: 0.7rem;
+  position: absolute;
+  content: "required";
+  color: white;
+  background-color: black;
+  padding: 5px 10px;
+  top: -26px;
+  left: -70px;
 }
