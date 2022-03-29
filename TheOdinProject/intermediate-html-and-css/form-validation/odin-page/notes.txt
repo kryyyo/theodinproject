@@ -1,0 +1,23 @@
+Additional notes: 
+    styling an input's placeholder: 
+
+        ::placeholder 
+
+    order is important in pseudoclasses because their specificity are all the same ! 
+        eg. 
+            input:invalid { color: red }
+            input:enabled { color: black }
+
+    secret selector to detect when the user has already an input: 
+
+        :placeholder-shown
+            -if user has no input yet
+
+    you can also use not() 
+
+        not(:placeholder-shown) 
+            -if user has an input already
+
+For regex patterns references: 
+    1. html5pattern.com 
+    2. Regular expression syntax cheatsheet (Mozilla)
