@@ -1,0 +1,52 @@
+SVGs 
+    - scalable 
+    - retain quality even scaled
+
+    often used for: 
+        1. icons 
+        2. graphs/charts 
+        3. patterned backgrounds 
+        5. applying effects to other elements via SVG filters 
+
+    - "Scalable Vector Graphic"
+        - defined by math 
+        - formulas for different shapes and lines
+
+        "raster graphics"
+            - defined by grid of pixels (png, jpeg)
+
+    - defined using XML 
+        "XML" 
+            - Extensible Markup Language
+            - HTML-like syntax which is used for a lot of things 
+                - API
+                - RSS 
+                - spreadsheet and word editor software
+
+        Benefits: 
+            1. human-readable
+                    unlike binary file formats like JPEG 
+            2. interoperable with HTML
+
+    Drawbacks
+        for simple images only 
+                not for photo realistic and fine detail or texture
+                (eg. "grunge textures")
+        
+    Anatomy of an SVG 
+        1. xmlns
+            - "XML NameSpace"
+            - what dialect of XML you're using
+                - SVG language spec 
+            - like doctype
+            
+            eg. 
+                <html xmlns="http://www.w3.org/1999/xhtml">
+                <body>
+                    <!-- some XHTML tags here -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="300px" height="200px">
+                    <!-- some SVG tags here -->
+                    </svg>
+                    <!-- some XHTML tags here -->
+                </body>
+                </html>
