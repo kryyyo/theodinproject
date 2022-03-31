@@ -1,0 +1,51 @@
+transparent
+    - rgba(0, 0, 0, 0)
+
+currentColor
+    - value of an element's color property
+    - use color value on properties that do not receive it by default
+    - takes inherited color 
+
+typical position value
+    - 1st - sets position horizontally 
+    - 2nd - sets position vertically 
+
+    if 1 axis only, the other will default to center 
+
+usage of strings in CSS 
+    content: "string content here"
+
+Sticky footers 
+    - min-height: 100vh; 
+
+
+letter-spacing 
+    - space between letters 
+
+border-radius 
+    - pwede ganto:
+        - border-top-left-radius: 
+        - border-top-right-radius: ....
+
+overflow-x and overflow-y 
+    - pwedeng ispecify kung magkaiba 
+
+    eg. 
+        overflow-x: hidden; 
+        overflow-y: scroll;
+
+    overflow: auto;
+        automatic scrollbars if overlapped 
+
+    overflow: scroll; 
+        scrollbars even if not overlapped pa (disabled)
+
+scrollbars styling
+    - WebKit browsers
+    - cross-browser custom scrollbars by JavaScript
+
+Other References: 
+    1. CSS Tricks 
+    2. W3 Schools 
+
+    
