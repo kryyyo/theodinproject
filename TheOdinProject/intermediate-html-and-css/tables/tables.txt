@@ -1,0 +1,54 @@
+Table (MDN)
+    - structured set of data made up of rows and columns 
+    - tabular data
+    - quickly and easily look up values that indicate some kind of connection between different types of data
+
+    Do not use for layouting web pages! 
+        1. Reduce accessibility for visually impared users
+        2. Produces tag soup 
+            harder to write, maintain and debug
+        3. not automatically responsive 
+
+    Why are headers useful? 
+        1. easier to find data
+        2. added benefit along with the scope attribute
+
+    Spanning 
+        Attributes:
+            colspan="no. of columns to be occupied"
+            rowspan="no. of rows to be occupied"
+
+    Styling without <col> 
+        add class to each td/th 
+        css select and style 
+
+    Styling with <col>
+        eg.
+            <colgroup>
+                <col>       // 1st column no style 
+                <col style="background-color: yellow">      // 2nd column with style
+            </colgroup>
+            <table>
+                // this is the table that is being targeted 
+            </table>
+
+HTML table advanced features and accessibility
+    Adding a caption to your table with <caption>
+        <table>
+            <caption>
+                // best place before all the data so user can have the overview
+                // caption here
+            </caption>
+        </table>
+
+        particularly for blind users
+        overview of the table 
+
+        summary Attribute 
+            - can also be used but sighted users cannot see this attribute so caption is the best for both blinded and sighted
+
+        
+    Adding structure with <thead>, <tfoot>, and <tbody>
+        - do not make any more accessibility 
+        - don't result in any visual enhancement on their own 
+        - but useful for styling and for acting as hooks 
